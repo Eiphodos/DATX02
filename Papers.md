@@ -3,8 +3,9 @@
 - https://www.sciencedirect.com/science/article/pii/S0950705117302757?via%3Dihub (Music recommendation based on the users current activity and mood. Involves Time Series and "activity recognition", although not using the users current heart rate. Also involves methods for measuring the success of a music recommendation (4.3))
 - http://www.bgu.ac.il/~shanigu/Publications/EvaluationMetrics.17.pdf (Paper on different algorithms for recommendation systems and how to evaulate them)
 - https://www.sciencedirect.com/science/article/pii/S1110866515000341 (Another article on techniques for recommendation systems)
-- https://academic.oup.com/eurheartj/article-pdf/36/44/3043/6733702/ehv430.pdf (Effects on heart rate and heart rate variance when listening to pleasant vs unpleasant music and exciting vs tranquilizing music.)
-
+- https://academic.oup.com/eurheartj/article-pdf/36/44/3043/6733702/ehv430.pdf (Meta-studie. Effects on heart rate and heart rate variance when listening to pleasant vs unpleasant music and exciting vs tranquilizing music.)
+- https://pdfs.semanticscholar.org/6294/b19e38df21505ce6efc4d6014fa4ad4df0be.pdf (One of the actual studies the meta-studie above is based upon, cardiovascular changes induced by different types of music)
+ - https://www.sciencedirect.com/science/article/pii/S0167876005002850?via%3Dihub#aep-keywords-id14 (Another studie from the meta-studie, cardiovascular responses during musical mood induction)
 
 # Could be useful
 - https://dl.acm.org/citation.cfm?id=372071 (Some information regarding how to evaluate recommendations and some ways of doing recommendations and connecting items)
