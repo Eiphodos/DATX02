@@ -4,3 +4,4 @@
 
 
 # Not recommended
+- https://dl.acm.org/citation.cfm?id=860508 (Seemed promising but I don't see how it would help us really. It talks very briefly about being able to calculate what mood a song relates to and that they demonstrate some success in being able determine what mood a song relates to.)
