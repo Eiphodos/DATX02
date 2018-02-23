@@ -23,7 +23,7 @@ def main(argv):
     args = parser.parse_args(argv[1:])
 
     # Fetch the data
-    (train_x, train_y), (test_x, test_y) = user_data.load_data()
+    (train_x, train_y, train_classes) = user_data.load_data()
 
     # Feature columns describe how to use the input.
     my_feature_columns = []
@@ -32,6 +32,7 @@ def main(argv):
     my_feature_columns.append(embedding_column)
     my_feature_columns.append(tf.feature_column.numeric_column(key='heartrate'))
     my_feature_columns.append(tf.feature_column.numeric_column(key='time'))
+    my_feature_columns.append(tf.feature_column.numeric_column(key='rating'))
 
     # Build 2 hidden layer DNN with 10, 10 units respectively.
     classifier = tf.estimator.DNNClassifier(
@@ -39,7 +40,7 @@ def main(argv):
         # Two hidden layers of 10 nodes each.
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
-        n_classes=3,
+        n_classes=len(train_classes.index),
         model_dir='checkpoints')
 
     # Train the Model.
@@ -47,13 +48,6 @@ def main(argv):
         input_fn=lambda:user_data.train_input_fn(train_x, train_y,
                                                  args.batch_size),
         steps=args.train_steps)
-
-    # Evaluate the model.
-    eval_result = classifier.evaluate(
-        input_fn=lambda:user_data.eval_input_fn(test_x, test_y,
-                                                args.batch_size))
-
-    print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
 
 if __name__ == '__main__':

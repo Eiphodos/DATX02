@@ -12,11 +12,11 @@ os.environ['TF_CPP_MIN_VLOG_LEVEL'] = '3'
 import argparse
 import tensorflow as tf
 
-
+import pandas as pd
 import user_data
 
 
-def predict(batch_size, user, pulse, timevalue):
+def predict(batch_size, user, pulse, timevalue, rate):
 
 
     # Feature columns describe how to use the input.
@@ -26,6 +26,7 @@ def predict(batch_size, user, pulse, timevalue):
     my_feature_columns.append(embedding_column)
     my_feature_columns.append(tf.feature_column.numeric_column(key='heartrate'))
     my_feature_columns.append(tf.feature_column.numeric_column(key='time'))
+    my_feature_columns.append(tf.feature_column.numeric_column(key='rating'))
 
     # Build 2 hidden layer DNN with 10, 10 units respectively.
     classifier = tf.estimator.DNNClassifier(
@@ -42,7 +43,10 @@ def predict(batch_size, user, pulse, timevalue):
         'userid': [user],
         'heartrate': [pulse],
         'time': [timevalue],
+        'rating': [rate],
     }
+
+    df = user_data.get_songids()
 
     predictions = classifier.predict(
         input_fn=lambda: user_data.eval_input_fn(predict_x,
@@ -52,5 +56,5 @@ def predict(batch_size, user, pulse, timevalue):
     for pred_dict in predictions:
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
-        return user_data.SONGID[class_id]
+        return df.get(class_id)
 

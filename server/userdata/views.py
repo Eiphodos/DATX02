@@ -51,7 +51,7 @@ def userdata_receive(request, userid):
         pulse = request.GET.get('heartrate')
         rating = 1.0
         timevalue = (((datetime.datetime.now().hour)*60) + datetime.datetime.now().minute)
-        song = predict.predict(100, userid, float(pulse), float(timevalue))
+        song = predict.predict(100, userid, float(pulse), float(timevalue), 1.0)
         data = Userdata.create(userid, song, pulse, rating)
         serializer = UserdataSerializer(data)
         return JsonResponse(song, safe=False)

@@ -8,24 +8,29 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 import pandas as pd
 import tensorflow as tf
 
-TRAIN_PATH = 'training_data/training.csv'
-TEST_PATH = 'training_data/test.csv'
+TRAIN_PATH = r"C:\Users\David\Documents\GitHub\DATX02\tensor\training_data\training.csv"
 
 CSV_COLUMN_NAMES = ['userid', 'heartrate',
-                    'time', 'songid']
-SONGID = ['4Y4Gd3ty8uut6Qw43c7yJc', '3PU4zO3wm8wPDseNbLLUTl', '6nsLzJfvp5OLd4mgqUJkpq']
+                    'time', 'rating', 'songid']
 
 def load_data(y_name='songid'):
     """Returns the iris dataset as (train_x, train_y), (test_x, test_y)."""
-    train_path, test_path = TRAIN_PATH, TEST_PATH
+    train_path = TRAIN_PATH
 
     train = pd.read_csv(train_path, names=CSV_COLUMN_NAMES, header=0)
-    train_x, train_y = train, train.pop(y_name)
+    songs = train.pop(y_name).astype('category')
+    songcodes = songs.cat.codes.astype('int32')
+    classes = songs.drop_duplicates()
+    train_x, train_y, train_classes = train, songcodes, classes
 
-    test = pd.read_csv(test_path, names=CSV_COLUMN_NAMES, header=0)
-    test_x, test_y = test, test.pop(y_name)
+    return (train_x, train_y, train_classes)
 
-    return (train_x, train_y), (test_x, test_y)
+def get_songids(y_name='songid'):
+    """Returns the iris dataset as (train_x, train_y), (test_x, test_y)."""
+    train_path = TRAIN_PATH
+    train = pd.read_csv(train_path, names=CSV_COLUMN_NAMES, header=0)
+    songs = train.pop(y_name).astype('category')
+    return songs.drop_duplicates()
 
 
 def train_input_fn(features, labels, batch_size):
