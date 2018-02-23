@@ -19,13 +19,14 @@ from django.conf.urls import url
 from rest_framework import routers
 from userdata import views
 
-router = routers.DefaultRouter()
+#router = routers.DefaultRouter()
 #makes sure that the API endpoints work
-router.register(r'api/userdata', views.UserdataViewSet)
+#router.register(r'api/userdata', views.UserdataViewSet)
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^', include('userdata.urls')),
+    #url(r'^', include(router.urls)),
+    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

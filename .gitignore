@@ -1,0 +1,4 @@
+*.csv
+**/checkpoints
+**/__pycache__
+**/migrations
