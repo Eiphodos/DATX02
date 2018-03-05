@@ -17,7 +17,7 @@ import user_data
 from random import randint
 
 
-def predict(batch_size, user, pulse, timevalue, rate, songssince):
+def predict(batch_size, user, pulse, timevalue, rate):
 
     train_classes = user_data.get_songids()
 
