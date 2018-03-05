@@ -1,0 +1,1385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A51515C22044451100BBFA6F /* skip-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515B92044451100BBFA6F /* skip-btn@2x.png */; };
+		A51515C32044451100BBFA6F /* play-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515BA2044451100BBFA6F /* play-btn@2x.png */; };
+		A51515C42044451100BBFA6F /* play-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515BB2044451100BBFA6F /* play-btn@3x.png */; };
+		A51515C52044451100BBFA6F /* skip-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515BC2044451100BBFA6F /* skip-btn@3x.png */; };
+		A51515C62044451100BBFA6F /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515BD2044451100BBFA6F /* heart.png */; };
+		A51515C92044451100BBFA6F /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515C02044451100BBFA6F /* play-btn.png */; };
+		A51515CA2044451100BBFA6F /* skip-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515C12044451100BBFA6F /* skip-btn.png */; };
+		A51515D02044507E00BBFA6F /* heart@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515CB2044507D00BBFA6F /* heart@4x.png */; };
+		A51515D12044507E00BBFA6F /* stop-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515CC2044507D00BBFA6F /* stop-btn@2x.png */; };
+		A51515D22044507E00BBFA6F /* stop-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515CD2044507E00BBFA6F /* stop-btn@3x.png */; };
+		A51515D32044507E00BBFA6F /* stop-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515CE2044507E00BBFA6F /* stop-btn.png */; };
+		A51515D42044507E00BBFA6F /* heart@6x.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515CF2044507E00BBFA6F /* heart@6x.png */; };
+		A51515D7204452C000BBFA6F /* DXBeatingHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51515D6204452C000BBFA6F /* DXBeatingHeartView.swift */; };
+		A51515D92044561E00BBFA6F /* DXSongLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51515D82044561E00BBFA6F /* DXSongLabelView.swift */; };
+		A51515E820446C4000BBFA6F /* appicon-180w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515DB20446C4000BBFA6F /* appicon-180w.png */; };
+		A51515E920446C4000BBFA6F /* appicon-20w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515DC20446C4000BBFA6F /* appicon-20w.png */; };
+		A51515EA20446C4000BBFA6F /* appicon-60w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515DD20446C4000BBFA6F /* appicon-60w.png */; };
+		A51515EB20446C4000BBFA6F /* appicon-76w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515DE20446C4000BBFA6F /* appicon-76w.png */; };
+		A51515EC20446C4000BBFA6F /* appicon-40w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515DF20446C4000BBFA6F /* appicon-40w.png */; };
+		A51515ED20446C4000BBFA6F /* appicon-1024w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E020446C4000BBFA6F /* appicon-1024w.png */; };
+		A51515EE20446C4000BBFA6F /* appicon-152w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E120446C4000BBFA6F /* appicon-152w.png */; };
+		A51515EF20446C4000BBFA6F /* appicon-167w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E220446C4000BBFA6F /* appicon-167w.png */; };
+		A51515F020446C4000BBFA6F /* appicon-29w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E320446C4000BBFA6F /* appicon-29w.png */; };
+		A51515F120446C4000BBFA6F /* appicon-87w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E420446C4000BBFA6F /* appicon-87w.png */; };
+		A51515F220446C4000BBFA6F /* appicon-80w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E520446C4000BBFA6F /* appicon-80w.png */; };
+		A51515F320446C4000BBFA6F /* appicon-120w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E620446C4000BBFA6F /* appicon-120w.png */; };
+		A51515F420446C4000BBFA6F /* appicon-58w.png in Resources */ = {isa = PBXBuildFile; fileRef = A51515E720446C4000BBFA6F /* appicon-58w.png */; };
+		A560D28B202366F1000182EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560D28A202366F1000182EB /* HealthKit.framework */; };
+		A560D2D420273EC0000182EB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A560D28F20273EC0000182EB /* LICENSE */; };
+		A560D2D520273EC0000182EB /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560D29020273EC0000182EB /* SpotifyMetadata.framework */; };
+		A560D2D620273EC0000182EB /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29220273EC0000182EB /* index.html */; };
+		A560D2D720273EC0000182EB /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = A560D29420273EC0000182EB /* styles.css */; };
+		A560D2D820273EC0000182EB /* stylesPrint.css in Resources */ = {isa = PBXBuildFile; fileRef = A560D29520273EC0000182EB /* stylesPrint.css */; };
+		A560D2D920273EC0000182EB /* SPTImage.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29720273EC0000182EB /* SPTImage.html */; };
+		A560D2DA20273EC0000182EB /* SPTCoreAudioDeviceSource.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29820273EC0000182EB /* SPTCoreAudioDeviceSource.html */; };
+		A560D2DB20273EC0000182EB /* SPTCoreAudioController.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29920273EC0000182EB /* SPTCoreAudioController.html */; };
+		A560D2DC20273EC0000182EB /* SPTPlaybackTrack.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29A20273EC0000182EB /* SPTPlaybackTrack.html */; };
+		A560D2DD20273EC0000182EB /* SPTAuth.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29B20273EC0000182EB /* SPTAuth.html */; };
+		A560D2DE20273EC0000182EB /* SPTAlbum.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29C20273EC0000182EB /* SPTAlbum.html */; };
+		A560D2DF20273EC0000182EB /* SPTTrack.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29D20273EC0000182EB /* SPTTrack.html */; };
+		A560D2E020273EC0000182EB /* SPTPartialTrack.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29E20273EC0000182EB /* SPTPartialTrack.html */; };
+		A560D2E120273EC0000182EB /* SPTStoreViewController.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D29F20273EC0000182EB /* SPTStoreViewController.html */; };
+		A560D2E220273EC0000182EB /* SPTPartialPlaylist.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A020273EC0000182EB /* SPTPartialPlaylist.html */; };
+		A560D2E320273EC0000182EB /* SPTArtist.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A120273EC0000182EB /* SPTArtist.html */; };
+		A560D2E420273EC0000182EB /* SPTPartialAlbum.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A220273EC0000182EB /* SPTPartialAlbum.html */; };
+		A560D2E520273EC0000182EB /* SPTUser.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A320273EC0000182EB /* SPTUser.html */; };
+		A560D2E620273EC0000182EB /* SPTJSONDecoding.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A420273EC0000182EB /* SPTJSONDecoding.html */; };
+		A560D2E720273EC0000182EB /* SPTPlaylistList.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A520273EC0000182EB /* SPTPlaylistList.html */; };
+		A560D2E820273EC0000182EB /* SPTSearch.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A620273EC0000182EB /* SPTSearch.html */; };
+		A560D2E920273EC0000182EB /* SPTFeaturedPlaylistList.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A720273EC0000182EB /* SPTFeaturedPlaylistList.html */; };
+		A560D2EA20273EC0000182EB /* SPTJSONObjectBase.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A820273EC0000182EB /* SPTJSONObjectBase.html */; };
+		A560D2EB20273EC0000182EB /* SPTAuthViewController.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2A920273EC0000182EB /* SPTAuthViewController.html */; };
+		A560D2EC20273EC0000182EB /* SPTFollow.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2AA20273EC0000182EB /* SPTFollow.html */; };
+		A560D2ED20273EC0000182EB /* SPTPartialArtist.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2AB20273EC0000182EB /* SPTPartialArtist.html */; };
+		A560D2EE20273EC0000182EB /* SPTAudioStreamingController.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2AC20273EC0000182EB /* SPTAudioStreamingController.html */; };
+		A560D2EF20273EC0000182EB /* SPTPlaylistSnapshot.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2AD20273EC0000182EB /* SPTPlaylistSnapshot.html */; };
+		A560D2F020273EC0000182EB /* SPTDiskCache.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2AE20273EC0000182EB /* SPTDiskCache.html */; };
+		A560D2F120273EC0000182EB /* SPTPlaylistTrack.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2AF20273EC0000182EB /* SPTPlaylistTrack.html */; };
+		A560D2F220273EC0000182EB /* SPTPlayOptions.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B020273EC0000182EB /* SPTPlayOptions.html */; };
+		A560D2F320273EC0000182EB /* SPTCoreAudioDevice.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B120273EC0000182EB /* SPTCoreAudioDevice.html */; };
+		A560D2F420273EC0000182EB /* SPTSavedTrack.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B220273EC0000182EB /* SPTSavedTrack.html */; };
+		A560D2F520273EC0000182EB /* SPTBrowse.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B320273EC0000182EB /* SPTBrowse.html */; };
+		A560D2F620273EC0000182EB /* SPTRequest.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B420273EC0000182EB /* SPTRequest.html */; };
+		A560D2F720273EC0000182EB /* SPTCircularBuffer.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B520273EC0000182EB /* SPTCircularBuffer.html */; };
+		A560D2F820273EC0000182EB /* SPTYourMusic.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B620273EC0000182EB /* SPTYourMusic.html */; };
+		A560D2F920273EC0000182EB /* SPTSession.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B720273EC0000182EB /* SPTSession.html */; };
+		A560D2FA20273EC0000182EB /* SPTListPage.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B820273EC0000182EB /* SPTListPage.html */; };
+		A560D2FB20273EC0000182EB /* SPTPlaybackState.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2B920273EC0000182EB /* SPTPlaybackState.html */; };
+		A560D2FC20273EC0000182EB /* hierarchy.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2BA20273EC0000182EB /* hierarchy.html */; };
+		A560D2FD20273EC0000182EB /* SPTProduct.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2BC20273EC0000182EB /* SPTProduct.html */; };
+		A560D2FE20273EC0000182EB /* SPTAlbumType.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2BD20273EC0000182EB /* SPTAlbumType.html */; };
+		A560D2FF20273EC0000182EB /* SPTBitrate.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2BE20273EC0000182EB /* SPTBitrate.html */; };
+		A560D30020273EC0000182EB /* SPTSearchQueryType.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2BF20273EC0000182EB /* SPTSearchQueryType.html */; };
+		A560D30120273EC0000182EB /* SPTRepeatMode.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C020273EC0000182EB /* SPTRepeatMode.html */; };
+		A560D30220273EC0000182EB /* library_background.png in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C220273EC0000182EB /* library_background.png */; };
+		A560D30320273EC0000182EB /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C320273EC0000182EB /* disclosure.png */; };
+		A560D30420273EC0000182EB /* disclosure_open.png in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C420273EC0000182EB /* disclosure_open.png */; };
+		A560D30520273EC0000182EB /* button_bar_background.png in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C520273EC0000182EB /* button_bar_background.png */; };
+		A560D30620273EC0000182EB /* title_background.png in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C620273EC0000182EB /* title_background.png */; };
+		A560D30720273EC0000182EB /* SPTRequestHandlerProtocol.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C820273EC0000182EB /* SPTRequestHandlerProtocol.html */; };
+		A560D30820273EC0000182EB /* SPTAudioStreamingPlaybackDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2C920273EC0000182EB /* SPTAudioStreamingPlaybackDelegate.html */; };
+		A560D30920273EC0000182EB /* SPTStoreControllerDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2CA20273EC0000182EB /* SPTStoreControllerDelegate.html */; };
+		A560D30A20273EC0000182EB /* SPTTrackProvider.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2CB20273EC0000182EB /* SPTTrackProvider.html */; };
+		A560D30B20273EC0000182EB /* SPTAuthViewDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2CC20273EC0000182EB /* SPTAuthViewDelegate.html */; };
+		A560D30C20273EC0000182EB /* SPTCoreAudioControllerDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2CD20273EC0000182EB /* SPTCoreAudioControllerDelegate.html */; };
+		A560D30D20273EC0000182EB /* SPTPartialObject.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2CE20273EC0000182EB /* SPTPartialObject.html */; };
+		A560D30E20273EC0000182EB /* SPTJSONObject.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2CF20273EC0000182EB /* SPTJSONObject.html */; };
+		A560D30F20273EC0000182EB /* SPTDiskCaching.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2D020273EC0000182EB /* SPTDiskCaching.html */; };
+		A560D31020273EC0000182EB /* SPTAudioStreamingDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = A560D2D120273EC0000182EB /* SPTAudioStreamingDelegate.html */; };
+		A560D31120273EC0000182EB /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560D2D220273EC0000182EB /* SpotifyAudioPlayback.framework */; };
+		A560D31220273EC0000182EB /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560D2D320273EC0000182EB /* SpotifyAuthentication.framework */; };
+		A560D31420273F67000182EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560D31320273F67000182EB /* AVFoundation.framework */; };
+		A560D31620273FF2000182EB /* DXSpotifyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560D31520273FF2000182EB /* DXSpotifyAdapter.swift */; };
+		A560D31E2027AD3A000182EB /* ABStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560D31D2027AD3A000182EB /* ABStringExtension.swift */; };
+		A560D3202028A96A000182EB /* DXServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560D31F2028A96A000182EB /* DXServerManager.swift */; };
+		A5B3BDEF203F0BFC00144943 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B3BDED203F0BFC00144943 /* Interface.storyboard */; };
+		A5B3BDF1203F0BFD00144943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B3BDF0203F0BFD00144943 /* Assets.xcassets */; };
+		A5B3BDF8203F0BFD00144943 /* KandArbeteWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A5B3BDF7203F0BFD00144943 /* KandArbeteWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5B3BDFD203F0BFD00144943 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3BDFC203F0BFD00144943 /* InterfaceController.swift */; };
+		A5B3BDFF203F0BFD00144943 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3BDFE203F0BFD00144943 /* ExtensionDelegate.swift */; };
+		A5B3BE01203F0BFD00144943 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3BE00203F0BFD00144943 /* NotificationController.swift */; };
+		A5B3BE03203F0BFD00144943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B3BE02203F0BFD00144943 /* Assets.xcassets */; };
+		A5B3BE08203F0BFD00144943 /* KandArbeteWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A5B3BDEB203F0BFC00144943 /* KandArbeteWatch.app */; };
+		A5C83E19204401D60009A4FA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C83E18204401D60009A4FA /* HealthKit.framework */; };
+		A5F3D2AC2020CAF500CE4C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D2AB2020CAF500CE4C76 /* AppDelegate.swift */; };
+		A5F3D2AE2020CAF500CE4C76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D2AD2020CAF500CE4C76 /* ViewController.swift */; };
+		A5F3D2B12020CAF500CE4C76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F3D2AF2020CAF500CE4C76 /* Main.storyboard */; };
+		A5F3D2B32020CAF500CE4C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F3D2B22020CAF500CE4C76 /* Assets.xcassets */; };
+		A5F3D2B62020CAF500CE4C76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F3D2B42020CAF500CE4C76 /* LaunchScreen.storyboard */; };
+		A5F3D2C12020CAF500CE4C76 /* KandArbeteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D2C02020CAF500CE4C76 /* KandArbeteTests.swift */; };
+		A5F3D2CC2020CAF500CE4C76 /* KandArbeteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D2CB2020CAF500CE4C76 /* KandArbeteUITests.swift */; };
+		A5F3D2DB2020CB6000CE4C76 /* DXPulseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D2DA2020CB6000CE4C76 /* DXPulseTracker.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5B3BDF9203F0BFD00144943 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5F3D2A02020CAF400CE4C76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5B3BDF6203F0BFD00144943;
+			remoteInfo = "KandArbeteWatch Extension";
+		};
+		A5B3BE06203F0BFD00144943 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5F3D2A02020CAF400CE4C76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5B3BDEA203F0BFC00144943;
+			remoteInfo = KandArbeteWatch;
+		};
+		A5F3D2BD2020CAF500CE4C76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5F3D2A02020CAF400CE4C76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5F3D2A72020CAF500CE4C76;
+			remoteInfo = KandArbete;
+		};
+		A5F3D2C82020CAF500CE4C76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5F3D2A02020CAF400CE4C76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5F3D2A72020CAF500CE4C76;
+			remoteInfo = KandArbete;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5B3BE0E203F0BFD00144943 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A5B3BDF8203F0BFD00144943 /* KandArbeteWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B3BE10203F0BFD00144943 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A5B3BE08203F0BFD00144943 /* KandArbeteWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A51515B92044451100BBFA6F /* skip-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skip-btn@2x.png"; sourceTree = "<group>"; };
+		A51515BA2044451100BBFA6F /* play-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-btn@2x.png"; sourceTree = "<group>"; };
+		A51515BB2044451100BBFA6F /* play-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-btn@3x.png"; sourceTree = "<group>"; };
+		A51515BC2044451100BBFA6F /* skip-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skip-btn@3x.png"; sourceTree = "<group>"; };
+		A51515BD2044451100BBFA6F /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		A51515C02044451100BBFA6F /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-btn.png"; sourceTree = "<group>"; };
+		A51515C12044451100BBFA6F /* skip-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skip-btn.png"; sourceTree = "<group>"; };
+		A51515CB2044507D00BBFA6F /* heart@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@4x.png"; sourceTree = "<group>"; };
+		A51515CC2044507D00BBFA6F /* stop-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-btn@2x.png"; sourceTree = "<group>"; };
+		A51515CD2044507E00BBFA6F /* stop-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-btn@3x.png"; sourceTree = "<group>"; };
+		A51515CE2044507E00BBFA6F /* stop-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-btn.png"; sourceTree = "<group>"; };
+		A51515CF2044507E00BBFA6F /* heart@6x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@6x.png"; sourceTree = "<group>"; };
+		A51515D6204452C000BBFA6F /* DXBeatingHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXBeatingHeartView.swift; sourceTree = "<group>"; };
+		A51515D82044561E00BBFA6F /* DXSongLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXSongLabelView.swift; sourceTree = "<group>"; };
+		A51515DB20446C4000BBFA6F /* appicon-180w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-180w.png"; sourceTree = "<group>"; };
+		A51515DC20446C4000BBFA6F /* appicon-20w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-20w.png"; sourceTree = "<group>"; };
+		A51515DD20446C4000BBFA6F /* appicon-60w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-60w.png"; sourceTree = "<group>"; };
+		A51515DE20446C4000BBFA6F /* appicon-76w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-76w.png"; sourceTree = "<group>"; };
+		A51515DF20446C4000BBFA6F /* appicon-40w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-40w.png"; sourceTree = "<group>"; };
+		A51515E020446C4000BBFA6F /* appicon-1024w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-1024w.png"; sourceTree = "<group>"; };
+		A51515E120446C4000BBFA6F /* appicon-152w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-152w.png"; sourceTree = "<group>"; };
+		A51515E220446C4000BBFA6F /* appicon-167w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-167w.png"; sourceTree = "<group>"; };
+		A51515E320446C4000BBFA6F /* appicon-29w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-29w.png"; sourceTree = "<group>"; };
+		A51515E420446C4000BBFA6F /* appicon-87w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-87w.png"; sourceTree = "<group>"; };
+		A51515E520446C4000BBFA6F /* appicon-80w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-80w.png"; sourceTree = "<group>"; };
+		A51515E620446C4000BBFA6F /* appicon-120w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-120w.png"; sourceTree = "<group>"; };
+		A51515E720446C4000BBFA6F /* appicon-58w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-58w.png"; sourceTree = "<group>"; };
+		A560D28A202366F1000182EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		A560D28C202366F2000182EB /* KandArbete.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KandArbete.entitlements; sourceTree = "<group>"; };
+		A560D28F20273EC0000182EB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A560D29020273EC0000182EB /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		A560D29220273EC0000182EB /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		A560D29420273EC0000182EB /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
+		A560D29520273EC0000182EB /* stylesPrint.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = stylesPrint.css; sourceTree = "<group>"; };
+		A560D29720273EC0000182EB /* SPTImage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTImage.html; sourceTree = "<group>"; };
+		A560D29820273EC0000182EB /* SPTCoreAudioDeviceSource.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTCoreAudioDeviceSource.html; sourceTree = "<group>"; };
+		A560D29920273EC0000182EB /* SPTCoreAudioController.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTCoreAudioController.html; sourceTree = "<group>"; };
+		A560D29A20273EC0000182EB /* SPTPlaybackTrack.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPlaybackTrack.html; sourceTree = "<group>"; };
+		A560D29B20273EC0000182EB /* SPTAuth.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAuth.html; sourceTree = "<group>"; };
+		A560D29C20273EC0000182EB /* SPTAlbum.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAlbum.html; sourceTree = "<group>"; };
+		A560D29D20273EC0000182EB /* SPTTrack.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTTrack.html; sourceTree = "<group>"; };
+		A560D29E20273EC0000182EB /* SPTPartialTrack.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPartialTrack.html; sourceTree = "<group>"; };
+		A560D29F20273EC0000182EB /* SPTStoreViewController.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTStoreViewController.html; sourceTree = "<group>"; };
+		A560D2A020273EC0000182EB /* SPTPartialPlaylist.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPartialPlaylist.html; sourceTree = "<group>"; };
+		A560D2A120273EC0000182EB /* SPTArtist.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTArtist.html; sourceTree = "<group>"; };
+		A560D2A220273EC0000182EB /* SPTPartialAlbum.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPartialAlbum.html; sourceTree = "<group>"; };
+		A560D2A320273EC0000182EB /* SPTUser.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTUser.html; sourceTree = "<group>"; };
+		A560D2A420273EC0000182EB /* SPTJSONDecoding.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTJSONDecoding.html; sourceTree = "<group>"; };
+		A560D2A520273EC0000182EB /* SPTPlaylistList.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPlaylistList.html; sourceTree = "<group>"; };
+		A560D2A620273EC0000182EB /* SPTSearch.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTSearch.html; sourceTree = "<group>"; };
+		A560D2A720273EC0000182EB /* SPTFeaturedPlaylistList.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTFeaturedPlaylistList.html; sourceTree = "<group>"; };
+		A560D2A820273EC0000182EB /* SPTJSONObjectBase.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTJSONObjectBase.html; sourceTree = "<group>"; };
+		A560D2A920273EC0000182EB /* SPTAuthViewController.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAuthViewController.html; sourceTree = "<group>"; };
+		A560D2AA20273EC0000182EB /* SPTFollow.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTFollow.html; sourceTree = "<group>"; };
+		A560D2AB20273EC0000182EB /* SPTPartialArtist.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPartialArtist.html; sourceTree = "<group>"; };
+		A560D2AC20273EC0000182EB /* SPTAudioStreamingController.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAudioStreamingController.html; sourceTree = "<group>"; };
+		A560D2AD20273EC0000182EB /* SPTPlaylistSnapshot.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPlaylistSnapshot.html; sourceTree = "<group>"; };
+		A560D2AE20273EC0000182EB /* SPTDiskCache.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTDiskCache.html; sourceTree = "<group>"; };
+		A560D2AF20273EC0000182EB /* SPTPlaylistTrack.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPlaylistTrack.html; sourceTree = "<group>"; };
+		A560D2B020273EC0000182EB /* SPTPlayOptions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPlayOptions.html; sourceTree = "<group>"; };
+		A560D2B120273EC0000182EB /* SPTCoreAudioDevice.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTCoreAudioDevice.html; sourceTree = "<group>"; };
+		A560D2B220273EC0000182EB /* SPTSavedTrack.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTSavedTrack.html; sourceTree = "<group>"; };
+		A560D2B320273EC0000182EB /* SPTBrowse.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTBrowse.html; sourceTree = "<group>"; };
+		A560D2B420273EC0000182EB /* SPTRequest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTRequest.html; sourceTree = "<group>"; };
+		A560D2B520273EC0000182EB /* SPTCircularBuffer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTCircularBuffer.html; sourceTree = "<group>"; };
+		A560D2B620273EC0000182EB /* SPTYourMusic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTYourMusic.html; sourceTree = "<group>"; };
+		A560D2B720273EC0000182EB /* SPTSession.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTSession.html; sourceTree = "<group>"; };
+		A560D2B820273EC0000182EB /* SPTListPage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTListPage.html; sourceTree = "<group>"; };
+		A560D2B920273EC0000182EB /* SPTPlaybackState.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPlaybackState.html; sourceTree = "<group>"; };
+		A560D2BA20273EC0000182EB /* hierarchy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = hierarchy.html; sourceTree = "<group>"; };
+		A560D2BC20273EC0000182EB /* SPTProduct.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTProduct.html; sourceTree = "<group>"; };
+		A560D2BD20273EC0000182EB /* SPTAlbumType.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAlbumType.html; sourceTree = "<group>"; };
+		A560D2BE20273EC0000182EB /* SPTBitrate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTBitrate.html; sourceTree = "<group>"; };
+		A560D2BF20273EC0000182EB /* SPTSearchQueryType.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTSearchQueryType.html; sourceTree = "<group>"; };
+		A560D2C020273EC0000182EB /* SPTRepeatMode.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTRepeatMode.html; sourceTree = "<group>"; };
+		A560D2C220273EC0000182EB /* library_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library_background.png; sourceTree = "<group>"; };
+		A560D2C320273EC0000182EB /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
+		A560D2C420273EC0000182EB /* disclosure_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure_open.png; sourceTree = "<group>"; };
+		A560D2C520273EC0000182EB /* button_bar_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_bar_background.png; sourceTree = "<group>"; };
+		A560D2C620273EC0000182EB /* title_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_background.png; sourceTree = "<group>"; };
+		A560D2C820273EC0000182EB /* SPTRequestHandlerProtocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTRequestHandlerProtocol.html; sourceTree = "<group>"; };
+		A560D2C920273EC0000182EB /* SPTAudioStreamingPlaybackDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAudioStreamingPlaybackDelegate.html; sourceTree = "<group>"; };
+		A560D2CA20273EC0000182EB /* SPTStoreControllerDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTStoreControllerDelegate.html; sourceTree = "<group>"; };
+		A560D2CB20273EC0000182EB /* SPTTrackProvider.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTTrackProvider.html; sourceTree = "<group>"; };
+		A560D2CC20273EC0000182EB /* SPTAuthViewDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAuthViewDelegate.html; sourceTree = "<group>"; };
+		A560D2CD20273EC0000182EB /* SPTCoreAudioControllerDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTCoreAudioControllerDelegate.html; sourceTree = "<group>"; };
+		A560D2CE20273EC0000182EB /* SPTPartialObject.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTPartialObject.html; sourceTree = "<group>"; };
+		A560D2CF20273EC0000182EB /* SPTJSONObject.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTJSONObject.html; sourceTree = "<group>"; };
+		A560D2D020273EC0000182EB /* SPTDiskCaching.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTDiskCaching.html; sourceTree = "<group>"; };
+		A560D2D120273EC0000182EB /* SPTAudioStreamingDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SPTAudioStreamingDelegate.html; sourceTree = "<group>"; };
+		A560D2D220273EC0000182EB /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		A560D2D320273EC0000182EB /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		A560D31320273F67000182EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A560D31520273FF2000182EB /* DXSpotifyAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXSpotifyAdapter.swift; sourceTree = "<group>"; };
+		A560D31720274586000182EB /* KandArbete-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KandArbete-Bridging-Header.h"; sourceTree = "<group>"; };
+		A560D31A2027AA56000182EB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A560D31D2027AD3A000182EB /* ABStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABStringExtension.swift; sourceTree = "<group>"; };
+		A560D31F2028A96A000182EB /* DXServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXServerManager.swift; sourceTree = "<group>"; };
+		A5B3BDEB203F0BFC00144943 /* KandArbeteWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KandArbeteWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B3BDEE203F0BFC00144943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A5B3BDF0203F0BFD00144943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5B3BDF2203F0BFD00144943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5B3BDF7203F0BFD00144943 /* KandArbeteWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KandArbeteWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B3BDFC203F0BFD00144943 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		A5B3BDFE203F0BFD00144943 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		A5B3BE00203F0BFD00144943 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A5B3BE02203F0BFD00144943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5B3BE04203F0BFD00144943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5B3BE05203F0BFD00144943 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A5C83E18204401D60009A4FA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		A5C83E1A204401D60009A4FA /* KandArbeteWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KandArbeteWatch Extension.entitlements"; sourceTree = "<group>"; };
+		A5F3D2A82020CAF500CE4C76 /* KandArbete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KandArbete.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5F3D2AB2020CAF500CE4C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5F3D2AD2020CAF500CE4C76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5F3D2B02020CAF500CE4C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5F3D2B22020CAF500CE4C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5F3D2B52020CAF500CE4C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5F3D2B72020CAF500CE4C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5F3D2BC2020CAF500CE4C76 /* KandArbeteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KandArbeteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5F3D2C02020CAF500CE4C76 /* KandArbeteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KandArbeteTests.swift; sourceTree = "<group>"; };
+		A5F3D2C22020CAF500CE4C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5F3D2C72020CAF500CE4C76 /* KandArbeteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KandArbeteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5F3D2CB2020CAF500CE4C76 /* KandArbeteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KandArbeteUITests.swift; sourceTree = "<group>"; };
+		A5F3D2CD2020CAF500CE4C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5F3D2DA2020CB6000CE4C76 /* DXPulseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXPulseTracker.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5B3BDF4203F0BFD00144943 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C83E19204401D60009A4FA /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2A52020CAF500CE4C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A560D31420273F67000182EB /* AVFoundation.framework in Frameworks */,
+				A560D2D520273EC0000182EB /* SpotifyMetadata.framework in Frameworks */,
+				A560D31220273EC0000182EB /* SpotifyAuthentication.framework in Frameworks */,
+				A560D28B202366F1000182EB /* HealthKit.framework in Frameworks */,
+				A560D31120273EC0000182EB /* SpotifyAudioPlayback.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2B92020CAF500CE4C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2C42020CAF500CE4C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A51515B72044451100BBFA6F /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				A51515B82044451100BBFA6F /* images */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		A51515B82044451100BBFA6F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A51515DA20446C4000BBFA6F /* appicon */,
+				A51515CB2044507D00BBFA6F /* heart@4x.png */,
+				A51515CF2044507E00BBFA6F /* heart@6x.png */,
+				A51515CE2044507E00BBFA6F /* stop-btn.png */,
+				A51515CC2044507D00BBFA6F /* stop-btn@2x.png */,
+				A51515CD2044507E00BBFA6F /* stop-btn@3x.png */,
+				A51515B92044451100BBFA6F /* skip-btn@2x.png */,
+				A51515BA2044451100BBFA6F /* play-btn@2x.png */,
+				A51515BB2044451100BBFA6F /* play-btn@3x.png */,
+				A51515BC2044451100BBFA6F /* skip-btn@3x.png */,
+				A51515BD2044451100BBFA6F /* heart.png */,
+				A51515C02044451100BBFA6F /* play-btn.png */,
+				A51515C12044451100BBFA6F /* skip-btn.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		A51515D5204452A200BBFA6F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				A51515D6204452C000BBFA6F /* DXBeatingHeartView.swift */,
+				A51515D82044561E00BBFA6F /* DXSongLabelView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		A51515DA20446C4000BBFA6F /* appicon */ = {
+			isa = PBXGroup;
+			children = (
+				A51515DB20446C4000BBFA6F /* appicon-180w.png */,
+				A51515DC20446C4000BBFA6F /* appicon-20w.png */,
+				A51515DD20446C4000BBFA6F /* appicon-60w.png */,
+				A51515DE20446C4000BBFA6F /* appicon-76w.png */,
+				A51515DF20446C4000BBFA6F /* appicon-40w.png */,
+				A51515E020446C4000BBFA6F /* appicon-1024w.png */,
+				A51515E120446C4000BBFA6F /* appicon-152w.png */,
+				A51515E220446C4000BBFA6F /* appicon-167w.png */,
+				A51515E320446C4000BBFA6F /* appicon-29w.png */,
+				A51515E420446C4000BBFA6F /* appicon-87w.png */,
+				A51515E520446C4000BBFA6F /* appicon-80w.png */,
+				A51515E620446C4000BBFA6F /* appicon-120w.png */,
+				A51515E720446C4000BBFA6F /* appicon-58w.png */,
+			);
+			path = appicon;
+			sourceTree = "<group>";
+		};
+		A560D289202366F1000182EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5C83E18204401D60009A4FA /* HealthKit.framework */,
+				A560D31320273F67000182EB /* AVFoundation.framework */,
+				A560D28A202366F1000182EB /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A560D28D20273EC0000182EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A560D28E20273EC0000182EB /* spotify-sdk */,
+				A560D31720274586000182EB /* KandArbete-Bridging-Header.h */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		A560D28E20273EC0000182EB /* spotify-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				A560D28F20273EC0000182EB /* LICENSE */,
+				A560D29020273EC0000182EB /* SpotifyMetadata.framework */,
+				A560D29120273EC0000182EB /* docs */,
+				A560D2D220273EC0000182EB /* SpotifyAudioPlayback.framework */,
+				A560D2D320273EC0000182EB /* SpotifyAuthentication.framework */,
+			);
+			path = "spotify-sdk";
+			sourceTree = "<group>";
+		};
+		A560D29120273EC0000182EB /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				A560D29220273EC0000182EB /* index.html */,
+				A560D29320273EC0000182EB /* css */,
+				A560D29620273EC0000182EB /* Classes */,
+				A560D2BA20273EC0000182EB /* hierarchy.html */,
+				A560D2BB20273EC0000182EB /* Constants */,
+				A560D2C120273EC0000182EB /* img */,
+				A560D2C720273EC0000182EB /* Protocols */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		A560D29320273EC0000182EB /* css */ = {
+			isa = PBXGroup;
+			children = (
+				A560D29420273EC0000182EB /* styles.css */,
+				A560D29520273EC0000182EB /* stylesPrint.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		A560D29620273EC0000182EB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A560D29720273EC0000182EB /* SPTImage.html */,
+				A560D29820273EC0000182EB /* SPTCoreAudioDeviceSource.html */,
+				A560D29920273EC0000182EB /* SPTCoreAudioController.html */,
+				A560D29A20273EC0000182EB /* SPTPlaybackTrack.html */,
+				A560D29B20273EC0000182EB /* SPTAuth.html */,
+				A560D29C20273EC0000182EB /* SPTAlbum.html */,
+				A560D29D20273EC0000182EB /* SPTTrack.html */,
+				A560D29E20273EC0000182EB /* SPTPartialTrack.html */,
+				A560D29F20273EC0000182EB /* SPTStoreViewController.html */,
+				A560D2A020273EC0000182EB /* SPTPartialPlaylist.html */,
+				A560D2A120273EC0000182EB /* SPTArtist.html */,
+				A560D2A220273EC0000182EB /* SPTPartialAlbum.html */,
+				A560D2A320273EC0000182EB /* SPTUser.html */,
+				A560D2A420273EC0000182EB /* SPTJSONDecoding.html */,
+				A560D2A520273EC0000182EB /* SPTPlaylistList.html */,
+				A560D2A620273EC0000182EB /* SPTSearch.html */,
+				A560D2A720273EC0000182EB /* SPTFeaturedPlaylistList.html */,
+				A560D2A820273EC0000182EB /* SPTJSONObjectBase.html */,
+				A560D2A920273EC0000182EB /* SPTAuthViewController.html */,
+				A560D2AA20273EC0000182EB /* SPTFollow.html */,
+				A560D2AB20273EC0000182EB /* SPTPartialArtist.html */,
+				A560D2AC20273EC0000182EB /* SPTAudioStreamingController.html */,
+				A560D2AD20273EC0000182EB /* SPTPlaylistSnapshot.html */,
+				A560D2AE20273EC0000182EB /* SPTDiskCache.html */,
+				A560D2AF20273EC0000182EB /* SPTPlaylistTrack.html */,
+				A560D2B020273EC0000182EB /* SPTPlayOptions.html */,
+				A560D2B120273EC0000182EB /* SPTCoreAudioDevice.html */,
+				A560D2B220273EC0000182EB /* SPTSavedTrack.html */,
+				A560D2B320273EC0000182EB /* SPTBrowse.html */,
+				A560D2B420273EC0000182EB /* SPTRequest.html */,
+				A560D2B520273EC0000182EB /* SPTCircularBuffer.html */,
+				A560D2B620273EC0000182EB /* SPTYourMusic.html */,
+				A560D2B720273EC0000182EB /* SPTSession.html */,
+				A560D2B820273EC0000182EB /* SPTListPage.html */,
+				A560D2B920273EC0000182EB /* SPTPlaybackState.html */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A560D2BB20273EC0000182EB /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A560D2BC20273EC0000182EB /* SPTProduct.html */,
+				A560D2BD20273EC0000182EB /* SPTAlbumType.html */,
+				A560D2BE20273EC0000182EB /* SPTBitrate.html */,
+				A560D2BF20273EC0000182EB /* SPTSearchQueryType.html */,
+				A560D2C020273EC0000182EB /* SPTRepeatMode.html */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A560D2C120273EC0000182EB /* img */ = {
+			isa = PBXGroup;
+			children = (
+				A560D2C220273EC0000182EB /* library_background.png */,
+				A560D2C320273EC0000182EB /* disclosure.png */,
+				A560D2C420273EC0000182EB /* disclosure_open.png */,
+				A560D2C520273EC0000182EB /* button_bar_background.png */,
+				A560D2C620273EC0000182EB /* title_background.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		A560D2C720273EC0000182EB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A560D2C820273EC0000182EB /* SPTRequestHandlerProtocol.html */,
+				A560D2C920273EC0000182EB /* SPTAudioStreamingPlaybackDelegate.html */,
+				A560D2CA20273EC0000182EB /* SPTStoreControllerDelegate.html */,
+				A560D2CB20273EC0000182EB /* SPTTrackProvider.html */,
+				A560D2CC20273EC0000182EB /* SPTAuthViewDelegate.html */,
+				A560D2CD20273EC0000182EB /* SPTCoreAudioControllerDelegate.html */,
+				A560D2CE20273EC0000182EB /* SPTPartialObject.html */,
+				A560D2CF20273EC0000182EB /* SPTJSONObject.html */,
+				A560D2D020273EC0000182EB /* SPTDiskCaching.html */,
+				A560D2D120273EC0000182EB /* SPTAudioStreamingDelegate.html */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A560D31B2027ACFE000182EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A560D31D2027AD3A000182EB /* ABStringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5B3BDEC203F0BFC00144943 /* KandArbeteWatch */ = {
+			isa = PBXGroup;
+			children = (
+				A5B3BDED203F0BFC00144943 /* Interface.storyboard */,
+				A5B3BDF0203F0BFD00144943 /* Assets.xcassets */,
+				A5B3BDF2203F0BFD00144943 /* Info.plist */,
+			);
+			path = KandArbeteWatch;
+			sourceTree = "<group>";
+		};
+		A5B3BDFB203F0BFD00144943 /* KandArbeteWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5C83E1A204401D60009A4FA /* KandArbeteWatch Extension.entitlements */,
+				A5B3BDFC203F0BFD00144943 /* InterfaceController.swift */,
+				A5B3BDFE203F0BFD00144943 /* ExtensionDelegate.swift */,
+				A5B3BE00203F0BFD00144943 /* NotificationController.swift */,
+				A5B3BE02203F0BFD00144943 /* Assets.xcassets */,
+				A5B3BE04203F0BFD00144943 /* Info.plist */,
+				A5B3BE05203F0BFD00144943 /* PushNotificationPayload.apns */,
+			);
+			path = "KandArbeteWatch Extension";
+			sourceTree = "<group>";
+		};
+		A5F3D29F2020CAF400CE4C76 = {
+			isa = PBXGroup;
+			children = (
+				A5F3D2AA2020CAF500CE4C76 /* KandArbete */,
+				A5F3D2BF2020CAF500CE4C76 /* KandArbeteTests */,
+				A5F3D2CA2020CAF500CE4C76 /* KandArbeteUITests */,
+				A5B3BDEC203F0BFC00144943 /* KandArbeteWatch */,
+				A5B3BDFB203F0BFD00144943 /* KandArbeteWatch Extension */,
+				A5F3D2A92020CAF500CE4C76 /* Products */,
+				A560D289202366F1000182EB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A5F3D2A92020CAF500CE4C76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5F3D2A82020CAF500CE4C76 /* KandArbete.app */,
+				A5F3D2BC2020CAF500CE4C76 /* KandArbeteTests.xctest */,
+				A5F3D2C72020CAF500CE4C76 /* KandArbeteUITests.xctest */,
+				A5B3BDEB203F0BFC00144943 /* KandArbeteWatch.app */,
+				A5B3BDF7203F0BFD00144943 /* KandArbeteWatch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5F3D2AA2020CAF500CE4C76 /* KandArbete */ = {
+			isa = PBXGroup;
+			children = (
+				A51515D5204452A200BBFA6F /* views */,
+				A51515B72044451100BBFA6F /* resources */,
+				A560D31B2027ACFE000182EB /* Extensions */,
+				A560D28D20273EC0000182EB /* Frameworks */,
+				A560D28C202366F2000182EB /* KandArbete.entitlements */,
+				A5F3D2D92020CB3000CE4C76 /* Services */,
+				A5F3D2AB2020CAF500CE4C76 /* AppDelegate.swift */,
+				A5F3D2AD2020CAF500CE4C76 /* ViewController.swift */,
+				A5F3D2AF2020CAF500CE4C76 /* Main.storyboard */,
+				A5F3D2B22020CAF500CE4C76 /* Assets.xcassets */,
+				A5F3D2B42020CAF500CE4C76 /* LaunchScreen.storyboard */,
+				A5F3D2B72020CAF500CE4C76 /* Info.plist */,
+				A560D31A2027AA56000182EB /* README.md */,
+			);
+			path = KandArbete;
+			sourceTree = "<group>";
+		};
+		A5F3D2BF2020CAF500CE4C76 /* KandArbeteTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5F3D2C02020CAF500CE4C76 /* KandArbeteTests.swift */,
+				A5F3D2C22020CAF500CE4C76 /* Info.plist */,
+			);
+			path = KandArbeteTests;
+			sourceTree = "<group>";
+		};
+		A5F3D2CA2020CAF500CE4C76 /* KandArbeteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A5F3D2CB2020CAF500CE4C76 /* KandArbeteUITests.swift */,
+				A5F3D2CD2020CAF500CE4C76 /* Info.plist */,
+			);
+			path = KandArbeteUITests;
+			sourceTree = "<group>";
+		};
+		A5F3D2D92020CB3000CE4C76 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5F3D2DA2020CB6000CE4C76 /* DXPulseTracker.swift */,
+				A560D31520273FF2000182EB /* DXSpotifyAdapter.swift */,
+				A560D31F2028A96A000182EB /* DXServerManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5B3BDEA203F0BFC00144943 /* KandArbeteWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B3BE0F203F0BFD00144943 /* Build configuration list for PBXNativeTarget "KandArbeteWatch" */;
+			buildPhases = (
+				A5B3BDE9203F0BFC00144943 /* Resources */,
+				A5B3BE0E203F0BFD00144943 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5B3BDFA203F0BFD00144943 /* PBXTargetDependency */,
+			);
+			name = KandArbeteWatch;
+			productName = KandArbeteWatch;
+			productReference = A5B3BDEB203F0BFC00144943 /* KandArbeteWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A5B3BDF6203F0BFD00144943 /* KandArbeteWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B3BE0D203F0BFD00144943 /* Build configuration list for PBXNativeTarget "KandArbeteWatch Extension" */;
+			buildPhases = (
+				A5B3BDF3203F0BFD00144943 /* Sources */,
+				A5B3BDF4203F0BFD00144943 /* Frameworks */,
+				A5B3BDF5203F0BFD00144943 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KandArbeteWatch Extension";
+			productName = "KandArbeteWatch Extension";
+			productReference = A5B3BDF7203F0BFD00144943 /* KandArbeteWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		A5F3D2A72020CAF500CE4C76 /* KandArbete */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5F3D2D02020CAF500CE4C76 /* Build configuration list for PBXNativeTarget "KandArbete" */;
+			buildPhases = (
+				A5F3D2A42020CAF500CE4C76 /* Sources */,
+				A5F3D2A52020CAF500CE4C76 /* Frameworks */,
+				A5F3D2A62020CAF500CE4C76 /* Resources */,
+				A5B3BE10203F0BFD00144943 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5B3BE07203F0BFD00144943 /* PBXTargetDependency */,
+			);
+			name = KandArbete;
+			productName = KandArbete;
+			productReference = A5F3D2A82020CAF500CE4C76 /* KandArbete.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5F3D2BB2020CAF500CE4C76 /* KandArbeteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5F3D2D32020CAF500CE4C76 /* Build configuration list for PBXNativeTarget "KandArbeteTests" */;
+			buildPhases = (
+				A5F3D2B82020CAF500CE4C76 /* Sources */,
+				A5F3D2B92020CAF500CE4C76 /* Frameworks */,
+				A5F3D2BA2020CAF500CE4C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5F3D2BE2020CAF500CE4C76 /* PBXTargetDependency */,
+			);
+			name = KandArbeteTests;
+			productName = KandArbeteTests;
+			productReference = A5F3D2BC2020CAF500CE4C76 /* KandArbeteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A5F3D2C62020CAF500CE4C76 /* KandArbeteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5F3D2D62020CAF500CE4C76 /* Build configuration list for PBXNativeTarget "KandArbeteUITests" */;
+			buildPhases = (
+				A5F3D2C32020CAF500CE4C76 /* Sources */,
+				A5F3D2C42020CAF500CE4C76 /* Frameworks */,
+				A5F3D2C52020CAF500CE4C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5F3D2C92020CAF500CE4C76 /* PBXTargetDependency */,
+			);
+			name = KandArbeteUITests;
+			productName = KandArbeteUITests;
+			productReference = A5F3D2C72020CAF500CE4C76 /* KandArbeteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5F3D2A02020CAF400CE4C76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Albin Bååw";
+				TargetAttributes = {
+					A5B3BDEA203F0BFC00144943 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					A5B3BDF6203F0BFD00144943 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.watchos.extension = {
+								enabled = 1;
+							};
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
+					};
+					A5F3D2A72020CAF500CE4C76 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					A5F3D2BB2020CAF500CE4C76 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A5F3D2A72020CAF500CE4C76;
+					};
+					A5F3D2C62020CAF500CE4C76 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A5F3D2A72020CAF500CE4C76;
+					};
+				};
+			};
+			buildConfigurationList = A5F3D2A32020CAF400CE4C76 /* Build configuration list for PBXProject "KandArbete" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5F3D29F2020CAF400CE4C76;
+			productRefGroup = A5F3D2A92020CAF500CE4C76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5F3D2A72020CAF500CE4C76 /* KandArbete */,
+				A5F3D2BB2020CAF500CE4C76 /* KandArbeteTests */,
+				A5F3D2C62020CAF500CE4C76 /* KandArbeteUITests */,
+				A5B3BDEA203F0BFC00144943 /* KandArbeteWatch */,
+				A5B3BDF6203F0BFD00144943 /* KandArbeteWatch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5B3BDE9203F0BFC00144943 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B3BDF1203F0BFD00144943 /* Assets.xcassets in Resources */,
+				A5B3BDEF203F0BFC00144943 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B3BDF5203F0BFD00144943 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B3BE03203F0BFD00144943 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2A62020CAF500CE4C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A560D2DF20273EC0000182EB /* SPTTrack.html in Resources */,
+				A560D30420273EC0000182EB /* disclosure_open.png in Resources */,
+				A560D2E320273EC0000182EB /* SPTArtist.html in Resources */,
+				A560D2E120273EC0000182EB /* SPTStoreViewController.html in Resources */,
+				A560D2DC20273EC0000182EB /* SPTPlaybackTrack.html in Resources */,
+				A51515EE20446C4000BBFA6F /* appicon-152w.png in Resources */,
+				A560D30920273EC0000182EB /* SPTStoreControllerDelegate.html in Resources */,
+				A560D30B20273EC0000182EB /* SPTAuthViewDelegate.html in Resources */,
+				A560D2F620273EC0000182EB /* SPTRequest.html in Resources */,
+				A560D2F020273EC0000182EB /* SPTDiskCache.html in Resources */,
+				A560D2D620273EC0000182EB /* index.html in Resources */,
+				A51515C42044451100BBFA6F /* play-btn@3x.png in Resources */,
+				A51515F320446C4000BBFA6F /* appicon-120w.png in Resources */,
+				A560D2F520273EC0000182EB /* SPTBrowse.html in Resources */,
+				A51515D12044507E00BBFA6F /* stop-btn@2x.png in Resources */,
+				A560D30D20273EC0000182EB /* SPTPartialObject.html in Resources */,
+				A560D31020273EC0000182EB /* SPTAudioStreamingDelegate.html in Resources */,
+				A560D2EC20273EC0000182EB /* SPTFollow.html in Resources */,
+				A560D30820273EC0000182EB /* SPTAudioStreamingPlaybackDelegate.html in Resources */,
+				A5F3D2B62020CAF500CE4C76 /* LaunchScreen.storyboard in Resources */,
+				A560D2DB20273EC0000182EB /* SPTCoreAudioController.html in Resources */,
+				A560D2D920273EC0000182EB /* SPTImage.html in Resources */,
+				A560D2EE20273EC0000182EB /* SPTAudioStreamingController.html in Resources */,
+				A560D2F920273EC0000182EB /* SPTSession.html in Resources */,
+				A51515E920446C4000BBFA6F /* appicon-20w.png in Resources */,
+				A51515C22044451100BBFA6F /* skip-btn@2x.png in Resources */,
+				A51515D22044507E00BBFA6F /* stop-btn@3x.png in Resources */,
+				A560D2FC20273EC0000182EB /* hierarchy.html in Resources */,
+				A51515F020446C4000BBFA6F /* appicon-29w.png in Resources */,
+				A5F3D2B32020CAF500CE4C76 /* Assets.xcassets in Resources */,
+				A560D2F820273EC0000182EB /* SPTYourMusic.html in Resources */,
+				A560D30E20273EC0000182EB /* SPTJSONObject.html in Resources */,
+				A560D2E520273EC0000182EB /* SPTUser.html in Resources */,
+				A51515C92044451100BBFA6F /* play-btn.png in Resources */,
+				A560D2F720273EC0000182EB /* SPTCircularBuffer.html in Resources */,
+				A560D2ED20273EC0000182EB /* SPTPartialArtist.html in Resources */,
+				A560D2FA20273EC0000182EB /* SPTListPage.html in Resources */,
+				A51515EA20446C4000BBFA6F /* appicon-60w.png in Resources */,
+				A560D30F20273EC0000182EB /* SPTDiskCaching.html in Resources */,
+				A560D2E720273EC0000182EB /* SPTPlaylistList.html in Resources */,
+				A51515ED20446C4000BBFA6F /* appicon-1024w.png in Resources */,
+				A560D2E620273EC0000182EB /* SPTJSONDecoding.html in Resources */,
+				A560D2EA20273EC0000182EB /* SPTJSONObjectBase.html in Resources */,
+				A51515D32044507E00BBFA6F /* stop-btn.png in Resources */,
+				A560D2E920273EC0000182EB /* SPTFeaturedPlaylistList.html in Resources */,
+				A51515F420446C4000BBFA6F /* appicon-58w.png in Resources */,
+				A560D2FE20273EC0000182EB /* SPTAlbumType.html in Resources */,
+				A560D30A20273EC0000182EB /* SPTTrackProvider.html in Resources */,
+				A51515CA2044451100BBFA6F /* skip-btn.png in Resources */,
+				A51515EF20446C4000BBFA6F /* appicon-167w.png in Resources */,
+				A51515D42044507E00BBFA6F /* heart@6x.png in Resources */,
+				A560D2DA20273EC0000182EB /* SPTCoreAudioDeviceSource.html in Resources */,
+				A51515C32044451100BBFA6F /* play-btn@2x.png in Resources */,
+				A560D2E020273EC0000182EB /* SPTPartialTrack.html in Resources */,
+				A560D2DE20273EC0000182EB /* SPTAlbum.html in Resources */,
+				A560D30620273EC0000182EB /* title_background.png in Resources */,
+				A51515F120446C4000BBFA6F /* appicon-87w.png in Resources */,
+				A560D2D820273EC0000182EB /* stylesPrint.css in Resources */,
+				A560D30520273EC0000182EB /* button_bar_background.png in Resources */,
+				A51515EC20446C4000BBFA6F /* appicon-40w.png in Resources */,
+				A51515E820446C4000BBFA6F /* appicon-180w.png in Resources */,
+				A560D30C20273EC0000182EB /* SPTCoreAudioControllerDelegate.html in Resources */,
+				A560D30320273EC0000182EB /* disclosure.png in Resources */,
+				A560D2F120273EC0000182EB /* SPTPlaylistTrack.html in Resources */,
+				A560D2E820273EC0000182EB /* SPTSearch.html in Resources */,
+				A51515D02044507E00BBFA6F /* heart@4x.png in Resources */,
+				A51515C62044451100BBFA6F /* heart.png in Resources */,
+				A560D2EB20273EC0000182EB /* SPTAuthViewController.html in Resources */,
+				A560D2DD20273EC0000182EB /* SPTAuth.html in Resources */,
+				A560D30120273EC0000182EB /* SPTRepeatMode.html in Resources */,
+				A560D2EF20273EC0000182EB /* SPTPlaylistSnapshot.html in Resources */,
+				A560D2E220273EC0000182EB /* SPTPartialPlaylist.html in Resources */,
+				A560D2F320273EC0000182EB /* SPTCoreAudioDevice.html in Resources */,
+				A560D30220273EC0000182EB /* library_background.png in Resources */,
+				A560D2E420273EC0000182EB /* SPTPartialAlbum.html in Resources */,
+				A560D2F420273EC0000182EB /* SPTSavedTrack.html in Resources */,
+				A560D2FB20273EC0000182EB /* SPTPlaybackState.html in Resources */,
+				A560D2FF20273EC0000182EB /* SPTBitrate.html in Resources */,
+				A51515C52044451100BBFA6F /* skip-btn@3x.png in Resources */,
+				A560D30720273EC0000182EB /* SPTRequestHandlerProtocol.html in Resources */,
+				A560D2D720273EC0000182EB /* styles.css in Resources */,
+				A560D2D420273EC0000182EB /* LICENSE in Resources */,
+				A51515EB20446C4000BBFA6F /* appicon-76w.png in Resources */,
+				A560D2F220273EC0000182EB /* SPTPlayOptions.html in Resources */,
+				A51515F220446C4000BBFA6F /* appicon-80w.png in Resources */,
+				A560D2FD20273EC0000182EB /* SPTProduct.html in Resources */,
+				A5F3D2B12020CAF500CE4C76 /* Main.storyboard in Resources */,
+				A560D30020273EC0000182EB /* SPTSearchQueryType.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2BA2020CAF500CE4C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2C52020CAF500CE4C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5B3BDF3203F0BFD00144943 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B3BE01203F0BFD00144943 /* NotificationController.swift in Sources */,
+				A5B3BDFF203F0BFD00144943 /* ExtensionDelegate.swift in Sources */,
+				A5B3BDFD203F0BFD00144943 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2A42020CAF500CE4C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A560D31E2027AD3A000182EB /* ABStringExtension.swift in Sources */,
+				A560D31620273FF2000182EB /* DXSpotifyAdapter.swift in Sources */,
+				A5F3D2AE2020CAF500CE4C76 /* ViewController.swift in Sources */,
+				A5F3D2DB2020CB6000CE4C76 /* DXPulseTracker.swift in Sources */,
+				A51515D7204452C000BBFA6F /* DXBeatingHeartView.swift in Sources */,
+				A560D3202028A96A000182EB /* DXServerManager.swift in Sources */,
+				A51515D92044561E00BBFA6F /* DXSongLabelView.swift in Sources */,
+				A5F3D2AC2020CAF500CE4C76 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2B82020CAF500CE4C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5F3D2C12020CAF500CE4C76 /* KandArbeteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5F3D2C32020CAF500CE4C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5F3D2CC2020CAF500CE4C76 /* KandArbeteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5B3BDFA203F0BFD00144943 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5B3BDF6203F0BFD00144943 /* KandArbeteWatch Extension */;
+			targetProxy = A5B3BDF9203F0BFD00144943 /* PBXContainerItemProxy */;
+		};
+		A5B3BE07203F0BFD00144943 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5B3BDEA203F0BFC00144943 /* KandArbeteWatch */;
+			targetProxy = A5B3BE06203F0BFD00144943 /* PBXContainerItemProxy */;
+		};
+		A5F3D2BE2020CAF500CE4C76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5F3D2A72020CAF500CE4C76 /* KandArbete */;
+			targetProxy = A5F3D2BD2020CAF500CE4C76 /* PBXContainerItemProxy */;
+		};
+		A5F3D2C92020CAF500CE4C76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5F3D2A72020CAF500CE4C76 /* KandArbete */;
+			targetProxy = A5F3D2C82020CAF500CE4C76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5B3BDED203F0BFC00144943 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B3BDEE203F0BFC00144943 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		A5F3D2AF2020CAF500CE4C76 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5F3D2B02020CAF500CE4C76 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5F3D2B42020CAF500CE4C76 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5F3D2B52020CAF500CE4C76 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5B3BE09203F0BFD00144943 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				IBSC_MODULE = KandArbeteWatch_Extension;
+				INFOPLIST_FILE = KandArbeteWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		A5B3BE0A203F0BFD00144943 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				IBSC_MODULE = KandArbeteWatch_Extension;
+				INFOPLIST_FILE = KandArbeteWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		A5B3BE0B203F0BFD00144943 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "KandArbeteWatch Extension/KandArbeteWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				INFOPLIST_FILE = "KandArbeteWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		A5B3BE0C203F0BFD00144943 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "KandArbeteWatch Extension/KandArbeteWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				INFOPLIST_FILE = "KandArbeteWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		A5F3D2CE2020CAF500CE4C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5F3D2CF2020CAF500CE4C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5F3D2D12020CAF500CE4C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = KandArbete/KandArbete.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KandArbete/Frameworks/spotify-sdk",
+				);
+				INFOPLIST_FILE = KandArbete/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KandArbete/Frameworks/KandArbete-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5F3D2D22020CAF500CE4C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = KandArbete/KandArbete.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KandArbete/Frameworks/spotify-sdk",
+				);
+				INFOPLIST_FILE = KandArbete/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KandArbete/Frameworks/KandArbete-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A5F3D2D42020CAF500CE4C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				INFOPLIST_FILE = KandArbeteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbeteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KandArbete.app/KandArbete";
+			};
+			name = Debug;
+		};
+		A5F3D2D52020CAF500CE4C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				INFOPLIST_FILE = KandArbeteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbeteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KandArbete.app/KandArbete";
+			};
+			name = Release;
+		};
+		A5F3D2D72020CAF500CE4C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				INFOPLIST_FILE = KandArbeteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbeteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KandArbete;
+			};
+			name = Debug;
+		};
+		A5F3D2D82020CAF500CE4C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				INFOPLIST_FILE = KandArbeteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbeteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KandArbete;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5B3BE0D203F0BFD00144943 /* Build configuration list for PBXNativeTarget "KandArbeteWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B3BE0B203F0BFD00144943 /* Debug */,
+				A5B3BE0C203F0BFD00144943 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5B3BE0F203F0BFD00144943 /* Build configuration list for PBXNativeTarget "KandArbeteWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B3BE09203F0BFD00144943 /* Debug */,
+				A5B3BE0A203F0BFD00144943 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5F3D2A32020CAF400CE4C76 /* Build configuration list for PBXProject "KandArbete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F3D2CE2020CAF500CE4C76 /* Debug */,
+				A5F3D2CF2020CAF500CE4C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5F3D2D02020CAF500CE4C76 /* Build configuration list for PBXNativeTarget "KandArbete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F3D2D12020CAF500CE4C76 /* Debug */,
+				A5F3D2D22020CAF500CE4C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5F3D2D32020CAF500CE4C76 /* Build configuration list for PBXNativeTarget "KandArbeteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F3D2D42020CAF500CE4C76 /* Debug */,
+				A5F3D2D52020CAF500CE4C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5F3D2D62020CAF500CE4C76 /* Build configuration list for PBXNativeTarget "KandArbeteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F3D2D72020CAF500CE4C76 /* Debug */,
+				A5F3D2D82020CAF500CE4C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5F3D2A02020CAF400CE4C76 /* Project object */;
+}
