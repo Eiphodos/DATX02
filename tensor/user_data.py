@@ -8,7 +8,7 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 import pandas as pd
 import tensorflow as tf
 
-TRAIN_PATH = "/home/musik/DATX02/tensor/training_datatraining.csv"
+TRAIN_PATH = "/home/musik/DATX02/tensor/training_data/training.csv"
 
 CSV_COLUMN_NAMES = ['userid', 'heartrate',
                     'time', 'rating', 'songid']
