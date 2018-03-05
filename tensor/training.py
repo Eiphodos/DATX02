@@ -34,6 +34,7 @@ def main(argv):
     my_feature_columns.append(tf.feature_column.numeric_column(key='time'))
     my_feature_columns.append(tf.feature_column.numeric_column(key='rating'))
 
+
     # Build 2 hidden layer DNN with 10, 10 units respectively.
     classifier = tf.estimator.DNNClassifier(
         feature_columns=my_feature_columns,
@@ -41,7 +42,7 @@ def main(argv):
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
         n_classes=len(train_classes.index),
-        model_dir='checkpoints')
+        model_dir="/home/musik/DATX02/tensor/checkpoints")
 
     # Train the Model.
     classifier.train(

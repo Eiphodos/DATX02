@@ -7,10 +7,13 @@ from rest_framework import permissions
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from userdata.models import Userdata
+from userdata.models import UserPlayCounter
+from userdata.models import SongCounter
+
 from userdata.serializers import UserdataSerializer
 
 import sys
-sys.path.append(r"C:\Users\David\Documents\GitHub\DATX02\tensor")
+sys.path.append("/home/musik/DATX02/tensor/")
 import predict
 
 import datetime
@@ -31,6 +34,13 @@ def userdata_send(request):
         data = JSONParser().parse(request)
         serializer = UserdataSerializer(data=data)
         if serializer.is_valid():
+            upc, created = UserPlayCounter.objects.get_or_create(userid=serializer.validated_data['userid'])
+            sc, created = SongCounter.objects.get_or_create(userid=serializer.validated_data['userid'], songid=serializer.validated_data['songid'])
+            serializer.validated_data['songssincelastplayed'] = upc.playCounter - sc.lastPlayed
+            upc.playCounter += 1
+            sc.lastPlayed = upc.playCounter
+            upc.save()
+            sc.save()
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
@@ -50,11 +60,15 @@ def userdata_receive(request, userid):
     if request.method == 'GET':
         pulse = request.GET.get('heartrate')
         rating = 1.0
+        batch_size = 100
         timevalue = (((datetime.datetime.now().hour)*60) + datetime.datetime.now().minute)
-        song = predict.predict(100, userid, float(pulse), float(timevalue), 1.0)
-        data = Userdata.create(userid, song, pulse, rating)
+        song = predict.predict(batch_size, userid, float(pulse), float(timevalue), rating)
+        upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
+        sc, created = SongCounter.objects.get_or_create(userid=userid, songid=song)
+        delta = upc.playCounter - sc.lastPlayed
+        data = Userdata.create(userid, song, pulse, rating, delta)
         serializer = UserdataSerializer(data)
-        return JsonResponse(song, safe=False)
+        return JsonResponse(serializer.data, status=200)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)

@@ -14,10 +14,12 @@ import tensorflow as tf
 
 import pandas as pd
 import user_data
+from random import randint
 
 
-def predict(batch_size, user, pulse, timevalue, rate):
+def predict(batch_size, user, pulse, timevalue, rate, songssince):
 
+    train_classes = user_data.get_songids()
 
     # Feature columns describe how to use the input.
     my_feature_columns = []
@@ -34,8 +36,8 @@ def predict(batch_size, user, pulse, timevalue, rate):
         # Two hidden layers of 10 nodes each.
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
-        n_classes=3,
-        model_dir=r"C:\Users\David\Documents\GitHub\DATX02\tensor\checkpoints")
+        n_classes=len(train_classes.index),
+        model_dir="/home/musik/DATX02/tensor/checkpoints")
 
 
     # Generate predictions from the model
@@ -46,15 +48,18 @@ def predict(batch_size, user, pulse, timevalue, rate):
         'rating': [rate],
     }
 
-    df = user_data.get_songids()
 
     predictions = classifier.predict(
         input_fn=lambda: user_data.eval_input_fn(predict_x,
                                                  labels=None,
                                                  batch_size=batch_size))
 
+
     for pred_dict in predictions:
         class_id = pred_dict['class_ids'][0]
-        probability = pred_dict['probabilities'][class_id]
-        return df.get(class_id)
+        probability = pred_dict['probabilities']
+
+        # Temporary random return function until training set have enough data
+        return train_classes.loc[randint(0,(len(train_classes.index)-1))].item()
+
 

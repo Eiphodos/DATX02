@@ -8,7 +8,7 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 import pandas as pd
 import tensorflow as tf
 
-TRAIN_PATH = r"C:\Users\David\Documents\GitHub\DATX02\tensor\training_data\training.csv"
+TRAIN_PATH = "/home/musik/DATX02/tensor/training_datatraining.csv"
 
 CSV_COLUMN_NAMES = ['userid', 'heartrate',
                     'time', 'rating', 'songid']
@@ -20,9 +20,9 @@ def load_data(y_name='songid'):
     train = pd.read_csv(train_path, names=CSV_COLUMN_NAMES, header=0)
     songs = train.pop(y_name).astype('category')
     songcodes = songs.cat.codes.astype('int32')
-    classes = songs.drop_duplicates()
+    d = {'songid': songs.cat.categories.tolist() }
+    classes = pd.DataFrame.from_dict(d)
     train_x, train_y, train_classes = train, songcodes, classes
-
     return (train_x, train_y, train_classes)
 
 def get_songids(y_name='songid'):
@@ -30,7 +30,9 @@ def get_songids(y_name='songid'):
     train_path = TRAIN_PATH
     train = pd.read_csv(train_path, names=CSV_COLUMN_NAMES, header=0)
     songs = train.pop(y_name).astype('category')
-    return songs.drop_duplicates()
+    d = {'songid': songs.cat.categories.tolist() }
+    classes = pd.DataFrame.from_dict(d)
+    return classes
 
 
 def train_input_fn(features, labels, batch_size):
