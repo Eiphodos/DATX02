@@ -18,10 +18,11 @@ class Userdata(models.Model):
 class UserPlayCounter(models.Model):
     userid = models.CharField(max_length=255)
     playCounter = models.IntegerField(default=0)
+    last_update = models.IntegerField(default=0, blank=True)
 
     @classmethod
     def create(cls, userid):
-        upc = cls(userid=userid, playCounter=0)
+        upc = cls(userid=userid, playCounter=0, last_update=0)
         return upc
 
 class SongCounter(models.Model):

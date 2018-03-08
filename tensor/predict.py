@@ -16,6 +16,11 @@ import pandas as pd
 import user_data
 from random import randint
 
+CHECKPOINT_PATH = "/home/musik/DATX02/tensor/checkpoints"
+
+def get_checkpoint_state():
+    s = tf.train.latest_checkpoint(checkpoint_dir=CHECKPOINT_PATH)
+    return int(''.join(ele for ele in s if ele.isdigit()))
 
 def predict(batch_size, user, pulse, timevalue, rate):
 
@@ -30,6 +35,7 @@ def predict(batch_size, user, pulse, timevalue, rate):
     my_feature_columns.append(tf.feature_column.numeric_column(key='time'))
     my_feature_columns.append(tf.feature_column.numeric_column(key='rating'))
 
+
     # Build 2 hidden layer DNN with 10, 10 units respectively.
     classifier = tf.estimator.DNNClassifier(
         feature_columns=my_feature_columns,
@@ -37,8 +43,7 @@ def predict(batch_size, user, pulse, timevalue, rate):
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
         n_classes=len(train_classes.index),
-        model_dir="/home/musik/DATX02/tensor/checkpoints")
-
+        model_dir=CHECKPOINT_PATH)
 
     # Generate predictions from the model
     predict_x = {
@@ -60,6 +65,9 @@ def predict(batch_size, user, pulse, timevalue, rate):
         probability = pred_dict['probabilities']
 
         # Temporary random return function until training set have enough data
-        return train_classes.loc[randint(0,(len(train_classes.index)-1))].item()
+        temp_list = []
+        for x in range (10):
+            temp_list.append(train_classes.loc[randint(0,(len(train_classes.index)-1))].item())
+        return temp_list
 
 

@@ -18,6 +18,10 @@ import predict
 
 import datetime
 
+reccomendation_cache = {}
+
+
+
 # Create your views here.
 class UserdataViewSet(viewsets.ModelViewSet):
     # this fetches all the rows of data in the Userdata table
@@ -62,8 +66,14 @@ def userdata_receive(request, userid):
         rating = 1.0
         batch_size = 100
         timevalue = (((datetime.datetime.now().hour)*60) + datetime.datetime.now().minute)
-        song = predict.predict(batch_size, userid, float(pulse), float(timevalue), rating)
+        ckpstate = predict.get_checkpoint_state()
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
+        if (upc.last_update == ckpstate and reccomendation_cache.has_key(userid)):
+            song = reccomendation_cache.get(userid).pop()
+        else:
+            reccomendation_cache[userid] = predict.predict(batch_size, userid, float(pulse), float(timevalue), rating)
+            song = reccomendation_cache.get(userid).pop()
+            upc.last_update = ckpstate
         sc, created = SongCounter.objects.get_or_create(userid=userid, songid=song)
         delta = upc.playCounter - sc.lastPlayed
         data = Userdata.create(userid, song, pulse, rating, delta)

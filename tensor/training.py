@@ -13,6 +13,8 @@ import tensorflow as tf
 
 import user_data
 
+CHECKPOINT_PATH = "/home/musik/DATX02/tensor/checkpoints"
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=100, type=int, help='batch size')
@@ -27,7 +29,7 @@ def main(argv):
 
     # Feature columns describe how to use the input.
     my_feature_columns = []
-    hashed_feature_column = tf.feature_column.categorical_column_with_hash_bucket(key = 'userid',hash_bucket_size = 100)
+    hashed_feature_column = tf.feature_column.categorical_column_with_hash_bucket(key = 'userid',hash_bucket_size = 100,dtype=tf.int64)
     embedding_column = tf.feature_column.embedding_column(categorical_column=hashed_feature_column,dimension=3)
     my_feature_columns.append(embedding_column)
     my_feature_columns.append(tf.feature_column.numeric_column(key='heartrate'))
@@ -42,7 +44,7 @@ def main(argv):
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
         n_classes=len(train_classes.index),
-        model_dir="/home/musik/DATX02/tensor/checkpoints")
+        model_dir=CHECKPOINT_PATH)
 
     # Train the Model.
     classifier.train(
