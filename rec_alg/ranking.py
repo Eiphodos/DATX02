@@ -2,6 +2,9 @@
 # Temporärt ranking algoritm som kanske ersätts av någonting annat senare
 
 import predict
+import psycopg2
+import pandas as pd
+import numpy as np
 
 def ranking():
     # Vilka övriga inputs får vi från predict?
@@ -36,4 +39,20 @@ def weight(dict):
 def get_songdata():
     # Här hämtar vi datan från postgresSQL
     # Och ordnar den i ett korrekt format
-    return data
+    try:
+        conn = psycopg2.connect("dbname='postgres' user='postgres' host='localhost' password='databasen'")
+    except Exception as e:
+        print "I am unable to connect to the database"
+        print(e)
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT songid, tempo, genre, mode, releaseyear FROM songdata")
+    except Exception as e:
+        print "Something went wrong when trying to SELECT"
+        print(e)
+    df = pd.DataFrame(columns=['songid', 'tempo', 'genre', 'mode', 'releaseyear'])
+    count = 0
+    for record in cursor:
+        df.loc[count] = [record[0], record[1], record[2], record[3], record[4]]
+        count += 1
+    return df
