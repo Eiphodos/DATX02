@@ -9,7 +9,7 @@
 import UIKit
 
 class DXServerManager: NSObject {
-	internal static let baseURL = "http://81.232.180.10/"
+	internal static let baseURL = "http://129.16.20.54/"
 	internal static let userDataURL = baseURL + "userdata/"
 	
 	class func sendUserData(userId:String, trackId:String, heartRate:Int, time:String, rating:Double){

@@ -18,6 +18,7 @@ class ViewController: UIViewController, DXPulseTrackerDelegate, DXSpotifyAdapter
 	var playBtn:UIButton!
 	var skipBtn:UIButton!
 	var stopBtn:UIButton!
+    var addBtn:UIButton!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -27,6 +28,10 @@ class ViewController: UIViewController, DXPulseTrackerDelegate, DXSpotifyAdapter
 		
 		sa = DXSpotifyAdapter(container: self)
 		sa.delegate = self
+        
+        addBtn = UIButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+        addBtn.setImage(#imageLiteral(resourceName: "add-btn"), for: .normal)
+        self.view.addSubview(addBtn)
 		
 		hrLabel = DXBeatingHeartView(frame: CGRect(x: self.view.frame.width - 30 - 50, y: 30, width: 50, height: 50))
 		self.view.addSubview(hrLabel)
@@ -52,6 +57,7 @@ class ViewController: UIViewController, DXPulseTrackerDelegate, DXSpotifyAdapter
 		playBtn.addTarget(self, action: #selector(getSongFromServer), for: .touchUpInside)
 		skipBtn.addTarget(self, action: #selector(skip), for: .touchUpInside)
 		stopBtn.addTarget(self, action: #selector(stop), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(addSong), for: .touchUpInside)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -87,6 +93,28 @@ class ViewController: UIViewController, DXPulseTrackerDelegate, DXSpotifyAdapter
 			self.updateLabels(heartRate: self.pulse.getAverageHeartRate(), date: Date())
 		})
 	}
+    
+    @objc func addSong(){
+        let alert = UIAlertController(title: "Add new song", message: "Enter a track id.", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Track id.."
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0]
+            
+            if textField.text != nil && textField.text != ""{
+                //self.sa.stopSong()
+                self.pulse.getLatestHeartRate(callback: {(heartRate, date) in
+                    self.play(trackId: textField.text!)
+                    self.pulse.startStreamingHeartRate()
+                })
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 	
 	func updateLabels(heartRate:Double, date:Date){
 		DispatchQueue.main.async {
@@ -115,11 +143,11 @@ class ViewController: UIViewController, DXPulseTrackerDelegate, DXSpotifyAdapter
 	}
 	
 	internal func sendUserData(heartRate: Int, date: Date, rating: Double){
-		DXServerManager.sendUserData(userId: "testuser", trackId: self.sa.currentTrackId, heartRate: heartRate, time: "\(date)", rating: rating)
+		DXServerManager.sendUserData(userId: "testuser\(UserDefaults.standard.integer(forKey: "uid"))", trackId: self.sa.currentTrackId, heartRate: heartRate, time: "\(date)", rating: rating)
 	}
 	
 	func requestNewSong(heartRate:Int){
-		DXServerManager.retrieveNextTrackId(userId: "testuser", heartRate: heartRate, callback: {(trackId) in
+		DXServerManager.retrieveNextTrackId(userId: "testuser\(UserDefaults.standard.integer(forKey: "uid"))", heartRate: heartRate, callback: {(trackId) in
 			self.play(trackId: trackId)
 		})
 	}

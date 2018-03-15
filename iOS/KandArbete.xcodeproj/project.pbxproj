@@ -102,6 +102,30 @@
 		A560D31620273FF2000182EB /* DXSpotifyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560D31520273FF2000182EB /* DXSpotifyAdapter.swift */; };
 		A560D31E2027AD3A000182EB /* ABStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560D31D2027AD3A000182EB /* ABStringExtension.swift */; };
 		A560D3202028A96A000182EB /* DXServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560D31F2028A96A000182EB /* DXServerManager.swift */; };
+		A5823344204E907000C94C9D /* appicon-inverted-40w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823337204E906F00C94C9D /* appicon-inverted-40w.png */; };
+		A5823345204E907000C94C9D /* appicon-inverted-120w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823338204E906F00C94C9D /* appicon-inverted-120w.png */; };
+		A5823346204E907000C94C9D /* appicon-inverted-76w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823339204E906F00C94C9D /* appicon-inverted-76w.png */; };
+		A5823347204E907000C94C9D /* appicon-inverted-60w.png in Resources */ = {isa = PBXBuildFile; fileRef = A582333A204E906F00C94C9D /* appicon-inverted-60w.png */; };
+		A5823348204E907000C94C9D /* appicon-inverted-20w.png in Resources */ = {isa = PBXBuildFile; fileRef = A582333B204E906F00C94C9D /* appicon-inverted-20w.png */; };
+		A5823349204E907000C94C9D /* appicon-inverted-167w.png in Resources */ = {isa = PBXBuildFile; fileRef = A582333C204E906F00C94C9D /* appicon-inverted-167w.png */; };
+		A582334A204E907000C94C9D /* appicon-inverted-87w.png in Resources */ = {isa = PBXBuildFile; fileRef = A582333D204E906F00C94C9D /* appicon-inverted-87w.png */; };
+		A582334B204E907000C94C9D /* appicon-inverted-29w.png in Resources */ = {isa = PBXBuildFile; fileRef = A582333E204E906F00C94C9D /* appicon-inverted-29w.png */; };
+		A582334C204E907000C94C9D /* appicon-inverted-1024w.png in Resources */ = {isa = PBXBuildFile; fileRef = A582333F204E906F00C94C9D /* appicon-inverted-1024w.png */; };
+		A582334D204E907000C94C9D /* appicon-inverted-152w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823340204E906F00C94C9D /* appicon-inverted-152w.png */; };
+		A582334E204E907000C94C9D /* appicon-inverted-180w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823341204E906F00C94C9D /* appicon-inverted-180w.png */; };
+		A582334F204E907000C94C9D /* appicon-inverted-58w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823342204E906F00C94C9D /* appicon-inverted-58w.png */; };
+		A5823350204E907000C94C9D /* appicon-inverted-80w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5823343204E906F00C94C9D /* appicon-inverted-80w.png */; };
+		A588187C204F1D4A00DB2B7D /* appicon-watch@55w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881872204F1D4A00DB2B7D /* appicon-watch@55w.png */; };
+		A588187D204F1D4A00DB2B7D /* appicon-watch@58w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881873204F1D4A00DB2B7D /* appicon-watch@58w.png */; };
+		A588187E204F1D4A00DB2B7D /* appicon-watch@24w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881874204F1D4A00DB2B7D /* appicon-watch@24w.png */; };
+		A588187F204F1D4A00DB2B7D /* appicon-watch@1024w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881875204F1D4A00DB2B7D /* appicon-watch@1024w.png */; };
+		A5881880204F1D4A00DB2B7D /* appicon-watch@48w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881876204F1D4A00DB2B7D /* appicon-watch@48w.png */; };
+		A5881881204F1D4A00DB2B7D /* appicon-watch@87w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881877204F1D4A00DB2B7D /* appicon-watch@87w.png */; };
+		A5881882204F1D4A00DB2B7D /* appicon-watch@29w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881878204F1D4A00DB2B7D /* appicon-watch@29w.png */; };
+		A5881883204F1D4A00DB2B7D /* appicon-watch@196w.png in Resources */ = {isa = PBXBuildFile; fileRef = A5881879204F1D4A00DB2B7D /* appicon-watch@196w.png */; };
+		A5881884204F1D4A00DB2B7D /* appicon-watch@40w.png in Resources */ = {isa = PBXBuildFile; fileRef = A588187A204F1D4A00DB2B7D /* appicon-watch@40w.png */; };
+		A5881885204F1D4A00DB2B7D /* appicon-watch@172w.png in Resources */ = {isa = PBXBuildFile; fileRef = A588187B204F1D4A00DB2B7D /* appicon-watch@172w.png */; };
+		A59ED88D204E8756004C049B /* add-btn in Resources */ = {isa = PBXBuildFile; fileRef = A59ED88C204E8756004C049B /* add-btn */; };
 		A5B3BDEF203F0BFC00144943 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B3BDED203F0BFC00144943 /* Interface.storyboard */; };
 		A5B3BDF1203F0BFD00144943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B3BDF0203F0BFD00144943 /* Assets.xcassets */; };
 		A5B3BDF8203F0BFD00144943 /* KandArbeteWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A5B3BDF7203F0BFD00144943 /* KandArbeteWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -276,6 +300,30 @@
 		A560D31A2027AA56000182EB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A560D31D2027AD3A000182EB /* ABStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABStringExtension.swift; sourceTree = "<group>"; };
 		A560D31F2028A96A000182EB /* DXServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXServerManager.swift; sourceTree = "<group>"; };
+		A5823337204E906F00C94C9D /* appicon-inverted-40w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-40w.png"; sourceTree = "<group>"; };
+		A5823338204E906F00C94C9D /* appicon-inverted-120w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-120w.png"; sourceTree = "<group>"; };
+		A5823339204E906F00C94C9D /* appicon-inverted-76w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-76w.png"; sourceTree = "<group>"; };
+		A582333A204E906F00C94C9D /* appicon-inverted-60w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-60w.png"; sourceTree = "<group>"; };
+		A582333B204E906F00C94C9D /* appicon-inverted-20w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-20w.png"; sourceTree = "<group>"; };
+		A582333C204E906F00C94C9D /* appicon-inverted-167w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-167w.png"; sourceTree = "<group>"; };
+		A582333D204E906F00C94C9D /* appicon-inverted-87w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-87w.png"; sourceTree = "<group>"; };
+		A582333E204E906F00C94C9D /* appicon-inverted-29w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-29w.png"; sourceTree = "<group>"; };
+		A582333F204E906F00C94C9D /* appicon-inverted-1024w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-1024w.png"; sourceTree = "<group>"; };
+		A5823340204E906F00C94C9D /* appicon-inverted-152w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-152w.png"; sourceTree = "<group>"; };
+		A5823341204E906F00C94C9D /* appicon-inverted-180w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-180w.png"; sourceTree = "<group>"; };
+		A5823342204E906F00C94C9D /* appicon-inverted-58w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-58w.png"; sourceTree = "<group>"; };
+		A5823343204E906F00C94C9D /* appicon-inverted-80w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-inverted-80w.png"; sourceTree = "<group>"; };
+		A5881872204F1D4A00DB2B7D /* appicon-watch@55w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@55w.png"; sourceTree = "<group>"; };
+		A5881873204F1D4A00DB2B7D /* appicon-watch@58w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@58w.png"; sourceTree = "<group>"; };
+		A5881874204F1D4A00DB2B7D /* appicon-watch@24w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@24w.png"; sourceTree = "<group>"; };
+		A5881875204F1D4A00DB2B7D /* appicon-watch@1024w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@1024w.png"; sourceTree = "<group>"; };
+		A5881876204F1D4A00DB2B7D /* appicon-watch@48w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@48w.png"; sourceTree = "<group>"; };
+		A5881877204F1D4A00DB2B7D /* appicon-watch@87w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@87w.png"; sourceTree = "<group>"; };
+		A5881878204F1D4A00DB2B7D /* appicon-watch@29w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@29w.png"; sourceTree = "<group>"; };
+		A5881879204F1D4A00DB2B7D /* appicon-watch@196w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@196w.png"; sourceTree = "<group>"; };
+		A588187A204F1D4A00DB2B7D /* appicon-watch@40w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@40w.png"; sourceTree = "<group>"; };
+		A588187B204F1D4A00DB2B7D /* appicon-watch@172w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-watch@172w.png"; sourceTree = "<group>"; };
+		A59ED88C204E8756004C049B /* add-btn */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "add-btn"; sourceTree = "<group>"; };
 		A5B3BDEB203F0BFC00144943 /* KandArbeteWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KandArbeteWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B3BDEE203F0BFC00144943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		A5B3BDF0203F0BFD00144943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -354,6 +402,8 @@
 		A51515B82044451100BBFA6F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A5823336204E906F00C94C9D /* appicon-inverted */,
+				A59ED88C204E8756004C049B /* add-btn */,
 				A51515DA20446C4000BBFA6F /* appicon */,
 				A51515CB2044507D00BBFA6F /* heart@4x.png */,
 				A51515CF2044507E00BBFA6F /* heart@6x.png */,
@@ -545,9 +595,55 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A5823336204E906F00C94C9D /* appicon-inverted */ = {
+			isa = PBXGroup;
+			children = (
+				A5823337204E906F00C94C9D /* appicon-inverted-40w.png */,
+				A5823338204E906F00C94C9D /* appicon-inverted-120w.png */,
+				A5823339204E906F00C94C9D /* appicon-inverted-76w.png */,
+				A582333A204E906F00C94C9D /* appicon-inverted-60w.png */,
+				A582333B204E906F00C94C9D /* appicon-inverted-20w.png */,
+				A582333C204E906F00C94C9D /* appicon-inverted-167w.png */,
+				A582333D204E906F00C94C9D /* appicon-inverted-87w.png */,
+				A582333E204E906F00C94C9D /* appicon-inverted-29w.png */,
+				A582333F204E906F00C94C9D /* appicon-inverted-1024w.png */,
+				A5823340204E906F00C94C9D /* appicon-inverted-152w.png */,
+				A5823341204E906F00C94C9D /* appicon-inverted-180w.png */,
+				A5823342204E906F00C94C9D /* appicon-inverted-58w.png */,
+				A5823343204E906F00C94C9D /* appicon-inverted-80w.png */,
+			);
+			path = "appicon-inverted";
+			sourceTree = "<group>";
+		};
+		A5881870204F1D4A00DB2B7D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A5881871204F1D4A00DB2B7D /* appicon-watch */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		A5881871204F1D4A00DB2B7D /* appicon-watch */ = {
+			isa = PBXGroup;
+			children = (
+				A5881872204F1D4A00DB2B7D /* appicon-watch@55w.png */,
+				A5881873204F1D4A00DB2B7D /* appicon-watch@58w.png */,
+				A5881874204F1D4A00DB2B7D /* appicon-watch@24w.png */,
+				A5881875204F1D4A00DB2B7D /* appicon-watch@1024w.png */,
+				A5881876204F1D4A00DB2B7D /* appicon-watch@48w.png */,
+				A5881877204F1D4A00DB2B7D /* appicon-watch@87w.png */,
+				A5881878204F1D4A00DB2B7D /* appicon-watch@29w.png */,
+				A5881879204F1D4A00DB2B7D /* appicon-watch@196w.png */,
+				A588187A204F1D4A00DB2B7D /* appicon-watch@40w.png */,
+				A588187B204F1D4A00DB2B7D /* appicon-watch@172w.png */,
+			);
+			path = "appicon-watch";
+			sourceTree = "<group>";
+		};
 		A5B3BDEC203F0BFC00144943 /* KandArbeteWatch */ = {
 			isa = PBXGroup;
 			children = (
+				A5881870204F1D4A00DB2B7D /* images */,
 				A5B3BDED203F0BFC00144943 /* Interface.storyboard */,
 				A5B3BDF0203F0BFD00144943 /* Assets.xcassets */,
 				A5B3BDF2203F0BFD00144943 /* Info.plist */,
@@ -809,7 +905,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5881880204F1D4A00DB2B7D /* appicon-watch@48w.png in Resources */,
+				A588187F204F1D4A00DB2B7D /* appicon-watch@1024w.png in Resources */,
+				A588187C204F1D4A00DB2B7D /* appicon-watch@55w.png in Resources */,
+				A588187E204F1D4A00DB2B7D /* appicon-watch@24w.png in Resources */,
+				A5881885204F1D4A00DB2B7D /* appicon-watch@172w.png in Resources */,
+				A5881884204F1D4A00DB2B7D /* appicon-watch@40w.png in Resources */,
+				A5881883204F1D4A00DB2B7D /* appicon-watch@196w.png in Resources */,
+				A5881881204F1D4A00DB2B7D /* appicon-watch@87w.png in Resources */,
+				A5881882204F1D4A00DB2B7D /* appicon-watch@29w.png in Resources */,
 				A5B3BDF1203F0BFD00144943 /* Assets.xcassets in Resources */,
+				A588187D204F1D4A00DB2B7D /* appicon-watch@58w.png in Resources */,
 				A5B3BDEF203F0BFC00144943 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -826,18 +932,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5823346204E907000C94C9D /* appicon-inverted-76w.png in Resources */,
 				A560D2DF20273EC0000182EB /* SPTTrack.html in Resources */,
 				A560D30420273EC0000182EB /* disclosure_open.png in Resources */,
 				A560D2E320273EC0000182EB /* SPTArtist.html in Resources */,
 				A560D2E120273EC0000182EB /* SPTStoreViewController.html in Resources */,
 				A560D2DC20273EC0000182EB /* SPTPlaybackTrack.html in Resources */,
 				A51515EE20446C4000BBFA6F /* appicon-152w.png in Resources */,
+				A5823350204E907000C94C9D /* appicon-inverted-80w.png in Resources */,
 				A560D30920273EC0000182EB /* SPTStoreControllerDelegate.html in Resources */,
+				A582334C204E907000C94C9D /* appicon-inverted-1024w.png in Resources */,
 				A560D30B20273EC0000182EB /* SPTAuthViewDelegate.html in Resources */,
 				A560D2F620273EC0000182EB /* SPTRequest.html in Resources */,
+				A5823349204E907000C94C9D /* appicon-inverted-167w.png in Resources */,
 				A560D2F020273EC0000182EB /* SPTDiskCache.html in Resources */,
 				A560D2D620273EC0000182EB /* index.html in Resources */,
 				A51515C42044451100BBFA6F /* play-btn@3x.png in Resources */,
+				A5823348204E907000C94C9D /* appicon-inverted-20w.png in Resources */,
 				A51515F320446C4000BBFA6F /* appicon-120w.png in Resources */,
 				A560D2F520273EC0000182EB /* SPTBrowse.html in Resources */,
 				A51515D12044507E00BBFA6F /* stop-btn@2x.png in Resources */,
@@ -845,10 +956,12 @@
 				A560D31020273EC0000182EB /* SPTAudioStreamingDelegate.html in Resources */,
 				A560D2EC20273EC0000182EB /* SPTFollow.html in Resources */,
 				A560D30820273EC0000182EB /* SPTAudioStreamingPlaybackDelegate.html in Resources */,
+				A582334A204E907000C94C9D /* appicon-inverted-87w.png in Resources */,
 				A5F3D2B62020CAF500CE4C76 /* LaunchScreen.storyboard in Resources */,
 				A560D2DB20273EC0000182EB /* SPTCoreAudioController.html in Resources */,
 				A560D2D920273EC0000182EB /* SPTImage.html in Resources */,
 				A560D2EE20273EC0000182EB /* SPTAudioStreamingController.html in Resources */,
+				A5823344204E907000C94C9D /* appicon-inverted-40w.png in Resources */,
 				A560D2F920273EC0000182EB /* SPTSession.html in Resources */,
 				A51515E920446C4000BBFA6F /* appicon-20w.png in Resources */,
 				A51515C22044451100BBFA6F /* skip-btn@2x.png in Resources */,
@@ -860,6 +973,7 @@
 				A560D30E20273EC0000182EB /* SPTJSONObject.html in Resources */,
 				A560D2E520273EC0000182EB /* SPTUser.html in Resources */,
 				A51515C92044451100BBFA6F /* play-btn.png in Resources */,
+				A5823345204E907000C94C9D /* appicon-inverted-120w.png in Resources */,
 				A560D2F720273EC0000182EB /* SPTCircularBuffer.html in Resources */,
 				A560D2ED20273EC0000182EB /* SPTPartialArtist.html in Resources */,
 				A560D2FA20273EC0000182EB /* SPTListPage.html in Resources */,
@@ -874,6 +988,7 @@
 				A51515F420446C4000BBFA6F /* appicon-58w.png in Resources */,
 				A560D2FE20273EC0000182EB /* SPTAlbumType.html in Resources */,
 				A560D30A20273EC0000182EB /* SPTTrackProvider.html in Resources */,
+				A59ED88D204E8756004C049B /* add-btn in Resources */,
 				A51515CA2044451100BBFA6F /* skip-btn.png in Resources */,
 				A51515EF20446C4000BBFA6F /* appicon-167w.png in Resources */,
 				A51515D42044507E00BBFA6F /* heart@6x.png in Resources */,
@@ -890,7 +1005,9 @@
 				A560D30C20273EC0000182EB /* SPTCoreAudioControllerDelegate.html in Resources */,
 				A560D30320273EC0000182EB /* disclosure.png in Resources */,
 				A560D2F120273EC0000182EB /* SPTPlaylistTrack.html in Resources */,
+				A582334F204E907000C94C9D /* appicon-inverted-58w.png in Resources */,
 				A560D2E820273EC0000182EB /* SPTSearch.html in Resources */,
+				A5823347204E907000C94C9D /* appicon-inverted-60w.png in Resources */,
 				A51515D02044507E00BBFA6F /* heart@4x.png in Resources */,
 				A51515C62044451100BBFA6F /* heart.png in Resources */,
 				A560D2EB20273EC0000182EB /* SPTAuthViewController.html in Resources */,
@@ -898,6 +1015,7 @@
 				A560D30120273EC0000182EB /* SPTRepeatMode.html in Resources */,
 				A560D2EF20273EC0000182EB /* SPTPlaylistSnapshot.html in Resources */,
 				A560D2E220273EC0000182EB /* SPTPartialPlaylist.html in Resources */,
+				A582334B204E907000C94C9D /* appicon-inverted-29w.png in Resources */,
 				A560D2F320273EC0000182EB /* SPTCoreAudioDevice.html in Resources */,
 				A560D30220273EC0000182EB /* library_background.png in Resources */,
 				A560D2E420273EC0000182EB /* SPTPartialAlbum.html in Resources */,
@@ -905,6 +1023,8 @@
 				A560D2FB20273EC0000182EB /* SPTPlaybackState.html in Resources */,
 				A560D2FF20273EC0000182EB /* SPTBitrate.html in Resources */,
 				A51515C52044451100BBFA6F /* skip-btn@3x.png in Resources */,
+				A582334E204E907000C94C9D /* appicon-inverted-180w.png in Resources */,
+				A582334D204E907000C94C9D /* appicon-inverted-152w.png in Resources */,
 				A560D30720273EC0000182EB /* SPTRequestHandlerProtocol.html in Resources */,
 				A560D2D720273EC0000182EB /* styles.css in Resources */,
 				A560D2D420273EC0000182EB /* LICENSE in Resources */,
@@ -1034,10 +1154,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				DEVELOPMENT_TEAM = N2BR23J4SQ;
 				IBSC_MODULE = KandArbeteWatch_Extension;
 				INFOPLIST_FILE = KandArbeteWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baawa.truebeats.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1053,10 +1173,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				DEVELOPMENT_TEAM = N2BR23J4SQ;
 				IBSC_MODULE = KandArbeteWatch_Extension;
 				INFOPLIST_FILE = KandArbeteWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baawa.truebeats.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1072,10 +1192,10 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "KandArbeteWatch Extension/KandArbeteWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				DEVELOPMENT_TEAM = N2BR23J4SQ;
 				INFOPLIST_FILE = "KandArbeteWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baawa.truebeats.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1091,10 +1211,10 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "KandArbeteWatch Extension/KandArbeteWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				DEVELOPMENT_TEAM = N2BR23J4SQ;
 				INFOPLIST_FILE = "KandArbeteWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baawa.truebeats.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1218,14 +1338,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KandArbete/KandArbete.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				DEVELOPMENT_TEAM = N2BR23J4SQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KandArbete/Frameworks/spotify-sdk",
 				);
 				INFOPLIST_FILE = KandArbete/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baawa.truebeats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KandArbete/Frameworks/KandArbete-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1241,14 +1361,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KandArbete/KandArbete.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D2BMY4PGD;
+				DEVELOPMENT_TEAM = N2BR23J4SQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KandArbete/Frameworks/spotify-sdk",
 				);
 				INFOPLIST_FILE = KandArbete/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = datx02.KandArbete;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baawa.truebeats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KandArbete/Frameworks/KandArbete-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

@@ -7,6 +7,8 @@
 - https://pdfs.semanticscholar.org/6294/b19e38df21505ce6efc4d6014fa4ad4df0be.pdf (One of the actual studies the meta-studie above is based upon, cardiovascular changes induced by different types of music)
  - https://www.sciencedirect.com/science/article/pii/S0167876005002850?via%3Dihub#aep-keywords-id14 (Another studie from the meta-studie, cardiovascular responses during musical mood induction)
  - https://arxiv.org/pdf/1606.07792.pdf (Wide & Deep learning for recommender systems)
+ - https://papers.nips.cc/paper/5004-deep-content-based-music-recommendation.pdf (Paper on Deep content-based music recommendation)
+ - https://static.googleusercontent.com/media/research.google.com/sv//pubs/archive/45530.pdf (Youtubes neural network recommendations)
 
 # Could be useful
 - https://dl.acm.org/citation.cfm?id=372071 (Some information regarding how to evaluate recommendations and some ways of doing recommendations and connecting items)

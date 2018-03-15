@@ -29,6 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 			session.activate()
 		}
 		
+		if !UserDefaults.standard.bool(forKey: "firstTime"){
+			UserDefaults.standard.set(true, forKey: "firstTime")
+			UserDefaults.standard.set(arc4random_uniform(99999999), forKey: "uid")
+		}
+		
+		
 		return true
 	}
 
