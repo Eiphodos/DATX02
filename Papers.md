@@ -13,7 +13,7 @@
 # Could be useful
 - https://dl.acm.org/citation.cfm?id=372071 (Some information regarding how to evaluate recommendations and some ways of doing recommendations and connecting items)
  - http://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf (Restricted Boltzmann Machines for Collaborative Filtering) - Netflix recommendation system
- http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.97.5270&rep=rep1&type=pdf (Paper on the problems with evaluating recommender systems)
+ - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.97.5270&rep=rep1&type=pdf (Paper on the problems with evaluating recommender systems)
 
 # Not recommended
 - https://dl.acm.org/citation.cfm?id=860508 (Seemed promising but I don't see how it would help us really. It talks very briefly about being able to calculate what mood a song relates to and that they demonstrate some success in being able determine what mood a song relates to.)
