@@ -32,7 +32,6 @@ def ranking():
     # Temporär dictionary som används för rankingen
     ranking = {}
 
-
     # Vi går igenom vår lista och sätter vikter på alla låtar
     for index, row in df.iterrows():
         ranking[row['songid']] = weight(row)
@@ -42,22 +41,32 @@ def ranking():
 
 # Funktion som räknar ut vikten på en låt baserat på hur väl den stämmer med vad tensorflow tycker
 # vi ska spela
-def weight(dict):
+def weight(dictRow):
     genreWeight = 0
     modeWeight = 0
     tempoWeight = 0
     releaseyearWeight = 0
-    if(genre == dict.genre):
+    if(genre == dictRow.genre):
         genreWeight = 1
-    if(mode == dict.mode):
+    if(mode == dictRow.mode):
         modeWeight = 1
-    if(abs(tempo-dict.tempo)<=10):
-        tempoWeight = -0.01 * (tempo-dict.tempo) ** 2 + 1
-    if (abs(releaseyear - dict.releaseyear) <= 4):
-        releaseyearWeight = -0.06 * (releaseyear - dict.releaseyear) ** 2 + 1
+    if(abs(tempo-dictRow.tempo)<=10):
+        tempoWeight = -0.01 * (tempo-dictRow.tempo) ** 2 + 1
+    if (abs(releaseyear - dictRow.releaseyear) <= 4):
+        releaseyearWeight = -0.06 * (releaseyear - dictRow.releaseyear) ** 2 + 1
 
     weight = (genreWeight + modeWeight + tempoWeight + releaseyearWeight)/nbrOfFeatures
     return weight
+
+# Funktion som sorterar en dictionary vars keys är songids och values är weights och
+# returnerar en lista på de 10 songids som har högst weight
+def sort_dict_by_weight(dict):
+    try:
+        sortlist = sorted(dict, key=dict.__getitem__, reverse=True)[:10]
+    except Exception as e:
+        print("Unable to sort. Make sure input is a valid dictionary")
+        print(e)
+    return sortlist
 
 def get_songdata():
     # Här hämtar vi datan från postgresSQL
