@@ -33,11 +33,11 @@ def ranking():
     ranking = {}
 
     # Vi går igenom vår lista och sätter vikter på alla låtar
-    for index, row in df.iterrows():
+    for index, row in dict.iterrows():
         ranking[row['songid']] = weight(row)
 
     # Sedan sorterar vi rankingen efter vikterna
-    sort(ranking, weight)
+    return sort_dict_by_weight(ranking)
 
 # Funktion som räknar ut vikten på en låt baserat på hur väl den stämmer med vad tensorflow tycker
 # vi ska spela
@@ -62,11 +62,11 @@ def weight(dictRow):
 # returnerar en lista på de 10 songids som har högst weight
 def sort_dict_by_weight(dict):
     try:
-        sortlist = sorted(dict, key=dict.__getitem__, reverse=True)[:10]
+        tracklist = sorted(dict, key=dict.__getitem__, reverse=True)[:10]
     except Exception as e:
         print("Unable to sort. Make sure input is a valid dictionary")
         print(e)
-    return sortlist
+    return tracklist
 
 def get_songdata():
     # Här hämtar vi datan från postgresSQL
