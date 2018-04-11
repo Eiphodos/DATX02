@@ -6,14 +6,9 @@ import psycopg2
 import pandas as pd
 import numpy as np
 
-prediction = predict.predict()
-nbrOfFeatures = prediction.len()
-tempo = prediction[0]
-genre = prediction[1]
-mode = prediction[2]
-releaseyear = prediction[3]
+nbrOfFeatures = 3
 
-def ranking():
+def ranking(wantedTempo, wantedLoudness, wantedMode):
     # Vilka övriga inputs får vi från predict?
     #switch beroende på hur vi implementerar chunksen?
     # (tempo, genre, mode, releaseyear)
@@ -34,28 +29,25 @@ def ranking():
 
     # Vi går igenom vår lista och sätter vikter på alla låtar
     for index, row in dict.iterrows():
-        ranking[row['songid']] = weight(row)
+        ranking[row['songid']] = weight(row, wantedTempo, wantedLoudness, wantedMode)
 
     # Sedan sorterar vi rankingen efter vikterna
     return sort_dict_by_weight(ranking)
 
 # Funktion som räknar ut vikten på en låt baserat på hur väl den stämmer med vad tensorflow tycker
 # vi ska spela
-def weight(dictRow):
-    genreWeight = 0
+# Vi ska inkludera userbias här också för individuella låtar.
+def weight(dictRow, wantedTempo, wantedLoudness, wantedMode):
+    loudnessWeight = 0
     modeWeight = 0
     tempoWeight = 0
-    releaseyearWeight = 0
-    if(genre == dictRow.genre):
-        genreWeight = 1
+    if(wantedLoudness == dictRow.loudness):
+        loudnessWeight = 1
     if(mode == dictRow.mode):
         modeWeight = 1
     if(abs(tempo-dictRow.tempo)<=10):
         tempoWeight = -0.01 * (tempo-dictRow.tempo) ** 2 + 1
-    if (abs(releaseyear - dictRow.releaseyear) <= 4):
-        releaseyearWeight = -0.06 * (releaseyear - dictRow.releaseyear) ** 2 + 1
-
-    weight = (genreWeight + modeWeight + tempoWeight + releaseyearWeight)/nbrOfFeatures
+    weight = (genreWeight + modeWeight + tempoWeight)/nbrOfFeatures
     return weight
 
 # Funktion som sorterar en dictionary vars keys är songids och values är weights och

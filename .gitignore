@@ -1,4 +1,4 @@
 *.csv
-**/checkpoints
-**/__pycache__
-**/migrations
+**/checkpoints/
+**/__pycache__/
+**/migrations/
