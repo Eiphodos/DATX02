@@ -15,26 +15,26 @@ class CBandit:
         self.e = 0.1  # Set the chance of taking a random action.
         self.init = tf.global_variables_initializer()
 
+        self.sess = tf.Session()
+        self.sess.run(self.init)
+
     def predict(self, s):
         # Launch the tensorflow graph
-        with tf.Session() as sess:
-            sess.run(self.init)
 
-            # Choose either a random action or one from our network.
-            if np.random.rand(1) < self.e:
-                print("random")
-                action = np.random.randint(self.cBandit.num_actions)
-            else:
-                print("chosen")
-                action = sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
+        # Choose either a random action or one from our network.
+        if np.random.rand(1) < self.e:
+            print("random")
+            action = np.random.randint(self.cBandit.num_actions)
+        else:
+            print("chosen")
+            action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         return action
 
     def train(self, s, action, reward):
-        with tf.Session() as sess:
-            # Update the network.
-            feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
-            _, ww = sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
-            #print(str(ww))
+        # Update the network.
+        feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
+        _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
+        print(str(ww))
 
     def echo(self, p):
         print(str(p))
