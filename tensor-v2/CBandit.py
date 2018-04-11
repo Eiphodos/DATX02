@@ -6,9 +6,9 @@ import numpy as np
 
 
 class CBandit:
-    def __init__(self):
+    def __init__(self, states):
         tf.reset_default_graph()  # Clear the Tensorflow graph.
-        self.cBandit = ContextualBandit()  # Load the bandits.
+        self.cBandit = ContextualBandit(states)  # Load the bandits.
         self.myAgent = Agent(lr=0.001, s_size=self.cBandit.num_states, a_size=self.cBandit.num_actions)  # Load the agent.
         self.weights = tf.trainable_variables()[0]  # The weights we will evaluate to look into the network.
 
@@ -23,10 +23,10 @@ class CBandit:
 
         # Choose either a random action or one from our network.
         if np.random.rand(1) < self.e:
-            print("random")
+            print("random")  # TODO REMOVE
             action = np.random.randint(self.cBandit.num_actions)
         else:
-            print("chosen")
+            print("chosen")  # TODO REMOVE
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         return action
 
@@ -34,16 +34,16 @@ class CBandit:
         # Update the network.
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
         _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
-        print(str(ww))
+        print(str(ww))  # TODO REMOVE
 
-    def echo(self, p):
-        print(str(p))
+    def echo(self, p):  # TODO REMOVE
+        print(str(p))  # TODO REMOVE
 
 
 class ContextualBandit:
-    def __init__(self):
+    def __init__(self, states):
         self.bandits = np.array([0, 1])
-        self.num_states = 7
+        self.num_states = states
         self.num_actions = self.bandits.__len__()
 
 
