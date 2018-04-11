@@ -19,8 +19,6 @@ class CBandit:
         self.sess.run(self.init)
 
     def predict(self, s):
-        # Launch the tensorflow graph
-
         # Choose either a random action or one from our network.
         if np.random.rand(1) < self.e:
             print("random")  # TODO REMOVE
@@ -29,6 +27,7 @@ class CBandit:
             print("chosen")  # TODO REMOVE
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         return action
+
     def train(self, s, action, reward):
         # Update the network.
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
@@ -41,7 +40,7 @@ class CBandit:
 
 class ContextualBandit:
     def __init__(self, states, actions):
-        self.bandits = actions
+        self.bandits = np.empty(actions, dtype=int)
         self.num_states = states
         self.num_actions = self.bandits.__len__()
 
