@@ -6,9 +6,9 @@ import numpy as np
 
 
 class CBandit:
-    def __init__(self, states):
+    def __init__(self, states, actions):
         tf.reset_default_graph()  # Clear the Tensorflow graph.
-        self.cBandit = ContextualBandit(states)  # Load the bandits.
+        self.cBandit = ContextualBandit(states, actions)  # Load the bandits.
         self.myAgent = Agent(lr=0.001, s_size=self.cBandit.num_states, a_size=self.cBandit.num_actions)  # Load the agent.
         self.weights = tf.trainable_variables()[0]  # The weights we will evaluate to look into the network.
 
@@ -29,7 +29,6 @@ class CBandit:
             print("chosen")  # TODO REMOVE
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         return action
-
     def train(self, s, action, reward):
         # Update the network.
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
@@ -41,8 +40,8 @@ class CBandit:
 
 
 class ContextualBandit:
-    def __init__(self, states):
-        self.bandits = np.array([0, 1])
+    def __init__(self, states, actions):
+        self.bandits = actions
         self.num_states = states
         self.num_actions = self.bandits.__len__()
 
