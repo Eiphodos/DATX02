@@ -77,6 +77,6 @@ def get_songdata():
     df = pd.DataFrame(columns=['songid', 'tempo', 'mode', 'loudness'])
     count = 0
     for record in cursor:
-        df.loc[count] = [record[0], record[1], record[2], record[3], record[4]]
+        df.loc[count] = [record[0], record[1], record[2], record[3]]
         count += 1
     return df
