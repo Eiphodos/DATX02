@@ -110,6 +110,7 @@ def userdata_receive_cbandit(request, userid):
         pulse = request.GET.get('heartrate')
         timevalue = (((datetime.datetime.now().hour) * 60) + datetime.datetime.now().minute)
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
+        rating = 1.0
         if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
             song = recommendation_cache.get(userid).pop()
         else:
