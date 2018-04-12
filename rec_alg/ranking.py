@@ -47,7 +47,7 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode):
         modeWeight = 1
     if(abs(wantedTempo-dictRow.tempo)<=10):
         tempoWeight = -0.01 * (wantedTempo-dictRow.tempo) ** 2 + 1
-    weight = (genreWeight + modeWeight + tempoWeight)/nbrOfFeatures
+    weight = (loudnessWeight + modeWeight + tempoWeight)/nbrOfFeatures
     return weight
 
 # Funktion som sorterar en dictionary vars keys är songids och values är weights och
