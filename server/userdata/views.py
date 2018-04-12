@@ -125,7 +125,7 @@ def userdata_receive_cbandit(request, userid):
             tempo = tempobandit.predict(state)
             modebandit = CBandit.CBandit(numberofstates, modeactions)
             mode = modebandit.predict(state)
-            loudnessbandit = CBandit.Cbandit(numberofstates, loudnessactions)
+            loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions)
             loudness = loudnessbandit.predict(state)
             recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode)
             song = recommendation_cache.get(userid).pop()
