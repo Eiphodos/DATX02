@@ -70,11 +70,11 @@ def get_songdata():
         print(e)
     cursor = conn.cursor()
     try:
-        cursor.execute("SELECT songid, tempo, genre, mode, releaseyear FROM songdata")
+        cursor.execute("SELECT songid, tempo, mode, loudness FROM songdata")
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
-    df = pd.DataFrame(columns=['songid', 'tempo', 'genre', 'mode', 'releaseyear'])
+    df = pd.DataFrame(columns=['songid', 'tempo', 'mode', 'loudness'])
     count = 0
     for record in cursor:
         df.loc[count] = [record[0], record[1], record[2], record[3], record[4]]
