@@ -43,10 +43,10 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode):
     tempoWeight = 0
     if(wantedLoudness == dictRow.loudness):
         loudnessWeight = 1
-    if(mode == dictRow.mode):
+    if(wantedMode == dictRow.mode):
         modeWeight = 1
-    if(abs(tempo-dictRow.tempo)<=10):
-        tempoWeight = -0.01 * (tempo-dictRow.tempo) ** 2 + 1
+    if(abs(wantedTempo-dictRow.tempo)<=10):
+        tempoWeight = -0.01 * (wantedTempo-dictRow.tempo) ** 2 + 1
     weight = (genreWeight + modeWeight + tempoWeight)/nbrOfFeatures
     return weight
 
