@@ -15,6 +15,7 @@ from userdata.serializers import UserdataSerializer
 import sys
 sys.path.append("/home/musik/DATX02/tensor/")
 import predict
+sys.path.append("/home/musik/DATX02/tensor-v2/")
 import CBandit
 sys.path.append("/home/musik/DATX02/rec_alg/")
 import ranking
