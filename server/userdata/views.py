@@ -148,7 +148,7 @@ def userdata_receive_cbandit(request, userid):
         return HttpResponse(status=204)
 
 def bucketize_pulse(pulse):
-    return pulse % 10 #not final bucketizing
+    return int(pulse) % 10 #not final bucketizing
 
 def bucketize_time(timeval):
     return timeval % 72 #not final bucketizing
