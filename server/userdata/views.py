@@ -72,11 +72,11 @@ def userdata_receive(request, userid):
         timevalue = (((datetime.datetime.now().hour)*60) + datetime.datetime.now().minute)
         ckpstate = predict.get_checkpoint_state()
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
-        if (upc.last_update == ckpstate and (userid in recomendation_cache)):
-            song = recomendation_cache.get(userid).pop()
+        if (upc.last_update == ckpstate and (userid in recommendation_cache)):
+            song = recommendation_cache.get(userid).pop()
         else:
-            recomendation_cache[userid] = predict.predict(batch_size, userid, float(pulse), float(timevalue), rating)
-            song = recomendation_cache.get(userid).pop()
+            recommendation_cache[userid] = predict.predict(batch_size, userid, float(pulse), float(timevalue), rating)
+            song = recommendation_cache.get(userid).pop()
             upc.last_update = ckpstate
         sc, created = SongCounter.objects.get_or_create(userid=userid, songid=song)
         delta = upc.playCounter - sc.lastPlayed
@@ -110,8 +110,8 @@ def userdata_receive_cbandit(request, userid):
         pulse = request.GET.get('heartrate')
         timevalue = (((datetime.datetime.now().hour) * 60) + datetime.datetime.now().minute)
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
-        if ((userid in recomendation_cache) and recomendation_cache.get(userid)):
-            song = recomendation_cache.get(userid).pop()
+        if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
+            song = recommendation_cache.get(userid).pop()
         else:
             numberofstates = 20
             tempoactions = 5
@@ -127,8 +127,8 @@ def userdata_receive_cbandit(request, userid):
             mode = modebandit.predict(state)
             loudnessbandit = CBandit.Cbandit(numberofstates, loudnessactions)
             loudness = loudnessbandit.predict(state)
-            recomendation_cache[userid] = ranking.ranking(tempo, loudness, mode)
-            song = recomendation_cache.get(userid).pop()
+            recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode)
+            song = recommendation_cache.get(userid).pop()
         sc, created = SongCounter.objects.get_or_create(userid=userid, songid=song)
         delta = upc.playCounter - sc.lastPlayed
         data = Userdata.create(userid, song, pulse, rating, delta)
