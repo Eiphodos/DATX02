@@ -19,6 +19,7 @@ sys.path.append("/home/musik/DATX02/tensor-v2/")
 import CBandit
 sys.path.append("/home/musik/DATX02/rec_alg/")
 import ranking
+import Bucketizer
 
 import datetime
 
@@ -127,13 +128,13 @@ def userdata_receive_cbandit(request, userid):
             rid = rid_cache.get(userid)
         else:
             usernumber = 0 #Placeholder
-            bucketedpulse = bucketize_pulse(pulse)
-            bucketedtime = bucketize_time(timevalue)
+            bucketedpulse = Bucketizer.bucketize_pulse(pulse)
+            bucketedtime = Bucketizer.bucketize_time(timevalue)
             state = usernumber*numberofstates + bucketedpulse
             temporid, tempo = tempobandit.predict(state)
             moderid, mode = modebandit.predict(state)
             loudrid, loudness = loudnessbandit.predict(state)
-            recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
+            recommendation_cache[userid] = ranking.ranking(Buckertizer.bucketize_tempo(tempo), Buckertizer.bucketize_loudness(loudness), mode, userid)
             #all rankingids should be identical so it doesnt matter which one we choose
             rid_cache[userid] = loudrid
             rid = loudrid
@@ -156,9 +157,3 @@ def userdata_receive_cbandit(request, userid):
     elif request.method == 'DELETE':
         userdata.delete()
         return HttpResponse(status=204)
-
-def bucketize_pulse(pulse):
-    return int(pulse) % 10 #not final bucketizing
-
-def bucketize_time(timeval):
-    return timeval % 72 #not final bucketizing
