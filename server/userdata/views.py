@@ -23,6 +23,7 @@ import ranking
 import datetime
 
 recommendation_cache = {}
+rid_cache = {}
 
 # Bandits constant variables
 numberofstates = 20
@@ -121,6 +122,7 @@ def userdata_receive_cbandit(request, userid):
         rating = 1.0
         if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
             song = recommendation_cache.get(userid).pop()
+            rid = rid_cache.get(userid)
         else:
             usernumber = 0 #Placeholder
             bucketedpulse = bucketize_pulse(pulse)
@@ -132,12 +134,15 @@ def userdata_receive_cbandit(request, userid):
             moderid, mode = modebandit.predict(state)
             loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions)
             loudrid, loudness = loudnessbandit.predict(state)
-            recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode)
+            recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
+            #all rankingids should be identical so it doesnt matter which one we choose
+            rid_cache[userid] = loudrid
+            rid = loudrid
             song = recommendation_cache.get(userid).pop()
         sc, created = SongCounter.objects.get_or_create(userid=userid, songid=song)
         delta = upc.playCounter - sc.lastPlayed
         data = Userdata.create(userid, song, pulse, rating, delta)
-        data.ratingid = loudrid
+        data.ratingid = rid
         serializer = UserdataSerializer(data)
         return JsonResponse(serializer.data, status=200)
 
