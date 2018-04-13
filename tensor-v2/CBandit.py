@@ -27,7 +27,7 @@ class CBandit:
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         self.latestRID = self.latestRID + 1
         self.rankingIdentifiers[self.latestRID]={'action': action, 'state': s}
-        return (action, self.latestRID)
+        return (self.latestRID, action)
 
     def train_rid(self, reward, rid):
         # Get data for the ranking id
