@@ -31,7 +31,9 @@ tempoactions = 5
 modeactions = 2
 loudnessactions = 5
 # Bandits
-
+loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions)
+modebandit = CBandit.CBandit(numberofstates, modeactions)
+tempobandit = CBandit.CBandit(numberofstates, tempoactions)
 
 
 
@@ -128,11 +130,8 @@ def userdata_receive_cbandit(request, userid):
             bucketedpulse = bucketize_pulse(pulse)
             bucketedtime = bucketize_time(timevalue)
             state = usernumber*numberofstates + bucketedpulse
-            tempobandit = CBandit.CBandit(numberofstates, tempoactions)
             temporid, tempo = tempobandit.predict(state)
-            modebandit = CBandit.CBandit(numberofstates, modeactions)
             moderid, mode = modebandit.predict(state)
-            loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions)
             loudrid, loudness = loudnessbandit.predict(state)
             recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             #all rankingids should be identical so it doesnt matter which one we choose
