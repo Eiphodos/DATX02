@@ -129,7 +129,7 @@ def userdata_receive_cbandit(request, userid):
             rid = rid_cache.get(userid)
         else:
             usernumber = 0 #Placeholder
-            bucketedpulse = Bucketizer.bucketize_pulse(pulse)
+            bucketedpulse = Bucketizer.bucketize_pulse(int(pulse))
             bucketedtime = Bucketizer.bucketize_time(timevalue)
             state = usernumber*numberofstates + bucketedpulse
             temporid, tempo = tempobandit.predict(state)
