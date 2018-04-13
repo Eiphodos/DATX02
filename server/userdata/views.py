@@ -31,7 +31,7 @@ rid_cache = {}
 numberofstates = 28
 tempoactions = 10
 modeactions = 2
-loudnessactions = 5
+loudnessactions = 9
 # Bandits
 loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions)
 modebandit = CBandit.CBandit(numberofstates, modeactions)
