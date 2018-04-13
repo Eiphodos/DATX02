@@ -28,8 +28,8 @@ recommendation_cache = {}
 rid_cache = {}
 
 # Bandits constant variables
-numberofstates = 20
-tempoactions = 5
+numberofstates = 28
+tempoactions = 10
 modeactions = 2
 loudnessactions = 5
 # Bandits
