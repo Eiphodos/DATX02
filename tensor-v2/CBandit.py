@@ -14,25 +14,33 @@ class CBandit:
 
         self.e = 0.1  # Set the chance of taking a random action.
         self.init = tf.global_variables_initializer()
-
+        self.rankingIdentifiers = {}
+        self.latestRID = 0
         self.sess = tf.Session()
         self.sess.run(self.init)
 
     def predict(self, s):
         # Choose either a random action or one from our network.
         if np.random.rand(1) < self.e:
-            print("random")  # TODO REMOVE
             action = np.random.randint(self.cBandit.num_actions)
         else:
-            print("chosen")  # TODO REMOVE
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
-        return action
+        self.latestRID = self.latestRID + 1
+        self.rankingIdentifiers[self.latestRID]={'action': action, 'state': s}
+        return (action, self.latestRID)
 
-    def train(self, s, action, reward):
+    def train_rid(self, reward, rid):
+        # Get data for the ranking id
+        s, action = self.rankingIdentifiers[rid]['state'], self.rankingIdentifiers[rid]['action']
         # Update the network.
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
         _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
-        print(str(ww))  # TODO REMOVE
+
+    def train_no_rid(self, reward, s, action):
+        # Update the network.
+        feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
+        _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
+
 
     def echo(self, p):  # TODO REMOVE
         print(str(p))  # TODO REMOVE

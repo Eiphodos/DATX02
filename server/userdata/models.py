@@ -9,6 +9,7 @@ class Userdata(models.Model):
     rating = models.FloatField()
     time = models.IntegerField(default=(((datetime.datetime.now().hour)*60) + datetime.datetime.now().minute))
     songssincelastplayed = models.IntegerField(null=True, blank=True)
+    ratingid = models.IntegerField(null=True, blank=True)
 
     @classmethod
     def create(cls, userid, songid, heartrate, rating, sslp):

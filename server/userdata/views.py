@@ -24,6 +24,14 @@ import datetime
 
 recommendation_cache = {}
 
+# Bandits constant variables
+numberofstates = 20
+tempoactions = 5
+modeactions = 2
+loudnessactions = 5
+# Bandits
+
+
 
 
 # Create your views here.
@@ -114,25 +122,22 @@ def userdata_receive_cbandit(request, userid):
         if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
             song = recommendation_cache.get(userid).pop()
         else:
-            numberofstates = 20
-            tempoactions = 5
-            modeactions = 2
-            loudnessactions = 5
             usernumber = 0 #Placeholder
             bucketedpulse = bucketize_pulse(pulse)
             bucketedtime = bucketize_time(timevalue)
             state = usernumber*numberofstates + bucketedpulse
             tempobandit = CBandit.CBandit(numberofstates, tempoactions)
-            tempo = tempobandit.predict(state)
+            temporid, tempo = tempobandit.predict(state)
             modebandit = CBandit.CBandit(numberofstates, modeactions)
-            mode = modebandit.predict(state)
+            moderid, mode = modebandit.predict(state)
             loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions)
-            loudness = loudnessbandit.predict(state)
+            loudrid, loudness = loudnessbandit.predict(state)
             recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode)
             song = recommendation_cache.get(userid).pop()
         sc, created = SongCounter.objects.get_or_create(userid=userid, songid=song)
         delta = upc.playCounter - sc.lastPlayed
         data = Userdata.create(userid, song, pulse, rating, delta)
+        data.ratingid = loudrid
         serializer = UserdataSerializer(data)
         return JsonResponse(serializer.data, status=200)
 
