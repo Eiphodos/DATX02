@@ -19,7 +19,8 @@ sys.path.append("/home/musik/DATX02/tensor-v2/")
 import CBandit
 sys.path.append("/home/musik/DATX02/rec_alg/")
 import ranking
-import 'Bucketizer.py'
+sys.path.append("/home/musik/DATX02/server/userdata/")
+import Bucketizer
 
 import datetime
 
