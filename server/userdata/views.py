@@ -135,7 +135,7 @@ def userdata_receive_cbandit(request, userid):
             temporid, tempo = tempobandit.predict(state)
             moderid, mode = modebandit.predict(state)
             loudrid, loudness = loudnessbandit.predict(state)
-            recommendation_cache[userid] = ranking.ranking(Buckertizer.bucketize_tempo(tempo), Buckertizer.bucketize_loudness(loudness), mode, userid)
+            recommendation_cache[userid] = ranking.ranking(Bucketizer.bucketize_tempo(tempo), Bucketizer.bucketize_loudness(loudness), mode, userid)
             #all rankingids should be identical so it doesnt matter which one we choose
             rid_cache[userid] = loudrid
             rid = loudrid
