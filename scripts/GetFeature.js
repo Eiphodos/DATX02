@@ -46,7 +46,9 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 }).then(
 	function(ids){
 		var resList;
+		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
+			console.log(ids.rows[i].songid);
 			resList.push(getFeatures(ids.rows[i].songid));
 		}
 		console.log(resList);
