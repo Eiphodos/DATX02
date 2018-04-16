@@ -47,8 +47,9 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 			getFeatures(ids.rows[i].songid);
 			//Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
 				//resList.push(values)
-			});
-	}
+//			});
+
+}	}
 )
 
 /*
@@ -117,7 +118,7 @@ function getFeatures(song_id){
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
 		const text = "UPDATE songdata SET tempo = ($2), mode = ($3), loudness = ($4) WHERE songid = ($1)"
-		//client.query(text, [songid, tempo, mode, loudness], (err, res) => {
-		//})
+		client.query(text, [songid, tempo, mode, loudness], (err, res) => {
+		})
 		console.log("update");
 }
