@@ -19,14 +19,6 @@ const client = new pg.Client({
 		port: 5432,
 })
 
-const client2 = new pg.Client({
-		user: 'postgres',
-		host: 'localhost',
-		database: 'postgres',
-		password: 'databasen',
-		port: 5432,
-})
-
 // your application requests authorization
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
@@ -56,9 +48,13 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 	for( i = 0; i < song_id.length; i++){
 		getFeatures(song_id[i]);
 	}
-	client.end()
+
 	client2.end()
-})
+}).then(
+	client.query('SELECT * FROM songdata', (err, res) => {
+		console.log(res)
+		client.end()
+)
 
 function getFeatures(song_id){
 	 console.log(song_id)
@@ -86,7 +82,6 @@ function getFeatures(song_id){
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
 		const text = "UPDATE songdata SET tempo = ($2), mode = ($3), loudness = ($4) WHERE songid = ($1)"
-		client2.query(text, [songid, tempo, mode, loudness], (err, res) =>
+		client2.query(text, [songid, tempo, mode, loudness], (err, res) => {
 		})
-
 }
