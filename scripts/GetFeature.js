@@ -26,7 +26,8 @@ var song_id
 
 client.query('SELECT songid FROM songdata', (err, res) => {
   song_id = res.rows
-
+	getFeatures(song_id);
+	client.end()
 })
 
 console.log(song_id);
