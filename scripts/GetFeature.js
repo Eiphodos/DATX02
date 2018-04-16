@@ -26,11 +26,10 @@ var song_id
 
 client.query('SELECT songid FROM songdata', (err, res) => {
   song_id = res.rows
-	getFeatures(song_id);
+	getFeatures(song_id[0]);
 	client.end()
 })
 
-console.log(song_id);
 
 
 // your application requests authorization
@@ -46,10 +45,31 @@ var authOptions = {
 }
 
 
-function getFeatures(rows){
+function getFeatures(song_id){
 	 console.log(rows)
+	 request.post(authOptions, function(error, response, body) {
+	   if (!error && response.statusCode === 200) {
+
+	     // use the access token to access the Spotify Web API
+	     var token = body.access_token;
+	     var options = {
+	       url: 'https://api.spotify.com/v1/audio-features/' + song_id,
+	       headers: {
+	         'Authorization': 'Bearer ' + token
+	       },
+	       json: true
+	     }
+	     request.get(options, function(error, response, body) {
+	 		tempo = body.tempo
+	 		console.log(body.tempo)
+	 		console.log(body.energy)
+	 		console.log(body.valence)
+	 		console.log(body.loudness)
+	     })
+	   }
+	 })
 }
-/*
+
 var tempo
 
 request.post(authOptions, function(error, response, body) {
@@ -73,7 +93,7 @@ request.post(authOptions, function(error, response, body) {
     })
   }
 })
-*/
+
 /*
 var ids = []
 request.post(authOptions, function(error, response, body) {
