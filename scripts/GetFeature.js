@@ -46,8 +46,8 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 }).then(
 	function(ids){
 		var resList;
-		for( i = 0; i < song_id.length; i++){
-			resList.push(getFeatures(song_id[i]));
+		for( i = 0; i < ids.rows.length; i++){
+			resList.push(getFeatures(ids.rows[i].songid));
 		}
 		console.log(resList);
 		return "hej";
