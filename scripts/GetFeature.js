@@ -36,7 +36,6 @@ var authOptions = {
 -----------------------------------------------------------------  */
 
 client.connect()
-client2.connect()
 
 console.log("running")
 
@@ -48,16 +47,20 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 	for( i = 0; i < song_id.length; i++){
 		getFeatures(song_id[i]);
 	}
-	client2.end()
 	return "kom Authorization"
 }).then(
+	function(){
+		return "hej";
+	}
+).then(
 	function(result){
 		console.log(result)
-		client.query('SELECT * FROM songdata', (err, res) => {
-			//console.log(res)
+		client.query('SELECT * FROM songdata', (err, res) =>
 	})
-	client.end()
 }
+).then(
+		client.end()
+		console.log("Script finished runnig")
 )
 
 function getFeatures(song_id){
@@ -86,6 +89,6 @@ function getFeatures(song_id){
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
 		const text = "UPDATE songdata SET tempo = ($2), mode = ($3), loudness = ($4) WHERE songid = ($1)"
-		client2.query(text, [songid, tempo, mode, loudness], (err, res) => {
+		client.query(text, [songid, tempo, mode, loudness], (err, res) => {
 		})
 }
