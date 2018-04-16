@@ -43,28 +43,31 @@ var song_id
 
 client.query('SELECT songid FROM songdata', (err, res) => {
   song_id = res.rows
-	console.log(song_id.length)
+	console.log(res)
 	for( i = 0; i < song_id.length; i++){
 		getFeatures(song_id[i]);
 	}
-	return "kom Authorization"
 }).then(
-	function(){
+	function(ids){
+		ids.rows[i].songid
+		console.log(ids.rows[i].songid)
 		return "hej";
 	}
 ).then(
 	function(result){
 		console.log(result)
-		client.query('SELECT * FROM songdata', (err, res) =>
+		client.query('SELECT * FROM songdata', (err, res) => {
 	})
 }
 ).then(
+	function(){
 		client.end()
-		console.log("Script finished runnig")
+		console.log("Script finished running")
+	}
 )
 
 function getFeatures(song_id){
-	 console.log(song_id)
+	 var res
 	 request.post(authOptions, function(error, response, body) {
 	   if (!error && response.statusCode === 200) {
 
@@ -81,10 +84,11 @@ function getFeatures(song_id){
 	 				console.log(body.tempo)
 	 				console.log(body.mode)
 	 				console.log(body.loudness)
-					updateFeatureInDB(song_id.songid, body.tempo, body.mode, body.loudness)
+					res = [song_id, body.tempo, body.mode, body.loudness]
 	     })
 	   }
 	 })
+	 return res;
 }
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
