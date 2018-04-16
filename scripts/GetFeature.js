@@ -48,12 +48,16 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 	for( i = 0; i < song_id.length; i++){
 		getFeatures(song_id[i]);
 	}
-
 	client2.end()
+	return "kom Authorization"
 }).then(
-	client.query('SELECT * FROM songdata', (err, res) => {
-		console.log(res)
-		client.end()
+	function(result){
+		console.log(result)
+		client.query('SELECT * FROM songdata', (err, res) => {
+			//console.log(res)
+	})
+	client.end()
+}
 )
 
 function getFeatures(song_id){
