@@ -46,19 +46,18 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 }).then(
 	function(ids){
 		var resList = [];
-		var loop = 0;
+		var done = false;
 		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
 			Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
 				resList.push(values)
-			}).then(function(){
-				console.log("loop is: " + loop);
-				loop++;
 			});
 		}
-		console.log("looppppyyyy " + loop);
-		await (loop == ids.rows.length-1);
+		setTimeout(function(){
+			done = true;
+		}
+		await done == true;
 		console.log(resList);
 		return "hej";
 	}
