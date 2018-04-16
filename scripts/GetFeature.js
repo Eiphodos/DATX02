@@ -49,7 +49,9 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
-			resList.push(getFeatures(ids.rows[i].songid));
+			Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
+				resList.push(values);
+		});
 		}
 		console.log(resList);
 		return "hej";
@@ -86,11 +88,12 @@ function getFeatures(song_id){
 	 				console.log(body.mode)
 	 				console.log(body.loudness)
 					res = [song_id, body.tempo, body.mode, body.loudness]
+					console.log(res);
+					return res;
 	     })
 	   }
 	 })
-	 console.log(res);
-	 return res;
+
 }
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
