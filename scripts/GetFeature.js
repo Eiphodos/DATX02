@@ -19,6 +19,14 @@ const client = new pg.Client({
 		port: 5432,
 })
 
+const client2 = new pg.Client({
+		user: 'postgres',
+		host: 'localhost',
+		database: 'postgres',
+		password: 'databasen',
+		port: 5432,
+})
+
 // your application requests authorization
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
@@ -36,14 +44,20 @@ var authOptions = {
 -----------------------------------------------------------------  */
 
 client.connect()
+client2.connect()
+
+console.log("running")
 
 var song_id
 
 client.query('SELECT songid FROM songdata', (err, res) => {
   song_id = res.rows
+	console.log(song_id.length)
 	for( i = 0; i < song_id.length; i++){
 		getFeatures(song_id[i]);
 	}
+	client.end()
+	client2.end()
 })
 
 function getFeatures(song_id){
@@ -64,17 +78,15 @@ function getFeatures(song_id){
 	 				console.log(body.tempo)
 	 				console.log(body.mode)
 	 				console.log(body.loudness)
-					updateFeatureInDB(song_id, body.tempo, body.mode, body.loudness)
+					updateFeatureInDB(song_id.songid, body.tempo, body.mode, body.loudness)
 	     })
 	   }
 	 })
 }
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
-		const text = "UPDATE tensordata SET tempo = ($2), mode = ($3), loudness = ($4) WHERE songid = ($1)"
-		client.query(text, [songid, tempo, mode, loudness], (err, res) => {
+		const text = "UPDATE songdata SET tempo = ($2), mode = ($3), loudness = ($4) WHERE songid = ($1)"
+		client2.query(text, [songid, tempo, mode, loudness], (err, res) =>
 		})
 
 }
-
-client.end()

@@ -108,26 +108,3 @@ request.post(authOptions, function(error, response, body) {
 		})
 	}
 })
-/*
-const text = "UPDATE tensordata SET tempo = ($1) WHERE songid = ($2)"
-
-const client2 = new pg.Client({
-		user: 'nodejs',
-		host: 'localhost',
-		database: 'postgres',
-		password: 'NodeSQLServer',
-		port: 5432,
-})
-
-
-client2.connect()
-
-client2.query(text, [tempo, song_id], (err, res) => {
-	if (err) {
-		console.log(err.stack)
-	} else {
-		console.log(res)
-	}
-  client2.end()
-})
-*/
