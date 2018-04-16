@@ -46,13 +46,15 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 }).then(
 	function(ids){
 		var resList = [];
+		var loop = 0;
 		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
 			Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
-				resList.push(values);
-		});
+				resList.push(values)}).then(function(){console.log("loop is: " + loop); loop++});
 		}
+		console.log(loop);
+		await (loop == ids.rows.length-1);
 		console.log(resList);
 		return "hej";
 	}
@@ -84,9 +86,9 @@ function getFeatures(song_id){
 	       json: true
 	     }
 	     request.get(options, function(error, response, body) {
-	 				console.log(body.tempo)
-	 				console.log(body.mode)
-	 				console.log(body.loudness)
+	 				//console.log(body.tempo)
+	 				//console.log(body.mode)
+	 				//console.log(body.loudness)
 					res = [song_id, body.tempo, body.mode, body.loudness]
 					console.log(res);
 					return res;
