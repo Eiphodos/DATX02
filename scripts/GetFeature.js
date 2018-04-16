@@ -26,6 +26,7 @@ var song_id
 
 client.query('SELECT songid FROM songdata', (err, res) => {
   song_id = res.rows
+
 })
 
 console.log(song_id);
@@ -41,6 +42,11 @@ var authOptions = {
     grant_type: 'client_credentials'
   },
   json: true
+}
+
+
+function getFeatures(rows){
+	 console.log(rows)
 }
 /*
 var tempo
