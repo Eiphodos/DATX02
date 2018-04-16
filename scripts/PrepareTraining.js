@@ -19,6 +19,7 @@ const client = new pg.Client({
 		password: 'databasen',
 		port: 5432,
 })
+/*
 client.connect()
 
 var song_id
@@ -28,7 +29,7 @@ client.query('SELECT songid FROM userdata_userdata', (err, res) => {
   console.log(res.rows[0].songid);
   client.end()
 })
-
+*/
 // your application requests authorization
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
@@ -42,7 +43,7 @@ var authOptions = {
 }
 
 var tempo
-
+/*
 request.post(authOptions, function(error, response, body) {
   if (!error && response.statusCode === 200) {
 
@@ -58,11 +59,44 @@ request.post(authOptions, function(error, response, body) {
     request.get(options, function(error, response, body) {
 		tempo = body.tempo
 		console.log(body.tempo)
-		console.log(body.energy)
-		console.log(body.valence)
+		console.log(body.mode)
 		console.log(body.loudness)
     })
   }
+})
+*/
+var ids = []
+request.post(authOptions, function(error, response, body) {
+	if(!error && response.statusCode === 200) {
+
+		var token = body.access_token;
+		var options = {
+		    url: 'https://api.spotify.com/v1/users/sordi11/playlists/5Lyb7YeIvfTTEFYdludB2e/tracks',
+		    headers: {
+			'Authorization': 'Bearer ' + token
+		    },
+		    json: true
+		}
+		request.get(options, function(error, response, body){
+			console.log("body")
+			console.log(body.next)
+			next = body.next
+			console.log(next)
+
+			for(i = 0; i < 10; i++){
+				ids[i] = body.items[i].track.id
+			}
+			console.log(ids)
+
+			client.connect()
+			const queryText ="INSERT INTO songdata VALUES ($1)"
+			client.query(queryText,[ids[0]], (err, res) => {
+				var song_id = res.rows[0].songid
+				console.log(song_id)
+				client.end()
+			})
+		})
+	}
 })
 /*
 const text = "UPDATE tensordata SET tempo = ($1) WHERE songid = ($2)"
