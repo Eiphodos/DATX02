@@ -42,10 +42,10 @@ console.log("running")
 var song_id
 
 client.query('SELECT songid FROM songdata', (err, res) => {
-	//don't think anything here is needed
+	//don't think anything is needed here
 }).then(
 	function(ids){
-		var resList;
+		var resList = [];
 		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
@@ -69,7 +69,6 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 
 function getFeatures(song_id){
 	 var res;
-	 console.log("before post")
 	 request.post(authOptions, function(error, response, body) {
 	   if (!error && response.statusCode === 200) {
 
@@ -82,7 +81,6 @@ function getFeatures(song_id){
 	       },
 	       json: true
 	     }
-			 console.log("before get")
 	     request.get(options, function(error, response, body) {
 	 				console.log(body.tempo)
 	 				console.log(body.mode)
@@ -91,6 +89,7 @@ function getFeatures(song_id){
 	     })
 	   }
 	 })
+	 console.log(res);
 	 return res;
 }
 
