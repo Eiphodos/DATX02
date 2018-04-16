@@ -27,9 +27,10 @@ var song_id
 client.query('SELECT songid FROM userdata_userdata', (err, res) => {
   song_id = res.rows[0].songid
   console.log(res.rows[0].songid);
-  client.end()
+  //client.end()
 })
 */
+
 // your application requests authorization
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
@@ -67,32 +68,41 @@ request.post(authOptions, function(error, response, body) {
 */
 var ids = []
 request.post(authOptions, function(error, response, body) {
-	if(!error && response.statusCode === 200) {
+  if (!error && response.statusCode === 200) {
 
-		var token = body.access_token;
-		var options = {
-		    url: 'https://api.spotify.com/v1/users/sordi11/playlists/5Lyb7YeIvfTTEFYdludB2e/tracks',
-		    headers: {
-			'Authorization': 'Bearer ' + token
-		    },
-		    json: true
-		}
-		request.get(options, function(error, response, body){
+    // use the access token to access the Spotify Web API
+    var token = body.access_token;
+    var options = {
+      url: 'https://api.spotify.com/v1/users/sordi11/playlists/5Lyb7YeIvfTTEFYdludB2e/tracks',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      json: true
+    }
+
+    request.get(options, function(error, response, body) {
 			console.log("body")
 			console.log(body.next)
 			next = body.next
 			console.log(next)
-
-			for(i = 0; i < 10; i++){
-				ids[i] = body.items[i].track.id
+			for (i = 0; i < 10; i++){
+					//console.log(body.items[i])
+					//console.log(body.items[i].track.id)
+					ids[i] = body.items[i].track.id
+					/*
+					console.log(body.items[i].track.tempo)
+					console.log(body.items[i].track.mode)
+					console.log(body.items[i].track.loudness)
+					*/
 			}
 			console.log(ids)
 
 			client.connect()
+
 			const queryText ="INSERT INTO songdata VALUES ($1)"
 			client.query(queryText,[ids[0]], (err, res) => {
-				var song_id = res.rows[0].songid
-				console.log(song_id)
+				//var song_id = res.rows[0].songid
+				//console.log(song_id)
 				client.end()
 			})
 		})
