@@ -68,19 +68,21 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 )
 
 function getFeatures(song_id){
-	 var res
+	 var res;
+	 console.log("before post")
 	 request.post(authOptions, function(error, response, body) {
 	   if (!error && response.statusCode === 200) {
 
 	     // use the access token to access the Spotify Web API
 	     var token = body.access_token;
 	     var options = {
-	       url: 'https://api.spotify.com/v1/audio-features/' + song_id.songid,
+	       url: 'https://api.spotify.com/v1/audio-features/' + song_id,
 	       headers: {
 	         'Authorization': 'Bearer ' + token
 	       },
 	       json: true
 	     }
+			 console.log("before get")
 	     request.get(options, function(error, response, body) {
 	 				console.log(body.tempo)
 	 				console.log(body.mode)
