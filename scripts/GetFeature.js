@@ -50,14 +50,18 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
+			/*
 			Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
 				resList.push(values)
 			});
+			*/
+			var newline = await getFeatures(ids.rows[i].songid));
+			resList.push(values);
 		}
 		setTimeout(function(){
 			done = true;
-		}
-		await done == true;
+		})
+		await (done == true);
 		console.log(resList);
 		return "hej";
 	}
@@ -74,7 +78,7 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 	}
 )
 
-function getFeatures(song_id){
+async function getFeatures(song_id){
 	 var res;
 	 request.post(authOptions, function(error, response, body) {
 	   if (!error && response.statusCode === 200) {
