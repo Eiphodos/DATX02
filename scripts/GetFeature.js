@@ -51,9 +51,13 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
 			Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
-				resList.push(values)}).then(function(){console.log("loop is: " + loop); loop++});
+				resList.push(values)
+			}).then(function(){
+				console.log("loop is: " + loop);
+				loop++;
+			});
 		}
-		console.log(loop);
+		console.log("looppppyyyy " + loop);
 		await (loop == ids.rows.length-1);
 		console.log(resList);
 		return "hej";
