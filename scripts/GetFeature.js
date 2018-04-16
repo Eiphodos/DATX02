@@ -38,9 +38,20 @@ var authOptions = {
 client.connect()
 
 console.log("running")
+client.query('SELECT songid FROM songdata', (err, res) => {
+	//don't think anything is needed here
+}).then(
+	function(ids){
+		for( i = 0; i < ids.rows.length; i++){
+			console.log(ids.rows[i].songid);
+			getFeatures(ids.rows[i].songid);
+			//Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
+				//resList.push(values)
+			});
+	}
+)
 
-var song_id
-
+/*
 client.query('SELECT songid FROM songdata', (err, res) => {
 	//don't think anything is needed here
 }).then(
@@ -50,13 +61,11 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 		console.log(ids.rows.length)
 		for( i = 0; i < ids.rows.length; i++){
 			console.log(ids.rows[i].songid);
-			/*
 			Promise.all(getFeatures(ids.rows[i].songid)).then(function(values){
 				resList.push(values)
 			});
-			*/
-			var newline = await getFeatures(ids.rows[i].songid));
-			resList.push(values);
+
+			//resList.push(values);
 		}
 		setTimeout(function(){
 			done = true;
@@ -77,8 +86,8 @@ client.query('SELECT songid FROM songdata', (err, res) => {
 		console.log("Script finished running")
 	}
 )
-
-async function getFeatures(song_id){
+*/
+function getFeatures(song_id){
 	 var res;
 	 request.post(authOptions, function(error, response, body) {
 	   if (!error && response.statusCode === 200) {
