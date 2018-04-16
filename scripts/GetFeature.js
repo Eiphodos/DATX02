@@ -97,7 +97,8 @@ async function getFeatures(song_id){
 	 				//console.log(body.mode)
 	 				//console.log(body.loudness)
 					res = [song_id, body.tempo, body.mode, body.loudness]
-					console.log(res);
+					console.log(song_id, body.tempo, body.mode, body.loudness);
+					updateFeatureInDB(song_id, body.tempo, body.mode, body.loudness);
 					return res;
 	     })
 	   }
@@ -107,6 +108,7 @@ async function getFeatures(song_id){
 
 function updateFeatureInDB(songid, tempo, mode, loudness){
 		const text = "UPDATE songdata SET tempo = ($2), mode = ($3), loudness = ($4) WHERE songid = ($1)"
-		client.query(text, [songid, tempo, mode, loudness], (err, res) => {
-		})
+		//client.query(text, [songid, tempo, mode, loudness], (err, res) => {
+		//})
+		console.log("update");
 }
