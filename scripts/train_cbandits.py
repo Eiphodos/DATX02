@@ -114,7 +114,7 @@ def cleanup(cursor):
         print(e)
 
 
-def train_all_bandits():
+def main():
     # Bandits
     loudbandit = CBandit.CBandit(numberofstates, loudnessactions, LOUD_CKPT_PATH)
     modebandit = CBandit.CBandit(numberofstates, modeactions, MODE_CKPT_PATH)
@@ -131,3 +131,7 @@ def train_all_bandits():
 
     cleanup(cursor)
     conn.close()
+
+# If we run module as a script, run main
+if __name__ == '__main__':
+    main()

@@ -24,6 +24,7 @@ class CBandit:
         self.saver = tf.train.Saver()
         self.sess = tf.Session()
         # If a checkpoint exists we use it to restore the saved data before we run the session
+        if (get_checkpoint_state())
         self.saver.restore(self.sess, self.checkpoint_prefix)
         self.sess.run(self.init)
 
@@ -59,7 +60,7 @@ class CBandit:
         self.saver.save(self.sess, self.checkpoint_prefix)
 
     # Returns the number of the latest checkpoint
-    def get_checkpoint_state():
+    def get_checkpoint_state(self):
         s = tf.train.latest_checkpoint(checkpoint_dir=self.checkpoint_path)
         return int(''.join(ele for ele in s if ele.isdigit()))
 
