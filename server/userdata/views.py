@@ -121,6 +121,9 @@ def userdata_receive(request, userid):
 # Method used to get recommendations from the contextual bandit
 @csrf_exempt
 def userdata_receive_cbandit(request, userid):
+    global LOUDBANDIT
+    global MODEBANDIT
+    global TEMPOBANDIT
     if request.method == 'GET':
         pulse = request.GET.get('heartrate')
         timevalue = (((datetime.datetime.now().hour) * 60) + datetime.datetime.now().minute)
@@ -128,9 +131,6 @@ def userdata_receive_cbandit(request, userid):
         # Only used since rating is a required value in our serializer
         rating = 1.0
         if (CKPTSTATE < TEMPOBANDIT.get_checkpoint_state()):
-            global LOUDBANDIT
-            global MODEBANDIT
-            global TEMPOBANDIT
             TEMPOBANDIT = CBandit.CBandit(NUMBER_OF_STATES, TEMPO_ACTIONS, TEMPO_CKPT_PATH)
             LOUDBANDIT = CBandit.CBandit(NUMBER_OF_STATES, LOUD_ACTIONS, LOUD_CKPT_PATH)
             MODEBANDIT = CBandit.CBandit(NUMBER_OF_STATES, MODE_ACTIONS, MODE_CKPT_PATH)
