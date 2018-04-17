@@ -32,16 +32,17 @@ LOUD_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/loud"
 TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/tempo"
 MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/mode"
 # Bandits constant variables
-numberofstates = 28
-tempoactions = 10
-modeactions = 2
-loudnessactions = 7
-timebuckets = 4
+NUMBER_OF_STATES = 28
+TEMPO_ACTIONS = 10
+MODE_ACTIONS = 2
+LOUD_ACTIONS = 7
+TIME_BUCKETS = 4
 # Bandits
-loudnessbandit = CBandit.CBandit(numberofstates, loudnessactions, LOUD_CKPT_PATH)
-modebandit = CBandit.CBandit(numberofstates, modeactions, MODE_CKPT_PATH)
-tempobandit = CBandit.CBandit(numberofstates, tempoactions, TEMPO_CKPT_PATH)
-
+LOUDBANDIT = CBandit.CBandit(NUMBER_OF_STATES, LOUD_ACTIONS, LOUD_CKPT_PATH)
+MODEBANDIT = CBandit.CBandit(NUMBER_OF_STATES, MODE_ACTIONS, MODE_CKPT_PATH)
+TEMPOBANDIT = CBandit.CBandit(NUMBER_OF_STATES, TEMPO_ACTIONS, TEMPO_CKPT_PATH)
+# Cbandit checkpoint state tracker
+CKPTSTATE = TEMPOBANDIT.get_checkpoint_state()
 
 
 
@@ -126,6 +127,13 @@ def userdata_receive_cbandit(request, userid):
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
         # Only used since rating is a required value in our serializer
         rating = 1.0
+        if (CKPTSTATE < TEMPOBANDIT.get_checkpoint_state()):
+            newtempo = CBandit.CBandit(NUMBER_OF_STATES, TEMPO_ACTIONS, TEMPO_CKPT_PATH)
+            newloud = CBandit.CBandit(NUMBER_OF_STATES, LOUD_ACTIONS, LOUD_CKPT_PATH)
+            newmode = CBandit.CBandit(NUMBER_OF_STATES, MODE_ACTIONS, MODE_CKPT_PATH)
+            LOUDBANDIT = newloud
+            MODEBANDIT = newmode
+            TEMPOBANDIT = newtempo
         if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
             song = recommendation_cache.get(userid).pop()
             # All songs that have been cached from one recommendation request will use the same ranking id
@@ -134,12 +142,12 @@ def userdata_receive_cbandit(request, userid):
             usernumber = 0 #Placeholder, will be replaced by a userid lookup
             bucketedpulse = Bucketizer.bucketize_pulse(int(pulse))
             bucketedtime = Bucketizer.bucketize_time(timevalue)
-            state = usernumber*numberofstates + bucketedpulse*timebuckets + bucketedtime
+            state = usernumber*NUMBER_OF_STATES + bucketedpulse*TIME_BUCKETS + bucketedtime
             # We get all ranking ids here but they will all be the same (since they are updated at the same time)
             # Might change this just to get one since its all we need.
-            temporid, tempo = tempobandit.predict(state)
-            moderid, mode = modebandit.predict(state)
-            loudrid, loudness = loudnessbandit.predict(state)
+            temporid, tempo = TEMPOBANDIT.predict(state)
+            moderid, mode = MODEBANDIT.predict(state)
+            loudrid, loudness = LOUDBANDIT.predict(state)
             # Cache new songs based on bandit sugggestions
             recommendation_cache[userid] = ranking.ranking(Bucketizer.bucketize_tempo(tempo), Bucketizer.bucketize_loudness(loudness), mode, userid)
             #all rankingids should be identical so it doesnt matter which one we choose
