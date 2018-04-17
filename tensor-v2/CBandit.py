@@ -4,19 +4,27 @@ import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import numpy as np
 
+# Only used as reference, send actual path to constructor
+CHECKPOINT_PREFIX = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/model.ckpt"
+CHECKPOINT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit"
 
 class CBandit:
-    def __init__(self, states, actions):
+    def __init__(self, states, actions, ckpt_path):
+        self.checkpoint_path = ckpt_path
+        self.checkpoint_prefix = ckpt_path + "/model.ckpt"
         tf.reset_default_graph()  # Clear the Tensorflow graph.
         self.cBandit = ContextualBandit(states, actions)  # Load the bandits.
         self.myAgent = Agent(lr=0.001, s_size=self.cBandit.num_states, a_size=self.cBandit.num_actions)  # Load the agent.
         self.weights = tf.trainable_variables()[0]  # The weights we will evaluate to look into the network.
-
         self.e = 0.1  # Set the chance of taking a random action.
         self.init = tf.global_variables_initializer()
         self.rankingIdentifiers = {}
         self.latestRID = 0
+        # Creates a saver to restore a trained bandit
+        self.saver = tf.train.Saver()
         self.sess = tf.Session()
+        # If a checkpoint exists we use it to restore the saved data before we run the session
+        self.saver.restore(sess, self.checkpoint_prefix)
         self.sess.run(self.init)
 
     def predict(self, s):
@@ -41,10 +49,19 @@ class CBandit:
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
         _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
 
+    def train_all(self, rew_rid_list, rew_state_act_list):
+        for l in rew_rid_list:
+            rew, rid = l
+            train_rid(rew, rid)
+        for r in rew_state_act_list:
+            rew, state, act = r
+            train_no_rid(rew, state, act)
+        self.saver.save(self.sess, self.checkpoint_prefix)
 
-    def echo(self, p):  # TODO REMOVE
-        print(str(p))  # TODO REMOVE
-
+    # Returns the number of the latest checkpoint
+    def get_checkpoint_state():
+        s = tf.train.latest_checkpoint(checkpoint_dir=self.checkpoint_path)
+        return int(''.join(ele for ele in s if ele.isdigit()))
 
 class ContextualBandit:
     def __init__(self, states, actions):

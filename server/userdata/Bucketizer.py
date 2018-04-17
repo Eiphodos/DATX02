@@ -22,5 +22,5 @@ def bucketize_tempo(tempoindex):
     return buckets[tempoindex]
 
 def bucketize_loudness(loudindex):
-    buckets = [-20, -15, -10, -5, 0, 5, 10, 15, 20]
+    buckets = [-8, -6, -4, -2, 0, 2, 5]
     return buckets[loudindex]
