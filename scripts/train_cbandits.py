@@ -6,6 +6,10 @@ import Bucketizer
 
 import psycopg2
 
+# Bandit checkpoint paths
+LOUD_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/loud"
+TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/tempo"
+MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/mode"
 # Bandits constant variables
 numberofstates = 28
 tempoactions = 10
@@ -112,9 +116,9 @@ def cleanup(cursor):
 
 def train_all_bandits():
     # Bandits
-    loudbandit = CBandit.CBandit(numberofstates, loudnessactions)
-    modebandit = CBandit.CBandit(numberofstates, modeactions)
-    tempobandit = CBandit.CBandit(numberofstates, tempoactions)
+    loudbandit = CBandit.CBandit(numberofstates, loudnessactions, LOUD_CKPT_PATH)
+    modebandit = CBandit.CBandit(numberofstates, modeactions, MODE_CKPT_PATH)
+    tempobandit = CBandit.CBandit(numberofstates, tempoactions, TEMPO_CKPT_PATH)
 
     conn = connect_database()
     cursor = conn.cursor()
