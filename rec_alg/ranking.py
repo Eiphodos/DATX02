@@ -42,8 +42,7 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
     loudnessWeight = 0
     modeWeight = 0
     tempoWeight = 0
-    if(wantedLoudness == dictRow.loudness):
-        loudnessWeight = 1
+    loudnessWeight = -0.01 * abs(wantedLoudness-dictRow.loudness) ** 2 + 1
     if(wantedMode == dictRow.mode):
         modeWeight = 1
     if(abs(wantedTempo-dictRow.tempo)<=10):
