@@ -128,12 +128,12 @@ def userdata_receive_cbandit(request, userid):
         # Only used since rating is a required value in our serializer
         rating = 1.0
         if (CKPTSTATE < TEMPOBANDIT.get_checkpoint_state()):
-            newtempo = CBandit.CBandit(NUMBER_OF_STATES, TEMPO_ACTIONS, TEMPO_CKPT_PATH)
-            newloud = CBandit.CBandit(NUMBER_OF_STATES, LOUD_ACTIONS, LOUD_CKPT_PATH)
-            newmode = CBandit.CBandit(NUMBER_OF_STATES, MODE_ACTIONS, MODE_CKPT_PATH)
-            LOUDBANDIT = newloud
-            MODEBANDIT = newmode
-            TEMPOBANDIT = newtempo
+            global LOUDBANDIT
+            global MODEBANDIT
+            global TEMPOBANDIT
+            TEMPOBANDIT = CBandit.CBandit(NUMBER_OF_STATES, TEMPO_ACTIONS, TEMPO_CKPT_PATH)
+            LOUDBANDIT = CBandit.CBandit(NUMBER_OF_STATES, LOUD_ACTIONS, LOUD_CKPT_PATH)
+            MODEBANDIT = CBandit.CBandit(NUMBER_OF_STATES, MODE_ACTIONS, MODE_CKPT_PATH)
         if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
             song = recommendation_cache.get(userid).pop()
             # All songs that have been cached from one recommendation request will use the same ranking id
