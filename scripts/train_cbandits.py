@@ -30,7 +30,7 @@ def connect_database():
 # direkt hör ihop med actions som cbandit har föreslagit).
 def get_untrained_rids(cursor):
     try:
-        cursor.execute("""SELECT rating, ratingid FROM userdata_userdata WHERE cbtrained='0' AND ratingid IS NOT NULL;""")
+        cursor.execute("""SELECT rating, ratingid FROM userdata_userdata WHERE cbtrained=false AND ratingid IS NOT NULL;""")
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
@@ -46,7 +46,7 @@ def get_untrained_rids(cursor):
 # Vi räknar sedan baklänges för att se vilka actions en cbandit hade gjort för att föreslå dom låtarna.
 def get_untrained_actstates(cursor):
     try:
-        cursor.execute("""SELECT rating, userid, heartrate, time, songid FROM userdata_userdata WHERE cbtrained='0' AND ratingid IS NOT NULL;""")
+        cursor.execute("""SELECT rating, userid, heartrate, time, songid FROM userdata_userdata WHERE cbtrained=false AND ratingid IS NOT NULL;""")
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
@@ -108,7 +108,7 @@ def rev_bucket_loud(loud):
 
 def cleanup(cursor):
     try:
-        cursor.execute("UPDATE userdata_userdata SET cbtrained='1' WHERE cbtrained='0'")
+        cursor.execute("UPDATE userdata_userdata SET cbtrained=true WHERE cbtrained=false")
     except Exception as e:
         print("Something went wrong when trying to UPDATE")
         print(e)
