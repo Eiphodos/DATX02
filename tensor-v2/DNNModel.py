@@ -6,90 +6,102 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import tensorflow.contrib.eager as tfe
 
-tf.enable_eager_execution()
+from collections import namedtuple
+
+import Bucketizer
+
+
+FeatureColumn = namedtuple("FeatureColumn", "name column")
 
 class DNNModel:
-    model = tf.keras.Sequential([
-        tf.keras.layers.Dense(10, activation="relu", input_shape=(3,)),
-        tf.keras.layers.Dense(10, activation="relu"),
-        tf.keras.layers.Dense(3)
-    ])
+    output_type = Bucketizer.BucketType.PULSE
 
-    def train(self, csv_path):
-        dataset = tf.data.TextLineDataset(csv_path)
-        dataset = dataset.map(self.parse_csv)
-        dataset = dataset.batch(32) # Limit batch size to train model faster
+    # 5,1
 
-        optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
+    # output_column is a FeatureColumn (a sort of struct), easy to create using the functions at the bottom
+    def __init__(self, model_dir, output_type):
+        self.output_type = output_type
 
-        loss_results = []
-        accuracy_results = []
+        hashed_user_column = tf.feature_column.categorical_column_with_hash_bucket(key='user_id', hash_bucket_size=100, dtype=tf.string)
+        user_column = tf.feature_column.embedding_column(categorical_column=hashed_user_column, dimension=3)
+        time_column = tf.feature_column.numeric_column("time")
+        heart_rate_column = tf.feature_column.numeric_column("heart_rate")
 
-        num_epochs = 101
+        classes = Bucketizer.getNumberOfClassesForType(self.output_type)
 
-        for epoch in range(num_epochs):
-            epoch_loss_avg = tfe.metrics.Mean()
-            epoch_accuracy = tfe.metrics.Accuracy()
+        self.estimator = tf.estimator.DNNClassifier(feature_columns=[user_column, time_column, heart_rate_column],
+                                                    hidden_units=[5,1],
+                                                    n_classes=classes,
+                                                    optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.01),
+                                                    model_dir=model_dir)
 
-            for x, y in tfe.Iterator(dataset):
-                grads = self.grad(self.model, x, y)
-                optimizer.apply_gradients(zip(grads, self.model.variables), global_step=tf.train.get_or_create_global_step())
+    def train(self, features, labels):
+        bucketized_labels = Bucketizer.getLabelsBucket(labels=labels, type=self.output_type)
 
-                epoch_loss_avg(self.loss(self.model, x, y))
-                epoch_accuracy(tf.argmax(self.model(x), axis=1, output_type=tf.int32), y)
+        result = self.estimator.train(input_fn=lambda:self.train_input_fn(features=features, labels=bucketized_labels, batch_size=32))
 
-            loss_results.append(epoch_loss_avg.result())
-            accuracy_results.append(epoch_accuracy.result())
+        return result
 
-        return loss_results, accuracy_results
+    def eval(self, features, labels):
+        bucketized_labels = Bucketizer.getLabelsBucket(labels=labels, type=self.output_type)
 
-    def eval(self, csv_path):
-        dataset = tf.data.TextLineDataset(csv_path)
-        dataset = dataset.map(self.parse_csv)
-        dataset = dataset.batch(32)
+        evaluation = self.estimator.evaluate(input_fn=lambda:self.train_input_fn(features=features, labels=bucketized_labels, batch_size=32))
 
-        accuracy = tfe.metrics.Accuracy()
-
-        for x, y in tfe.Iterator(dataset):
-            prediction = tf.argmax(self.model(x), axis=1, output_type=tf.int32)
-            accuracy(prediction, y)
-
-        return accuracy.result()
+        return evaluation
 
     def predict(self, data_matrix):
-        # BPM buckets
-        class_ids = ["0-30", "31-50", "51-70", "71-90", "91-110", "111-130", "131-150", "151-170", "171-190", "191-210", "211+"]
+        prediction = self.estimator.predict(input_fn=lambda:self.pred_input_fn(features=data_matrix, batch_size=32))
 
-        dataset = tf.convert_to_tensor(data_matrix)
+        return prediction
 
-        predictions = self.model(dataset)
+    def pred_input_fn(self, features, batch_size):
+        inputs = dict(features)
 
-        results = []
+        # Convert the inputs to a Dataset.
+        dataset = tf.data.Dataset.from_tensor_slices(inputs)
 
-        for i, logits in enumerate(predictions):
-            class_idx = tf.argmax(logits).numpy()
-            name = class_ids[class_idx]
-            results.append(name)
+        # Batch the examples
+        assert batch_size is not None, "batch_size must not be None"
+        dataset = dataset.batch(batch_size)
 
-        return results
+        # Return the dataset.
+        return dataset
 
-    def loss(self, model, x, y):
-        y_ = model(x)
-        return tf.losses.sparse_softmax_cross_entropy(labels=y, logits=y_)
+    def train_input_fn(self, features, labels, batch_size):
+        """An input function for training"""
+        # Convert the inputs to a Dataset.
+        dataset = tf.data.Dataset.from_tensor_slices((dict(features), labels))
 
-    def grad(self, model, inputs, targets):
-        with tfe.GradientTape() as tape:
-            loss_value = self.loss(model, inputs, targets)
-        return tape.gradient(loss_value, model.variables)
+        # Shuffle, repeat, and batch the examples.
+        #dataset = dataset.shuffle(1000).repeat().batch(batch_size)
+        dataset = dataset.shuffle(100)
+        dataset = dataset.batch(batch_size=batch_size)
+        # Return the dataset.
+        return dataset.make_one_shot_iterator().get_next()
 
-    def parse_csv(self, line):
-        # user_id:string, time:int, heart_rate:int, bpm:int
-        defaults = [[""], [0], [0], [0]]
+'''
+model = DNNModel(model_dir="", output_type=Bucketizer.BucketType.PULSE)
 
-        parsed_line = tf.decode_csv(line, defaults)
+train_x = {
+    'user_id': ["userid1","userid3","userid1","userid1","userid2","userid1","userid1","userid1","userid3","userid2"],
+    'time': [1000,500,250,700,900,450,123,900,1000,600],
+    'heart_rate': [100,50,25,67,98,123,150,175,35,50]
+}
 
-        features = tf.reshape(parsed_line[:-1], shape=(3,))
+train_labels = [100,150,75,87,90,210,125,55,201,20]
 
-        label = tf.reshape(parsed_line[-1], shape=())
+res = model.train(features=train_x, labels=train_labels)
 
-        return features, label
+predict_x = {
+    'user_id': ["userid1"],
+    'time': [1000],
+    'heart_rate': [55],
+}
+
+pred = model.predict(data_matrix=predict_x)
+
+for p in pred:
+    for c in p["class_ids"]:
+        print(c)
+        print(p['probabilities'][c])
+'''

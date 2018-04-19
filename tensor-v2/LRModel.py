@@ -6,58 +6,97 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import tensorflow.contrib.eager as tfe
 
-tf.enable_eager_execution()
+from collections import namedtuple
 
+import Bucketizer
+
+
+FeatureColumn = namedtuple("FeatureColumn", "name column")
 
 class LRModel:
+    output_type = Bucketizer.BucketType.PULSE
 
-    def __init__(self, model_dir):
-        user_column = tf.feature_column.categorical_column_with_hash_bucket(key='user_id',hash_bucket_size=100)
+    # 5,1
+
+    # output_column is a FeatureColumn (a sort of struct), easy to create using the functions at the bottom
+    def __init__(self, model_dir, output_type):
+        self.output_type = output_type
+
+        hashed_user_column = tf.feature_column.categorical_column_with_hash_bucket(key='user_id', hash_bucket_size=100, dtype=tf.string)
+        user_column = tf.feature_column.embedding_column(categorical_column=hashed_user_column, dimension=3)
         time_column = tf.feature_column.numeric_column("time")
         heart_rate_column = tf.feature_column.numeric_column("heart_rate")
 
-        bpm_num_column = tf.feature_column.numeric_column("bpm")
-        bpm_buck_column = tf.feature_column.bucketized_column(source_column=bpm_num_column, boundaries=[30, 50, 70, 90, 110, 130, 150, 170, 190, 210])
+        classes = Bucketizer.getNumberOfClassesForType(self.output_type)
 
+        self.estimator = tf.estimator.LinearRegressor(feature_columns=[user_column, time_column, heart_rate_column],
+                                                    model_dir=model_dir)
 
-        self.estimator = tf.estimator.LinearRegressor(feature_columns=[user_column, time_column, heart_rate_column, bpm_buck_column], model_dir=model_dir)
+    def train(self, features, labels):
+        bucketized_labels = Bucketizer.getLabelsBucket(labels=labels, type=self.output_type)
 
-    def train(self, csv_path):
-        train_input_fn = self.csv_to_dataset(csv_path)
-
-        result = self.estimator.train(input_fn=train_input_fn)
+        result = self.estimator.train(input_fn=lambda:self.train_input_fn(features=features, labels=bucketized_labels, batch_size=32))
 
         return result
 
-    def eval(self, csv_path):
-        eval_input_fn = self.csv_to_dataset(csv_path)
+    def eval(self, features, labels):
+        bucketized_labels = Bucketizer.getLabelsBucket(labels=labels, type=self.output_type)
 
-        evaluation = self.estimator.evaluate(input_fn=eval_input_fn)
+        evaluation = self.estimator.evaluate(input_fn=lambda:self.train_input_fn(features=features, labels=bucketized_labels, batch_size=32))
 
         return evaluation
 
     def predict(self, data_matrix):
-        pred_input_fn = tf.convert_to_tensor(data_matrix)
-
-        prediction = self.estimator.predict(input_fn=pred_input_fn, predict_keys="bpm")
+        prediction = self.estimator.predict(input_fn=lambda:self.pred_input_fn(features=data_matrix, batch_size=32))
 
         return prediction
 
-    def csv_to_dataset(self, csv_path):
-        dataset = tf.data.TextLineDataset(csv_path)
-        dataset = dataset.map(self.parse_csv)
-        dataset = dataset.batch(32)
+    def pred_input_fn(self, features, batch_size):
+        inputs = dict(features)
 
+        # Convert the inputs to a Dataset.
+        dataset = tf.data.Dataset.from_tensor_slices(inputs)
+
+        # Batch the examples
+        assert batch_size is not None, "batch_size must not be None"
+        dataset = dataset.batch(batch_size)
+
+        # Return the dataset.
         return dataset
 
-    def parse_csv(self, line):
-        # user_id:string, time:int, heart_rate:int, bpm:int
-        defaults = [[""], [0], [0], [0]]
+    def train_input_fn(self, features, labels, batch_size):
+        """An input function for training"""
+        # Convert the inputs to a Dataset.
+        dataset = tf.data.Dataset.from_tensor_slices((dict(features), labels))
 
-        parsed_line = tf.decode_csv(line, defaults)
+        # Shuffle, repeat, and batch the examples.
+        #dataset = dataset.shuffle(1000).repeat().batch(batch_size)
+        dataset = dataset.shuffle(100)
+        dataset = dataset.batch(batch_size=batch_size)
+        # Return the dataset.
+        return dataset.make_one_shot_iterator().get_next()
 
-        features = tf.reshape(parsed_line[:-1], shape=(3,))
+'''
+model = LRModel(model_dir="", output_type=Bucketizer.BucketType.PULSE)
 
-        label = tf.reshape(parsed_line[-1], shape=())
+train_x = {
+    'user_id': ["userid1","userid3","userid1","userid1","userid2","userid1","userid1","userid1","userid3","userid2"],
+    'time': [1000,500,250,700,900,450,123,900,1000,600],
+    'heart_rate': [100,50,25,67,98,123,150,175,35,50]
+}
 
-        return features, label
+train_labels = [100,150,75,87,90,210,125,55,201,20]
+
+res = model.train(features=train_x, labels=train_labels)
+
+predict_x = {
+    'user_id': ["userid1"],
+    'time': [1000],
+    'heart_rate': [55],
+}
+
+pred = model.predict(data_matrix=predict_x)
+
+for p in pred:
+    print(p)
+'''
