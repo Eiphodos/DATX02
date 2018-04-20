@@ -258,9 +258,9 @@ def userdata_receive_linreg(request, userid):
         # Rating is set to 1 since we want a song with high rating
         rating = 1.0
         if (LR_CKPTSTATE < TempoLinReg.get_checkpoint_state()):
-            LoudLinReg = LRModel.LRModel(LR_LOUD_CKPT_PATH, lr_loudftcol)
-            ModeLinReg = LRModel.LRModel(LR_MODE_CKPT_PATH, lr_modeftcol)
-            TempoLinReg = LRModel.LRModel(LR_TEMPO_CKPT_PATH, lr_tempoftcol)
+            LoudLinReg = LRModel.LRModel(LR_LOUD_CKPT_PATH, lr_outputloud)
+            ModeLinReg = LRModel.LRModel(LR_MODE_CKPT_PATH, lr_outputmode)
+            TempoLinReg = LRModel.LRModel(LR_TEMPO_CKPT_PATH, lr_outputtempo)
             LR_CKPTSTATE = TempoLinReg.get_checkpoint_state()
         if ((userid in lr_recommendation_cache) and lr_recommendation_cache.get(userid)):
             song = lr_recommendation_cache.get(userid).pop()
@@ -305,9 +305,9 @@ def userdata_receive_dnn(request, userid):
         # Rating is set to 1 since we want a song with high rating
         rating = 1.0
         if (DNN_CKPTSTATE < TempoDNN.get_checkpoint_state()):
-            LoudDNN = DNNModel.DNNModel(DNN_LOUD_CKPT_PATH, dnn_loudftcol)
-            ModeDNN = DNNModel.DNNModel(DNN_MODE_CKPT_PATH, dnn_modeftcol)
-            TempoDNN = DNNModel.DNNModel(DNN_TEMPO_CKPT_PATH, dnn_tempoftcol)
+            LoudDNN = DNNModel.DNNModel(DNN_LOUD_CKPT_PATH, dnn_outputloud)
+            ModeDNN = DNNModel.DNNModel(DNN_MODE_CKPT_PATH, dnn_outputmode)
+            TempoDNN = DNNModel.DNNModel(DNN_TEMPO_CKPT_PATH, dnn_outputtempo)
             DNN_CKPTSTATE = TempoDNN.get_checkpoint_state()
         if ((userid in dnn_recommendation_cache) and dnn_recommendation_cache.get(userid)):
             song = dnn_recommendation_cache.get(userid).pop()
