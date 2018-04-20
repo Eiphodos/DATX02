@@ -266,9 +266,9 @@ def userdata_receive_linreg(request, userid):
             song = lr_recommendation_cache.get(userid).pop()
         else:
             data = {'user_id': [userid], 'time': [timevalue], 'heart_rate': [int(pulse)], 'rating': [rating]}
-            tempo = int(TempoLinReg.get_predict_class_id(data_matrix=data))
-            mode = int(ModeLinReg.get_predict_class_id(data_matrix=data))
-            loudness = int(LoudLinReg.get_predict_class_id(data_matrix=data))
+            tempo = int(TempoLinReg.get_predict_prediction(data_matrix=data))
+            mode = int(ModeLinReg.get_predict_prediction(data_matrix=data))
+            loudness = int(LoudLinReg.get_predict_prediction(data_matrix=data))
             # Cache new songs based on linreg sugggestions
             lr_recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             song = lr_recommendation_cache.get(userid).pop()

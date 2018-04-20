@@ -52,11 +52,11 @@ class LRModel:
 
         return prediction
 
-    def get_predict_class_id(self, data_matrix):
+    def get_predict_prediction(self, data_matrix):
         preds = self.predict(data_matrix)
         for p in preds:
-            class_id = p['class_ids'][0]
-        return class_id
+            preds = p['predictions'][0]
+        return preds
 
 
     def pred_input_fn(self, features, batch_size):
