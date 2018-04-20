@@ -37,19 +37,17 @@ def get_training_data(cursor):
     tempoarr = []
     modearr = []
     loudarr = []
-    count = 0
     conn = connect_database()
     cursor2 = conn.cursor()
     for record in cursor:
-        ratingarr[count] = record[0]
-        userarr[count] = record[1]
-        hrarr[count] = record[2]
-        timearr[count] = record[3]
+        ratingarr.append(record[0])
+        userarr.append(record[1])
+        hrarr.append(record[2])
+        timearr.append(record[3])
         tmp, md, ld = get_songdata(cursor2, record[4])
-        tempoarr[count] = tmp
-        modearr[count] = md
-        loudarr[count] = ld
-        count += 1
+        tempoarr.append(tmp)
+        modearr.append(md)
+        loudarr.append(ld)
     traindict['user_id'] = userarr
     traindict['heart_rate'] = hrarr
     traindict['rating'] = ratingarr
