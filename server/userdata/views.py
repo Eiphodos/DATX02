@@ -266,9 +266,9 @@ def userdata_receive_linreg(request, userid):
             song = lr_recommendation_cache.get(userid).pop()
         else:
             data = {'user_id': [userid], 'time': [timevalue], 'heart_rate': [pulse], 'rating': [rating]}
-            tempo = TempoLinReg.predict(data_matrix=data)
-            mode = ModeLinReg.predict(data_matrix=data)
-            loudness = LoudLinReg.predict(data_matrix=data)
+            tempo = TempoLinReg.get_predict_class_id(data_matrix=data)
+            mode = ModeLinReg.get_predict_class_id(data_matrix=data)
+            loudness = LoudLinReg.get_predict_class_id(data_matrix=data)
             # Cache new songs based on linreg sugggestions
             lr_recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             song = lr_recommendation_cache.get(userid).pop()
@@ -313,9 +313,9 @@ def userdata_receive_dnn(request, userid):
             song = dnn_recommendation_cache.get(userid).pop()
         else:
             data = {'user_id':[userid],'time':[timevalue],'heart_rate':[pulse],'rating':[rating]}
-            tempo = TempoDNN.predict(data_matrix=data)
-            mode = ModeDNN.predict(data_matrix=data)
-            loudness = LoudDNN.predict(data_matrix=data)
+            tempo = TempoDNN.get_predict_class_id(data_matrix=data)
+            mode = ModeDNN.get_predict_class_id(data_matrix=data)
+            loudness = LoudDNN.get_predict_class_id(data_matrix=data)
             # Cache new songs based on DNN sugggestions
             dnn_recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             song = dnn_recommendation_cache.get(userid).pop()
