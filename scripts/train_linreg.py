@@ -23,7 +23,6 @@ def main():
     TempoLinReg = LRModel.LRModel(LR_TEMPO_CKPT_PATH, lr_outputtempo)
 
     trainfeatures, tempolabels, modelabels, loudlabels = training_data.connect_and_get_data()
-    print(tempolabels)
 
     LoudLinReg.train(features=trainfeatures, labels=loudlabels)
     ModeLinReg.train(features=trainfeatures, labels=modelabels)

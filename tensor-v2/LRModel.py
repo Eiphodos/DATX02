@@ -35,7 +35,7 @@ class LRModel:
 
     def train(self, features, labels):
         bucketized_labels = Bucketizer.getLabelsBucket(labels=labels, type=self.output_type)
-
+        print(bucketized_labels)
         result = self.estimator.train(input_fn=lambda:self.train_input_fn(features=features, labels=bucketized_labels, batch_size=32))
 
         return result
