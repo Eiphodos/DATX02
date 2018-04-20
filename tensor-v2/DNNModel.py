@@ -8,6 +8,7 @@ import tensorflow.contrib.eager as tfe
 
 from collections import namedtuple
 
+import sys
 sys.path.append("/home/musik/DATX02/server/userdata/")
 import Bucketizer
 
