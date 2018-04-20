@@ -313,9 +313,9 @@ def userdata_receive_dnn(request, userid):
             song = dnn_recommendation_cache.get(userid).pop()
         else:
             data = {'user_id':[userid],'time':[timevalue],'heart_rate':[pulse],'rating':[rating]}
-            tempo = TempoDNN.get_predict_class_id(data_matrix=data)
-            mode = ModeDNN.get_predict_class_id(data_matrix=data)
-            loudness = LoudDNN.get_predict_class_id(data_matrix=data)
+            tempo = int(TempoDNN.get_predict_class_id(data_matrix=data))
+            mode = int(ModeDNN.get_predict_class_id(data_matrix=data))
+            loudness = int(LoudDNN.get_predict_class_id(data_matrix=data))
             # Cache new songs based on DNN sugggestions
             dnn_recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             song = dnn_recommendation_cache.get(userid).pop()
