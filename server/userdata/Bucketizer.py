@@ -27,26 +27,48 @@ def bucketize_loudness(loudindex):
     buckets = [-8, -6, -4, -2, 0, 2, 5]
     return buckets[loudindex]
 
+def bucketize_mode(mode):
+    return mode
+
+
+def rev_bucket_tempo(tempo):
+    buckets = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210]
+    count = 0
+    for b in buckets:
+        if (tempo < b):
+            return count
+        count += 1
+    return count
+
+def rev_bucket_loud(loud):
+    buckets = [-8, -6, -4, -2, 0, 2, 5]
+    count = 0
+    for b in buckets:
+        if (loud < b):
+            return count
+        count += 1
+    return count
+
 def getLabelsBucket(labels, type):
     result = []
-    if (type == BucketType.PULSE):
+    if (type == BucketType.MODE):
         for l in labels:
-            result.append(bucketize_pulse(l))
+            result.append(bucketize_mode(l))
     if (type == BucketType.TIME):
         for l in labels:
             result.append(bucketize_time(l))
     if (type == BucketType.TEMPO):
         for l in labels:
-            result.append(bucketize_tempo(l))
+            result.append(rev_bucket_tempo(l))
     if (type == BucketType.LOUDNESS):
         for l in labels:
-            result.append(bucketize_loudness(l))
+            result.append(rev_bucket_loud(l))
 
     return result
 
 def getNumberOfClassesForType(type):
-    if (type == BucketType.PULSE):
-        return 8
+    if (type == BucketType.MODE):
+        return 2
     if (type == BucketType.TIME):
         return 4
     if (type == BucketType.TEMPO):
@@ -56,8 +78,8 @@ def getNumberOfClassesForType(type):
     return 0
 
 def getNameForType(type):
-    if (type == BucketType.PULSE):
-        return "bpm"
+    if (type == BucketType.MODE):
+        return "mode"
     if (type == BucketType.TIME):
         return "time"
     if (type == BucketType.TEMPO):
@@ -67,7 +89,7 @@ def getNameForType(type):
     return ""
 
 class BucketType(Enum):
-    PULSE = 0
+    MODE = 0
     TIME = 1
     TEMPO = 2
     LOUDNESS = 3

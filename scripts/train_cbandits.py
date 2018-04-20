@@ -83,28 +83,10 @@ def calculate_actions(cursor, songid):
     mode = 0
     loud = 0
     for record in cursor:
-        tempo = rev_bucket_tempo(record[0])
+        tempo = Bucketizer.rev_bucket_tempo(record[0])
         mode = record[1]
-        loud = rev_bucket_loud(record[2])
+        loud = Bucketizer.rev_bucket_loud(record[2])
     return tempo, mode, loud
-
-def rev_bucket_tempo(tempo):
-    buckets = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210]
-    count = 0
-    for b in buckets:
-        if (tempo < b):
-            return count
-        count += 1
-    return count
-
-def rev_bucket_loud(loud):
-    buckets = [-8, -6, -4, -2, 0, 2, 5]
-    count = 0
-    for b in buckets:
-        if (loud < b):
-            return count
-        count += 1
-    return count
 
 def cleanup(cursor):
     try:

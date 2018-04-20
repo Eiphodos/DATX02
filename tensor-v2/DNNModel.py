@@ -21,15 +21,16 @@ class DNNModel:
     # output_column is a FeatureColumn (a sort of struct), easy to create using the functions at the bottom
     def __init__(self, model_dir, output_type):
         self.output_type = output_type
-
+        self.checkpoint_path = model_dir
         hashed_user_column = tf.feature_column.categorical_column_with_hash_bucket(key='user_id', hash_bucket_size=100, dtype=tf.string)
         user_column = tf.feature_column.embedding_column(categorical_column=hashed_user_column, dimension=3)
         time_column = tf.feature_column.numeric_column("time")
         heart_rate_column = tf.feature_column.numeric_column("heart_rate")
+        rating_column = tf.feature_column.numeric_column("rating")
 
         classes = Bucketizer.getNumberOfClassesForType(self.output_type)
 
-        self.estimator = tf.estimator.DNNClassifier(feature_columns=[user_column, time_column, heart_rate_column],
+        self.estimator = tf.estimator.DNNClassifier(feature_columns=[user_column, time_column, heart_rate_column, rating_column],
                                                     hidden_units=[5,1],
                                                     n_classes=classes,
                                                     optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.01),
@@ -78,6 +79,12 @@ class DNNModel:
         dataset = dataset.batch(batch_size=batch_size)
         # Return the dataset.
         return dataset.make_one_shot_iterator().get_next()
+
+    # Returns the number of the latest checkpoint
+    def get_checkpoint_state(self):
+        s = tf.train.latest_checkpoint(checkpoint_dir=self.checkpoint_path)
+        return int(''.join(ele for ele in s if ele.isdigit()))
+
 
 '''
 model = DNNModel(model_dir="", output_type=Bucketizer.BucketType.PULSE)

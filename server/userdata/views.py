@@ -67,14 +67,19 @@ LR_TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/linreg/tempo"
 LR_MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/linreg/mode"
 
 # Linear regression feature columns
-lr_loudftcol = LRModel.LRModel.create_bucketized_numeric_feature_column("loudness", [-8, -6, -4, -2, 0, 2, 5])
-lr_modeftcol = LRModel.LRModel.create_numeric_feature_column("mode")
-lr_tempoftcol = LRModel.LRModel.create_bucketized_numeric_feature_column("tempo", [30, 50, 70, 90, 110, 130, 150, 170, 190, 210])
+#lr_loudftcol = LRModel.LRModel.create_bucketized_numeric_feature_column("loudness", [-8, -6, -4, -2, 0, 2, 5])
+#lr_modeftcol = LRModel.LRModel.create_numeric_feature_column("mode")
+#lr_tempoftcol = LRModel.LRModel.create_bucketized_numeric_feature_column("tempo", [30, 50, 70, 90, 110, 130, 150, 170, 190, 210])
+
+# Linear regression output types
+lr_outputloud = Bucketizer.BucketType.LOUDNESS
+lr_outputmode = Bucketizer.BucketType.MODE
+lr_outputtempo = Bucketizer.BucketType.TEMPO
 
 # Linear regression estimators
-LoudLinReg = LRModel.LRModel(LR_LOUD_CKPT_PATH, lr_loudftcol)
-ModeLinReg = LRModel.LRModel(LR_MODE_CKPT_PATH, lr_modeftcol)
-TempoLinReg = LRModel.LRModel(LR_TEMPO_CKPT_PATH, lr_tempoftcol)
+LoudLinReg = LRModel.LRModel(LR_LOUD_CKPT_PATH, lr_outputloud)
+ModeLinReg = LRModel.LRModel(LR_MODE_CKPT_PATH, lr_outputmode)
+TempoLinReg = LRModel.LRModel(LR_TEMPO_CKPT_PATH, lr_outputtempo)
 
 # Linear regression checkpoint state tracker
 # All should be trained at the same time so checkpointstate will be the same for all estimators.
@@ -91,17 +96,22 @@ DNN_LOUD_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/dnn/loud"
 DNN_TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/dnn/tempo"
 DNN_MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/dnn/mode"
 
-# Linear regression feature columns
-dnn_loudftcol = DNNModel.DNNModel.create_bucketized_numeric_feature_column("loudness", [-8, -6, -4, -2, 0, 2, 5])
-dnn_modeftcol = DNNModel.DNNModel.create_numeric_feature_column("mode")
-dnn_tempoftcol = DNNModel.DNNModel.create_bucketized_numeric_feature_column("tempo", [30, 50, 70, 90, 110, 130, 150, 170, 190, 210])
+# DNN feature columns
+#dnn_loudftcol = DNNModel.DNNModel.create_bucketized_numeric_feature_column("loudness", [-8, -6, -4, -2, 0, 2, 5])
+#dnn_modeftcol = DNNModel.DNNModel.create_numeric_feature_column("mode")
+#dnn_tempoftcol = DNNModel.DNNModel.create_bucketized_numeric_feature_column("tempo", [30, 50, 70, 90, 110, 130, 150, 170, 190, 210])
 
-# Linear regression estimators
-LoudDNN = DNNModel.DNNModel(DNN_LOUD_CKPT_PATH, dnn_loudftcol)
-ModeDNN = DNNModel.DNNModel(DNN_MODE_CKPT_PATH, dnn_modeftcol)
-TempoDNN = DNNModel.DNNModel(DNN_TEMPO_CKPT_PATH, dnn_tempoftcol)
+# DNN output types
+dnn_outputloud = Bucketizer.BucketType.LOUDNESS
+dnn_outputmode = Bucketizer.BucketType.MODE
+dnn_outputtempo = Bucketizer.BucketType.TEMPO
 
-# Linear regression checkpoint state tracker
+# DNN estimators
+LoudDNN = DNNModel.DNNModel(DNN_LOUD_CKPT_PATH, dnn_outputloud)
+ModeDNN = DNNModel.DNNModel(DNN_MODE_CKPT_PATH, dnn_outputmode)
+TempoDNN = DNNModel.DNNModel(DNN_TEMPO_CKPT_PATH, dnn_outputtempo)
+
+# DNN checkpoint state tracker
 # All should be trained at the same time so checkpointstate will be the same for all estimators.
 DNN_CKPTSTATE = TempoLinReg.get_checkpoint_state()
 
@@ -255,10 +265,10 @@ def userdata_receive_linreg(request, userid):
         if ((userid in lr_recommendation_cache) and lr_recommendation_cache.get(userid)):
             song = lr_recommendation_cache.get(userid).pop()
         else:
-            data = [userid, timevalue, pulse]
-            tempo = TempoLinReg.predict(data)
-            mode = ModeLinReg.predict(data)
-            loudness = LoudLinReg.predict(data)
+            data = {'user_id': [userid], 'time': [timevalue], 'heart_rate': [pulse], 'rating': [rating]}
+            tempo = TempoLinReg.predict(data_matrix=data)
+            mode = ModeLinReg.predict(data_matrix=data)
+            loudness = LoudLinReg.predict(data_matrix=data)
             # Cache new songs based on linreg sugggestions
             lr_recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             song = lr_recommendation_cache.get(userid).pop()
@@ -302,10 +312,10 @@ def userdata_receive_dnn(request, userid):
         if ((userid in dnn_recommendation_cache) and dnn_recommendation_cache.get(userid)):
             song = dnn_recommendation_cache.get(userid).pop()
         else:
-            data = [userid, timevalue, pulse]
-            tempo = TempoDNN.predict(data)
-            mode = ModeDNN.predict(data)
-            loudness = LoudDNN.predict(data)
+            data = {'user_id':[userid],'time':[timevalue],'heart_rate':[pulse],'rating':[rating]}
+            tempo = TempoDNN.predict(data_matrix=data)
+            mode = ModeDNN.predict(data_matrix=data)
+            loudness = LoudDNN.predict(data_matrix=data)
             # Cache new songs based on DNN sugggestions
             dnn_recommendation_cache[userid] = ranking.ranking(tempo, loudness, mode, userid)
             song = dnn_recommendation_cache.get(userid).pop()
