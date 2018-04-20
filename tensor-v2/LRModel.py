@@ -16,9 +16,7 @@ import Bucketizer
 FeatureColumn = namedtuple("FeatureColumn", "name column")
 
 class LRModel:
-    output_type = Bucketizer.BucketType.PULSE
 
-    # 5,1
 
     # output_column is a FeatureColumn (a sort of struct), easy to create using the functions at the bottom
     def __init__(self, model_dir, output_type):
