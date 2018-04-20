@@ -1,4 +1,6 @@
 import sys
+sys.path.append("/home/musik/DATX02/server/userdata/")
+import Bucketizer
 sys.path.append("/home/musik/DATX02/tensor-v2/")
 import DNNModel
 sys.path.append("/home/musik/DATX02/scripts/")
