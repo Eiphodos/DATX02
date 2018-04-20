@@ -24,9 +24,9 @@ def main():
 
     trainfeatures, tempolabels, modelabels, loudlabels = training_data.connect_and_get_data()
 
-    LoudDNN.train(features=trainfeatures, labels=loudlabels)
-    ModeDNN.train(features=trainfeatures, labels=modelabels)
-    TempoDNN.train(features=trainfeatures, labels=tempolabels)
+    LoudLinReg.train(features=trainfeatures, labels=loudlabels)
+    ModeLinReg.train(features=trainfeatures, labels=modelabels)
+    TempoLinReg.train(features=trainfeatures, labels=tempolabels)
 
 # If we run module as a script, run main
 if __name__ == '__main__':
