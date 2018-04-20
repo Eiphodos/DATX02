@@ -29,7 +29,7 @@ def get_training_data(cursor):
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
-    traindict = {'userid', 'heartrate', 'time', 'rating'}
+    traindict = {'userid':[], 'heartrate':[], 'time':[], 'rating':[]}
     userarr = []
     hrarr = []
     timearr = []
