@@ -9,8 +9,7 @@ import tensorflow.contrib.eager as tfe
 from collections import namedtuple
 
 import sys
-#sys.path.append("/home/musik/DATX02/server/userdata/")
-sys.path.append(r"C:\Users\David\Documents\GitHub\DATX02\server\userdata")
+sys.path.append("/home/musik/DATX02/server/userdata/")
 import Bucketizer
 
 
