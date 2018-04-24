@@ -31,13 +31,26 @@ def bucketize_mode(mode):
     return mode
 
 
+# Tempo buckets #
+# 0-30 = index 0
+# 31-50 = index 1
+# 51-70 = index 2
+# 71-90 = index 3
+# 91-110 = index 4
+# 111-130 = index 5
+# 131-150 = index 6
+# 151-170 = index 7
+# 171-190 = index 8
+# 191-inf  = index 9
 def rev_bucket_tempo(tempo):
     buckets = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210]
     count = 0
     for b in buckets:
-        if (tempo < b):
-            return count
-        count += 1
+        if (count >= 8):
+            if (tempo > b):
+                count += 1
+            else:
+                return count
     return count
 
 def rev_bucket_loud(loud):

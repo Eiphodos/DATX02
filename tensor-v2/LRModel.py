@@ -9,7 +9,8 @@ import tensorflow.contrib.eager as tfe
 from collections import namedtuple
 
 import sys
-sys.path.append("/home/musik/DATX02/server/userdata/")
+#sys.path.append("/home/musik/DATX02/server/userdata/")
+sys.path.append(r"C:\Users\David\Documents\GitHub\DATX02\server\userdata")
 import Bucketizer
 
 
@@ -30,12 +31,12 @@ class LRModel:
 
         classes = Bucketizer.getNumberOfClassesForType(self.output_type)
 
-        self.estimator = tf.estimator.LinearRegressor(feature_columns=[user_column, time_column, heart_rate_column, rating_column],
-                                                    model_dir=model_dir)
+        self.estimator = tf.estimator.LinearClassifier(feature_columns=[user_column, time_column, heart_rate_column, rating_column],
+                                                    model_dir=model_dir, n_classes=classes)
 
     def train(self, features, labels):
         bucketized_labels = Bucketizer.getLabelsBucket(labels=labels, type=self.output_type)
-        print(bucketized_labels)
+
         result = self.estimator.train(input_fn=lambda:self.train_input_fn(features=features, labels=bucketized_labels, batch_size=32))
 
         return result
@@ -52,11 +53,11 @@ class LRModel:
 
         return prediction
 
-    def get_predict_prediction(self, data_matrix):
+    def get_predict_class_id(self, data_matrix):
         preds = self.predict(data_matrix)
         for p in preds:
-            preds = p['predictions'][0]
-        return preds
+            class_id = p['class_ids'][0]
+        return class_id
 
 
     def pred_input_fn(self, features, batch_size):
