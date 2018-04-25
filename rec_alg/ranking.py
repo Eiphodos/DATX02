@@ -1,6 +1,3 @@
-# Note: FULKOD (EJ FUNGERANDE)
-# Temporärt ranking algoritm som kanske ersätts av någonting annat senare
-
 import predict
 import psycopg2
 import pandas as pd
@@ -9,23 +6,8 @@ import numpy as np
 nbrOfFeatures = 3
 
 def ranking(wantedTempo, wantedLoudness, wantedMode, user):
-    # Vilka övriga inputs får vi från predict?
-    #switch beroende på hur vi implementerar chunksen?
-    # (tempo, genre, mode, releaseyear)
-
-
-    # PROBLEM OCH FRÅGETECKEN
-    # Hur hanterar vi "konstiga" kombinationer där vi inte får tillbaka något som ger riktiga låtar
-    # Sortera istället för filtrera?
-    # Random ranking av en filtrerad lista?
-    # Kan sätta arbiträra vikter vid alla inputs och ranka efter hur många och hur väl dom stämmer
-
-    # Dictionary med all statisk data för låtarna vi använder oss av
-    # Kommer snarare läsas från en databas
     cursor = connect_database()
     dict = get_songdata(cursor)
-    #dict.set_index('songid', inplace=True)
-    # Temporär dictionary som används för rankingen
     ranking = {}
 
     # Vi går igenom vår lista och sätter vikter på alla låtar

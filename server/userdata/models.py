@@ -1,5 +1,10 @@
 from django.db import models
 
+import sys
+sys.path.append("/home/musik/DATX02/scripts/")
+import training_data
+
+import psycopg2
 import datetime
 
 class Userdata(models.Model):
@@ -20,11 +25,24 @@ class UserPlayCounter(models.Model):
     userid = models.CharField(max_length=255)
     playCounter = models.IntegerField(default=0)
     last_update = models.IntegerField(default=0, blank=True)
+    userindex = models.IntegerField(max_length=255, blank=True)
 
     @classmethod
     def create(cls, userid):
-        upc = cls(userid=userid, playCounter=0, last_update=0)
+        conn = training_data.connect_database()
+        cursor = conn.cursor()
+        usernumber = get_number_of_users(cursor)
+        upc = cls(userid=userid, playCounter=0, last_update=0, userindex=usernumber)
         return upc
+
+    def get_number_of_users(self, cursor):
+        try:
+            cursor.execute("""SELECT * FROM userdata_userplaycounter;""")
+        except Exception as e:
+            print("Something went wrong when trying to SELECT")
+            print(e)
+        numberofusers = cursor.rowcount
+        return numberofusers
 
 class SongCounter(models.Model):
     userid = models.CharField(max_length=255)
