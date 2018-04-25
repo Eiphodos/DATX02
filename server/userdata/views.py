@@ -204,7 +204,7 @@ def userdata_receive_cbandit(request, userid):
             LoudBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH)
             ModeBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH)
             CB_CKPTSTATE = TempoBandit.get_checkpoint_state()
-        if ((userid in recommendation_cache) and recommendation_cache.get(userid)):
+        if ((userid in cb_recommendation_cache) and cb_recommendation_cache.get(userid)):
             song = cb_recommendation_cache.get(userid).pop()
             # All songs that have been cached from one recommendation request will use the same ranking id
             rid = cb_rid_cache.get(userid)
