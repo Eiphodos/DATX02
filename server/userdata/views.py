@@ -209,7 +209,7 @@ def userdata_receive_cbandit(request, userid):
             # All songs that have been cached from one recommendation request will use the same ranking id
             rid = cb_rid_cache.get(userid)
         else:
-            usernumber = upc.usernumber
+            usernumber = upc.userindex
             bucketedpulse = Bucketizer.bucketize_pulse(int(pulse))
             bucketedtime = Bucketizer.bucketize_time(timevalue)
             state = usernumber*CB_NUMBER_OF_STATES + bucketedpulse*CB_TIME_BUCKETS + bucketedtime
