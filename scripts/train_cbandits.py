@@ -11,11 +11,12 @@ LOUD_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/loud"
 TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/tempo"
 MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/mode"
 # Bandits constant variables
-numberofstates = 28
-tempoactions = 10
-modeactions = 2
-loudnessactions = 7
-timebuckets = 4
+CB_NUMBER_OF_STATES = 28
+CB_TEMPO_ACTIONS = 10
+CB_MODE_ACTIONS = 2
+CB_LOUD_ACTIONS = 7
+CB_TIME_BUCKETS = 4
+
 
 # Skapar en anslutning till databsen
 def connect_database():
@@ -46,7 +47,7 @@ def get_untrained_rids(cursor):
 # Vi räknar sedan baklänges för att se vilka actions en cbandit hade gjort för att föreslå dom låtarna.
 def get_untrained_actstates(cursor):
     try:
-        cursor.execute("""SELECT rating, userid, heartrate, time, songid FROM userdata_userdata WHERE cbtrained=false AND ratingid IS NOT NULL;""")
+        cursor.execute("""SELECT rating, userid, heartrate, time, songid FROM userdata_userdata WHERE cbtrained=false AND ratingid IS NULL;""")
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
@@ -57,7 +58,7 @@ def get_untrained_actstates(cursor):
     conn = connect_database()
     cursor2 = conn.cursor()
     for record in cursor:
-        state = calculate_state(record[1], record[2], record[3])
+        state = calculate_state(record[1], record[2], record[3], cursor2)
         reward = record[0]
         tmp, md, ld = calculate_actions(cursor2, record[4])
         tempoarr[count] = (reward, state, tmp)
@@ -67,11 +68,18 @@ def get_untrained_actstates(cursor):
     conn.close()
     return tempoarr, modearr, loudarr
 
-def calculate_state(userid, heartrate, time):
-    # The 0 is the userid bucket which is not fixed yet.
+def calculate_state(userid, heartrate, time, cursor):
+    try:
+        cursor.execute("""SELECT userindex FROM userdata_userplaycounter WHERE userid=%s;""", (userid,))
+    except Exception as e:
+        print("Something went wrong when trying to SELECT")
+        print(e)
+    usernumber = 0
+    for record in cursor:
+        usernumber = record[0]
     bucketedpulse = Bucketizer.bucketize_pulse(heartrate)
     bucketedtime = Bucketizer.bucketize_time(time)
-    return 0*numberofstates + bucketedpulse*timebuckets + bucketedtime
+    return usernumber*CB_NUMBER_OF_STATES + bucketedpulse*CB_TIME_BUCKETS + bucketedtime
 
 def calculate_actions(cursor, songid):
     try:
@@ -90,7 +98,7 @@ def calculate_actions(cursor, songid):
 
 def cleanup(cursor):
     try:
-        cursor.execute("UPDATE userdata_userdata SET cbtrained=true WHERE cbtrained=false")
+        cursor.execute("UPDATE userdata_userdata SET cbtrained='true' WHERE cbtrained='false'")
     except Exception as e:
         print("Something went wrong when trying to UPDATE")
         print(e)
@@ -98,9 +106,9 @@ def cleanup(cursor):
 
 def main():
     # Bandits
-    loudbandit = CBandit.CBandit(numberofstates, loudnessactions, LOUD_CKPT_PATH)
-    modebandit = CBandit.CBandit(numberofstates, modeactions, MODE_CKPT_PATH)
-    tempobandit = CBandit.CBandit(numberofstates, tempoactions, TEMPO_CKPT_PATH)
+    loudbandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, LOUD_CKPT_PATH)
+    modebandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, MODE_CKPT_PATH)
+    tempobandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, TEMPO_CKPT_PATH)
 
     conn = connect_database()
     cursor = conn.cursor()
