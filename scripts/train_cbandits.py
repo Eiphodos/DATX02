@@ -92,12 +92,18 @@ def calculate_actions(cursor, songid):
         loud = Bucketizer.rev_bucket_loud(record[2])
     return tempo, mode, loud
 
-def cleanup(cursor):
+def cleanup(conn):
+    cursor = conn.cursor()
     try:
         cursor.execute("UPDATE userdata_userdata SET cbtrained='true' WHERE cbtrained='false'")
+        conn.commit()
+        cursor.close()
     except Exception as e:
         print("Something went wrong when trying to UPDATE")
         print(e)
+    finally:
+        if conn is not None:
+            conn.close()
 
 
 def main():
@@ -110,13 +116,12 @@ def main():
     cursor = conn.cursor()
     rrlist = get_untrained_rids(cursor)
     tempolist, modelist, loudlist = get_untrained_actstates(cursor)
-
+    cursor.close()
     tempobandit.train_all(rrlist, tempolist)
     modebandit.train_all(rrlist, modelist)
     loudbandit.train_all(rrlist, loudlist)
 
-    cleanup(cursor)
-    conn.close()
+    cleanup(conn)
 
 # If we run module as a script, run main
 if __name__ == '__main__':
