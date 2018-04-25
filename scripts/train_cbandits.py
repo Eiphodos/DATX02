@@ -36,10 +36,8 @@ def get_untrained_rids(cursor):
         print("Something went wrong when trying to SELECT")
         print(e)
     arr = []
-    count = 0
     for record in cursor:
-        arr[count] = (record[0],record[1])
-        count += 1
+        arr.append(record[0],record[1])
     return arr
 
 # Returnerar en array med data som cbandit ej har tränats men som inte har ett ratingid kopplat till sig. Alltså data
@@ -54,17 +52,15 @@ def get_untrained_actstates(cursor):
     tempoarr = []
     modearr = []
     loudarr = []
-    count = 0
     conn = connect_database()
     cursor2 = conn.cursor()
     for record in cursor:
         state = calculate_state(record[1], record[2], record[3], cursor2)
         reward = record[0]
         tmp, md, ld = calculate_actions(cursor2, record[4])
-        tempoarr[count] = (reward, state, tmp)
-        modearr[count] = (reward, state, md)
-        loudarr[count] = (reward, state, ld)
-        count += 1
+        tempoarr.append(reward, state, tmp)
+        modearr.append(reward, state, md)
+        loudarr.append(reward, state, ld)
     conn.close()
     return tempoarr, modearr, loudarr
 
