@@ -37,7 +37,7 @@ def get_untrained_rids(cursor):
         print(e)
     arr = []
     for record in cursor:
-        arr.append(record[0],record[1])
+        arr.append((record[0],record[1]))
     return arr
 
 # Returnerar en array med data som cbandit ej har tränats men som inte har ett ratingid kopplat till sig. Alltså data
@@ -58,9 +58,9 @@ def get_untrained_actstates(cursor):
         state = calculate_state(record[1], record[2], record[3], cursor2)
         reward = record[0]
         tmp, md, ld = calculate_actions(cursor2, record[4])
-        tempoarr.append(reward, state, tmp)
-        modearr.append(reward, state, md)
-        loudarr.append(reward, state, ld)
+        tempoarr.append((reward, state, tmp))
+        modearr.append((reward, state, md))
+        loudarr.append((reward, state, ld))
     conn.close()
     return tempoarr, modearr, loudarr
 
