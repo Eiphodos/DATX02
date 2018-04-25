@@ -25,7 +25,7 @@ class UserPlayCounter(models.Model):
     userid = models.CharField(max_length=255)
     playCounter = models.IntegerField(default=0)
     last_update = models.IntegerField(default=0, blank=True)
-    userindex = models.IntegerField(max_length=255, blank=True)
+    userindex = models.IntegerField(null=True, blank=True)
 
     @classmethod
     def create(cls, userid):
