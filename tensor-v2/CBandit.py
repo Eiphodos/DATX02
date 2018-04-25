@@ -53,10 +53,10 @@ class CBandit:
     def train_all(self, rew_rid_list, rew_state_act_list):
         for l in rew_rid_list:
             rew, rid = l
-            train_rid(rew, rid)
+            self.train_rid(rew, rid)
         for r in rew_state_act_list:
             rew, state, act = r
-            train_no_rid(rew, state, act)
+            self.train_no_rid(rew, state, act)
         self.saver.save(self.sess, self.checkpoint_prefix)
 
     # Returns the number of the latest checkpoint
