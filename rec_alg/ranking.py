@@ -3,6 +3,7 @@ import psycopg2
 import pandas as pd
 import numpy as np
 
+
 nbrOfFeatures = 3
 
 def ranking(wantedTempo, wantedLoudness, wantedMode, user):
@@ -69,7 +70,7 @@ def connect_database():
 
 def get_userbias(user, songid, cursor):
     try:
-        cursor.execute("SELECT rating FROM userdata_userdata")
+        cursor.execute("""SELECT rating FROM userdata_userdata WHERE userid=%s AND songid=%s;""", (user,songid))
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
