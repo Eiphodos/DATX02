@@ -85,4 +85,12 @@ def get_userbias(user, songid, cursor):
         count = count + 1
     return avg
 
-def get_songssinceplayed(user, songid, cursor);
+#Funktion som returnerar hur många låtar sedan en låt spelades för användaren senast
+def get_songssinceplayed(user, songid, cursor):
+    try:
+        cursor.execute("SELECT songssincelastplayed FROM userdata_userdata WHERE userid=user AND songid=songid")
+    except Exception as e:
+        print("Something went wrong when trying to SELECT")
+        print(e)
+    songssinceplayed = cursor.fetchone
+    return songssinceplayed
