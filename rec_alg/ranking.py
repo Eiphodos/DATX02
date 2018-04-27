@@ -85,3 +85,5 @@ def get_userbias(user, songid, cursor):
         avg = total/count
         count = count + 1
     return avg
+
+def get_songssinceplayed(user, songid, cursor);
