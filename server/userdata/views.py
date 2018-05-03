@@ -47,7 +47,7 @@ CB_MODE_ACTIONS = 2
 CB_LOUD_ACTIONS = 7
 CB_TIME_BUCKETS = 4
 
-# Linear regression output types
+# Cbandit output types
 cb_outputloud = Bucketizer.BucketType.LOUDNESS
 cb_outputmode = Bucketizer.BucketType.MODE
 cb_outputtempo = Bucketizer.BucketType.TEMPO

@@ -17,6 +17,11 @@ CB_MODE_ACTIONS = 2
 CB_LOUD_ACTIONS = 7
 CB_TIME_BUCKETS = 4
 
+# Cbandit output types
+cb_outputloud = Bucketizer.BucketType.LOUDNESS
+cb_outputmode = Bucketizer.BucketType.MODE
+cb_outputtempo = Bucketizer.BucketType.TEMPO
+
 
 # Skapar en anslutning till databsen
 def connect_database():
@@ -140,9 +145,9 @@ def cleanup(conn):
 
 def main():
     # Bandits
-    loudbandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, LOUD_CKPT_PATH)
-    modebandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, MODE_CKPT_PATH)
-    tempobandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, TEMPO_CKPT_PATH)
+    loudbandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH, cb_outputloud)
+    modebandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH, cb_outputmode)
+    tempobandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, CB_TEMPO_CKPT_PATH, cb_outputtempo)
 
     conn = connect_database()
     cursor = conn.cursor()
