@@ -27,6 +27,38 @@ def connect_database():
         print(e)
     return conn
 
+def update_rid(type, rid, action, state):
+    conn = connect_database()
+    cur = conn.cursor()
+    try:
+        cursor.execute("""INSERT INTO ratingids (type, rid, action, state) values (%s, %s, %s, %s) ON CONFLICT (unique_type_rid) DO UPDATE SET action=EXCLUDED.action, state=EXCLUDED.state WHERE type=EXCLUDED.type AND rid=EXCLUDED.rid;""", (type, rid, action, state))
+        conn.commit()
+        cursor.close()
+    except Exception as e:
+        print("Something went wrong when trying to UPSERT")
+        print(e)
+    finally:
+        if conn is not None:
+            conn.close()
+
+def get_data_from_rid(type, rid):
+    conn = connect_database()
+    cur = conn.cursor()
+    try:
+        cursor.execute("""SELECT action, state FROM ratingids WHERE type=%s AND rid=%s;""",(type, rid))
+    except Exception as e:
+        print("Something went wrong when trying to SELECT")
+        print(e)
+    action = 0
+    state = 0
+    for record in cursor:
+        action, state = record[0], record[1]
+    cursor.close()
+    conn.close()
+    return state, action
+
+
+
 # Returnerar en array med all data som cbandit ej tränats på som har ett ratingid (alltså data som
 # direkt hör ihop med actions som cbandit har föreslagit).
 def get_untrained_rids(cursor):

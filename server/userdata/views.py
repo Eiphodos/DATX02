@@ -47,10 +47,15 @@ CB_MODE_ACTIONS = 2
 CB_LOUD_ACTIONS = 7
 CB_TIME_BUCKETS = 4
 
+# Linear regression output types
+cb_outputloud = Bucketizer.BucketType.LOUDNESS
+cb_outputmode = Bucketizer.BucketType.MODE
+cb_outputtempo = Bucketizer.BucketType.TEMPO
+
 # Bandits
-LoudBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH)
-ModeBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH)
-TempoBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, CB_TEMPO_CKPT_PATH)
+LoudBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH, cb_outputloud)
+ModeBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH, cb_outputmode)
+TempoBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, CB_TEMPO_CKPT_PATH, cb_outputtempo)
 
 # Cbandit checkpoint state tracker
 CB_CKPTSTATE = TempoBandit.get_checkpoint_state()

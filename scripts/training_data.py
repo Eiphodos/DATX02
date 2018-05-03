@@ -13,7 +13,6 @@ def connect_database():
         print(e)
     return conn
 
-
 def get_training_data(cursor):
     try:
         cursor.execute("""SELECT rating, userid, heartrate, time, songid FROM userdata_userdata;""")

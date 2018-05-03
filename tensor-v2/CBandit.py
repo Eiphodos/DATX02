@@ -3,13 +3,16 @@ from argparse import _AppendAction
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import numpy as np
+import sys
+sys.path.append("/home/musik/DATX02/scripts/")
+import train_cbandits
 
 # Only used as reference, send actual path to constructor
 CHECKPOINT_PREFIX = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/model.ckpt"
 CHECKPOINT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit"
 
 class CBandit:
-    def __init__(self, states, actions, ckpt_path):
+    def __init__(self, states, actions, ckpt_path, type):
         self.checkpoint_path = ckpt_path
         self.checkpoint_prefix = ckpt_path + "/model.ckpt"
         tf.reset_default_graph()  # Clear the Tensorflow graph.
@@ -18,8 +21,8 @@ class CBandit:
         self.weights = tf.trainable_variables()[0]  # The weights we will evaluate to look into the network.
         self.e = 0.1  # Set the chance of taking a random action.
         self.init = tf.global_variables_initializer()
-        self.rankingIdentifiers = {}
         self.latestRID = 0
+        self.output_type = type
         # Creates a saver to restore a trained bandit
         self.saver = tf.train.Saver()
         self.sess = tf.Session()
@@ -35,12 +38,12 @@ class CBandit:
         else:
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         self.latestRID = self.latestRID + 1
-        self.rankingIdentifiers[self.latestRID]={'action': action, 'state': s}
+        train_cbandits.update_rid(self.output_type, self.latestRID, action, s)
         return (self.latestRID, action)
 
     def train_rid(self, reward, rid):
         # Get data for the ranking id
-        s, action = self.rankingIdentifiers[rid]['state'], self.rankingIdentifiers[rid]['action']
+        s, action = train_cbandits.get_data_from_rid(self.output_type, rid)
         # Update the network.
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
         _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
