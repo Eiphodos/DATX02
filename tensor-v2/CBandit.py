@@ -6,6 +6,8 @@ import numpy as np
 import sys
 sys.path.append("/home/musik/DATX02/scripts/")
 import train_cbandits
+sys.path.append("/home/musik/DATX02/server/userdata/")
+import Bucketizer
 
 # Only used as reference, send actual path to constructor
 CHECKPOINT_PREFIX = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/model.ckpt"
@@ -38,12 +40,12 @@ class CBandit:
         else:
             action = self.sess.run(self.myAgent.chosen_action, feed_dict={self.myAgent.state_in: [s]})
         self.latestRID = self.latestRID + 1
-        train_cbandits.update_rid(self.output_type, self.latestRID, action, s)
+        train_cbandits.update_rid(Bucketizer.getNameForType(self.output_type), self.latestRID, int(action), int(s))
         return (self.latestRID, action)
 
     def train_rid(self, reward, rid):
         # Get data for the ranking id
-        s, action = train_cbandits.get_data_from_rid(self.output_type, rid)
+        s, action = train_cbandits.get_data_from_rid(Bucketizer.getNameForType(self.output_type), rid)
         # Update the network.
         feed_dict = {self.myAgent.reward_holder: [reward], self.myAgent.action_holder: [action], self.myAgent.state_in: [s]}
         _, ww = self.sess.run([self.myAgent.update, self.weights], feed_dict=feed_dict)
