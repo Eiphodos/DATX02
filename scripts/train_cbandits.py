@@ -7,9 +7,9 @@ import Bucketizer
 import psycopg2
 
 # Bandit checkpoint paths
-LOUD_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/loud"
-TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/tempo"
-MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/mode"
+CB_LOUD_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/loud"
+CB_TEMPO_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/tempo"
+CB_MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/mode"
 # Bandits constant variables
 CB_NUMBER_OF_STATES = 28
 CB_TEMPO_ACTIONS = 10
