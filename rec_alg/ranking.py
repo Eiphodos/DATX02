@@ -22,7 +22,7 @@ def ranking(wantedTempo, wantedLoudness, wantedMode, user):
 # vi ska spela
 # Vi ska inkludera userbias här också för individuella låtar.
 def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
-    loudnessWeight = 0
+    songssinceMultiplier = 1
     modeWeight = 0
     tempoWeight = 0
     loudnessWeight = -0.01 * abs(wantedLoudness-dictRow.loudness) ** 2 + 1
@@ -31,7 +31,9 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
     if(abs(wantedTempo-dictRow.tempo)<=10):
         tempoWeight = -0.01 * (wantedTempo-dictRow.tempo) ** 2 + 1
     bias = get_userbias(user, dictRow.songid, cursor)
-    weight = (loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + 1)
+    if(get_songssinceplayed(user, dictRow.songid, cursor) < 20)
+        songssinceMultiplier = 0  # Bör bytas ut mot någon funktion som beror mer på antalet låtar sedan spelning
+    weight = (loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + 1) * songssinceMultiplier
     return weight
 
 # Funktion som sorterar en dictionary vars keys är songids och values är weights och
@@ -96,5 +98,6 @@ def get_songssinceplayed(user, songid, cursor):
         print("Something went wrong when trying to SELECT")
         print(e)
     counterdata = cursor.fetchone()
-    result = counterdata[1] - counterdata[0]
+    lastplayed, playcounter = counterdata
+    result = playcounter - lastplayed
     return result
