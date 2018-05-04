@@ -36,7 +36,7 @@ def update_rid(type, rid, action, state):
     conn = connect_database()
     cursor = conn.cursor()
     try:
-        cursor.execute("""INSERT INTO ratingids (type, rid, action, state) values (%s, %s, %s, %s) ON CONFLICT (unique_type_rid) DO UPDATE SET action=EXCLUDED.action, state=EXCLUDED.state WHERE type=EXCLUDED.type AND rid=EXCLUDED.rid;""", (type, rid, action, state))
+        cursor.execute("""INSERT INTO ratingids (type, rid, action, state) values (%s, %s, %s, %s) ON CONFLICT ON CONSTRAINT unique_type_rid DO UPDATE SET action=EXCLUDED.action, state=EXCLUDED.state;""", (type, rid, action, state))
         conn.commit()
         cursor.close()
     except Exception as e:
