@@ -24,7 +24,7 @@ def bucketize_tempo(tempoindex):
     return buckets[tempoindex]
 
 def bucketize_loudness(loudindex):
-    buckets = [-8, -6, -4, -2, 0, 2, 5]
+    buckets = [-30, -25, -20, -15, -10, -5, 0]
     return buckets[loudindex]
 
 def bucketize_mode(mode):
@@ -47,17 +47,17 @@ def rev_bucket_tempo(tempo):
     count = 0
     for b in buckets:
         if (count >= 8):
-            if (tempo > b):
+            if (tempo >= b):
                 count += 1
             else:
                 return count
     return count
 
 def rev_bucket_loud(loud):
-    buckets = [-8, -6, -4, -2, 0, 2, 5]
+    buckets = [-30, -25, -20, -15, -10, -5, 0]
     count = 0
     for b in buckets:
-        if (loud < b):
+        if (loud <= b):
             return count
         count += 1
     return count

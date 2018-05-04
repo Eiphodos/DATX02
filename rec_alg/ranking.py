@@ -91,9 +91,7 @@ def get_userbias(user, songid, cursor):
 #Funktion som returnerar hur många låtar sedan en låt spelades för användaren senast
 def get_songssinceplayed(user, songid, cursor):
     try:
-        cursor.execute("SELECT SongCounter.lastPlayed, UserPlayCounter.playCounter FROM SongCounter INNER JOINS "
-                       "UserPlayCounter ON SongCounter.userid=UserPlayCounter.userid"
-                       "WHERE SongCounter.userid=%s AND SongCounter.songid=%s;", (user, songid))
+        cursor.execute("""SELECT userdata_songcounter."lastPlayed", userdata_userplaycounter."playCounter" FROM userdata_songcounter, userdata_userplaycounter WHERE userdata_songcounter.userid=%s AND userdata_songcounter.songid=%s AND userdata_userplaycounter.userid=%s;""", (user, songid, user))
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
