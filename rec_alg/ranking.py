@@ -24,10 +24,12 @@ def ranking(wantedTempo, wantedLoudness, wantedMode, user):
 def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
     songssinceMultiplier = 1
     modeWeight = 0
+    loudnessWeight = 0
     tempoWeight = 0
-    loudnessWeight = -0.01 * abs(wantedLoudness-dictRow.loudness) ** 2 + 1
     if(wantedMode == dictRow.mode):
         modeWeight = 1
+    if (abs(wantedLoudness - dictRow.loudness) <= 10):
+        loudnessWeight = -0.01 * abs(wantedLoudness - dictRow.loudness) ** 2 + 1
     if(abs(wantedTempo-dictRow.tempo)<=10):
         tempoWeight = -0.01 * (wantedTempo-dictRow.tempo) ** 2 + 1
     bias = get_userbias(user, dictRow.songid, cursor)
