@@ -47,7 +47,7 @@ class UserPlayCounter(models.Model):
 class SongCounter(models.Model):
     userid = models.CharField(max_length=255)
     songid = models.CharField(max_length=255)
-    lastPlayed = models.IntegerField(default=99999)
+    lastPlayed = models.IntegerField(default=0)
 
     @classmethod
     def create(cls, userid, songid):
