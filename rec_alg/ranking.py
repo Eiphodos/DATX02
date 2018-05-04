@@ -31,7 +31,7 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
     if(abs(wantedTempo-dictRow.tempo)<=10):
         tempoWeight = -0.01 * (wantedTempo-dictRow.tempo) ** 2 + 1
     bias = get_userbias(user, dictRow.songid, cursor)
-    if(get_songssinceplayed(user, dictRow.songid, cursor) < 20)
+    if(get_songssinceplayed(user, dictRow.songid, cursor) < 20):
         songssinceMultiplier = 0  # Bör bytas ut mot någon funktion som beror mer på antalet låtar sedan spelning
     weight = (loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + 1) * songssinceMultiplier
     return weight
