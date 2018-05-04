@@ -95,7 +95,7 @@ def get_songssinceplayed(user, songid, cursor):
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
-    if (cursor.rowcounter < 1):
+    if (cursor.rowcount < 1):
         # Inga resultat = vi sätter deltat till 1 över kravet för att vi ska påverka vikten
         return 21
     counterdata = cursor.fetchone()
