@@ -35,7 +35,7 @@ class CBandit:
             step = re.findall(r'\d+', lastckpt)
             #Step[0] will be 02 from DATX02, step[1] will be 2 from tensor-v2 and step[2] the step in the filename
             self.global_step = int(step[2]) + 1
-            self.saver.restore(self.sess, self.checkpoint_prefix)
+            self.saver.restore(self.sess, lastckpt)
         else:
             self.global_step = 0
         self.sess.run(self.init)
