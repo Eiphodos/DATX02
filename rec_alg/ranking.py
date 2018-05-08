@@ -22,16 +22,22 @@ def ranking(wantedTempo, wantedLoudness, wantedMode, user):
 # vi ska spela
 # Vi ska inkludera userbias här också för individuella låtar.
 def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
-    loudnessWeight = 0
+    songssinceMultiplier = 1
     modeWeight = 0
+    loudnessWeight = 0
     tempoWeight = 0
-    loudnessWeight = -0.01 * abs(wantedLoudness-dictRow.loudness) ** 2 + 1
     if(wantedMode == dictRow.mode):
         modeWeight = 1
+    if (abs(wantedLoudness - dictRow.loudness) <= 10):
+        loudnessWeight = -0.01 * abs(wantedLoudness - dictRow.loudness) ** 2 + 1
     if(abs(wantedTempo-dictRow.tempo)<=10):
         tempoWeight = -0.01 * (wantedTempo-dictRow.tempo) ** 2 + 1
     bias = get_userbias(user, dictRow.songid, cursor)
-    weight = (loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + 1)
+    songsSincePlayed = get_songssinceplayed(user, dictRow.songid, cursor)
+    songssinceMultiplier = (songsSincePlayed / 40)
+    if songsSincePlayed > 40:
+        songssinceMultiplier = songssinceMultiplier + (randint(0, 5) * 0.15)
+    weight = ((loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + 1)) * songssinceMultiplier
     return weight
 
 # Funktion som sorterar en dictionary vars keys är songids och values är weights och
@@ -89,12 +95,14 @@ def get_userbias(user, songid, cursor):
 #Funktion som returnerar hur många låtar sedan en låt spelades för användaren senast
 def get_songssinceplayed(user, songid, cursor):
     try:
-        cursor.execute("SELECT SongCounter.lastPlayed, UserPlayCounter.playCounter FROM SongCounter INNER JOINS "
-                       "UserPlayCounter ON SongCounter.userid=UserPlayCounter.userid"
-                       "WHERE SongCounter.userid=%s AND SongCounter.songid=%s;", (user, songid))
+        cursor.execute("""SELECT userdata_songcounter."lastPlayed", userdata_userplaycounter."playCounter" FROM userdata_songcounter, userdata_userplaycounter WHERE userdata_songcounter.userid=%s AND userdata_songcounter.songid=%s AND userdata_userplaycounter.userid=%s;""", (user, songid, user))
     except Exception as e:
         print("Something went wrong when trying to SELECT")
         print(e)
+    if (cursor.rowcount < 1):
+        # Inga resultat = vi sätter deltat till 1 över kravet för att vi ska påverka vikten
+        return 21
     counterdata = cursor.fetchone()
-    result = counterdata[1] - counterdata[0]
+    lastplayed, playcounter = counterdata
+    result = playcounter - lastplayed
     return result
