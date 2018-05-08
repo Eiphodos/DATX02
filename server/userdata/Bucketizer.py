@@ -44,23 +44,17 @@ def bucketize_mode(mode):
 # 191-inf  = index 9
 def rev_bucket_tempo(tempo):
     buckets = [30, 50, 70, 90, 110, 130, 150, 170, 190, 210]
-    count = 0
-    for b in buckets:
-        if (count >= 8):
-            if (tempo >= b):
-                count += 1
-            else:
-                return count
-    return count
+    for i in range(0,len(buckets)):
+        if (tempo <= buckets[i]):
+            return i
+    return len(buckets)
 
 def rev_bucket_loud(loud):
     buckets = [-30, -25, -20, -15, -10, -5, 0]
-    count = 0
-    for b in buckets:
-        if (loud <= b):
-            return count
-        count += 1
-    return count
+    for i in range(0, len(buckets)):
+        if (loud <= buckets[i]):
+            return i
+    return len(buckets)
 
 def getLabelsBucket(labels, type):
     result = []
