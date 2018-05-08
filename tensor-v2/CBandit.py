@@ -8,6 +8,7 @@ sys.path.append("/home/musik/DATX02/scripts/")
 import train_cbandits
 sys.path.append("/home/musik/DATX02/server/userdata/")
 import Bucketizer
+import re
 
 # Only used as reference, send actual path to constructor
 CHECKPOINT_PREFIX = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/model.ckpt"
@@ -29,8 +30,14 @@ class CBandit:
         self.saver = tf.train.Saver()
         self.sess = tf.Session()
         # If a checkpoint exists we use it to restore the saved data before we run the session
-        if (tf.train.latest_checkpoint(checkpoint_dir=self.checkpoint_path)):
+        lastckpt = tf.train.latest_checkpoint(checkpoint_dir=self.checkpoint_path)
+        if (lastckpt):
+            step = re.findall(r'\d+', lastckpt)
+            #Step[0] will be 02 from DATX02, step[1] will be 2 from tensor-v2 and step[2] the step in the filename
+            self.global_step = int(step[2]) + 1
             self.saver.restore(self.sess, self.checkpoint_prefix)
+        else:
+            self.global_step = 0
         self.sess.run(self.init)
 
     def predict(self, s):
@@ -62,7 +69,7 @@ class CBandit:
         for r in rew_state_act_list:
             rew, state, act = r
             self.train_no_rid(rew, state, act)
-        self.saver.save(self.sess, self.checkpoint_prefix)
+        self.saver.save(self.sess, self.checkpoint_prefix, global_step=self.global_step)
 
     # Returns the number of the latest checkpoint
     def get_checkpoint_state(self):

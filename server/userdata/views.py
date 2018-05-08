@@ -204,7 +204,7 @@ def userdata_receive_cbandit(request, userid):
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
         # Only used since rating is a required value in our serializer
         rating = 1.0
-        if (CB_CKPTSTATE < TempoBandit.get_checkpoint_state()):
+        if (CB_CKPTSTATE != TempoBandit.get_checkpoint_state()):
             TempoBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, CB_TEMPO_CKPT_PATH)
             LoudBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH)
             ModeBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH)
@@ -262,7 +262,7 @@ def userdata_receive_linreg(request, userid):
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
         # Rating is set to 1 since we want a song with high rating
         rating = 1.0
-        if (LR_CKPTSTATE < TempoLinReg.get_checkpoint_state()):
+        if (LR_CKPTSTATE != TempoLinReg.get_checkpoint_state()):
             LoudLinReg = LRModel.LRModel(LR_LOUD_CKPT_PATH, lr_outputloud)
             ModeLinReg = LRModel.LRModel(LR_MODE_CKPT_PATH, lr_outputmode)
             TempoLinReg = LRModel.LRModel(LR_TEMPO_CKPT_PATH, lr_outputtempo)
@@ -309,7 +309,7 @@ def userdata_receive_dnn(request, userid):
         upc, created = UserPlayCounter.objects.get_or_create(userid=userid)
         # Rating is set to 1 since we want a song with high rating
         rating = 1.0
-        if (DNN_CKPTSTATE < TempoDNN.get_checkpoint_state()):
+        if (DNN_CKPTSTATE != TempoDNN.get_checkpoint_state()):
             LoudDNN = DNNModel.DNNModel(DNN_LOUD_CKPT_PATH, dnn_outputloud)
             ModeDNN = DNNModel.DNNModel(DNN_MODE_CKPT_PATH, dnn_outputmode)
             TempoDNN = DNNModel.DNNModel(DNN_TEMPO_CKPT_PATH, dnn_outputtempo)
