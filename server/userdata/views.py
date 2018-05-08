@@ -205,9 +205,9 @@ def userdata_receive_cbandit(request, userid):
         # Only used since rating is a required value in our serializer
         rating = 1.0
         if (CB_CKPTSTATE != TempoBandit.get_checkpoint_state()):
-            TempoBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, CB_TEMPO_CKPT_PATH)
-            LoudBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH)
-            ModeBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH)
+            TempoBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_TEMPO_ACTIONS, CB_TEMPO_CKPT_PATH, cb_outputtempo)
+            LoudBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_LOUD_ACTIONS, CB_LOUD_CKPT_PATH, cb_outputloud)
+            ModeBandit = CBandit.CBandit(CB_NUMBER_OF_STATES, CB_MODE_ACTIONS, CB_MODE_CKPT_PATH, cb_outputmode)
             CB_CKPTSTATE = TempoBandit.get_checkpoint_state()
         if ((userid in cb_recommendation_cache) and cb_recommendation_cache.get(userid)):
             song = cb_recommendation_cache.get(userid).pop()
