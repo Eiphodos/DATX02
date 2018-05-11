@@ -2,6 +2,7 @@ import predict
 import psycopg2
 import pandas as pd
 import numpy as np
+from random import randint
 
 
 nbrOfFeatures = 3
