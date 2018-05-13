@@ -2,12 +2,12 @@ from enum import Enum
 
 def bucketize_pulse(heartrate):
     buckets = [40, 60, 80, 100, 120, 150, 180]
-    index = 0
-    for b in buckets:
-        if (heartrate < b):
-            return index
-        index += 1
-    return index
+    for i in range(0, len(buckets)):
+        if (heartrate <= buckets[i]):
+            return i
+    return (len(buckets) - 1)
+
+
 
 def bucketize_time(timeval):
     if (timeval > 300 and timeval < 660):
@@ -24,7 +24,7 @@ def bucketize_tempo(tempoindex):
     return buckets[tempoindex]
 
 def bucketize_loudness(loudindex):
-    buckets = [-30, -25, -20, -15, -10, -5, 0]
+    buckets = [-20, -18, -16, -14, -12, -10, -8, -6, -4, -2, 0]
     return buckets[loudindex]
 
 def bucketize_mode(mode):
@@ -47,14 +47,14 @@ def rev_bucket_tempo(tempo):
     for i in range(0,len(buckets)):
         if (tempo <= buckets[i]):
             return i
-    return len(buckets)
+    return (len(buckets) - 1)
 
 def rev_bucket_loud(loud):
-    buckets = [-30, -25, -20, -15, -10, -5, 0]
+    buckets = [-20, -18, -16, -14, -12, -10, -8, -6, -4, -2, 0]
     for i in range(0, len(buckets)):
         if (loud <= buckets[i]):
             return i
-    return len(buckets)
+    return (len(buckets) - 1)
 
 def getLabelsBucket(labels, type):
     result = []
@@ -81,7 +81,7 @@ def getNumberOfClassesForType(type):
     if (type == BucketType.TEMPO):
         return 10
     if (type == BucketType.LOUDNESS):
-        return 7
+        return 11
     return 0
 
 def getNameForType(type):

@@ -27,6 +27,7 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
     modeWeight = 0
     loudnessWeight = 0
     tempoWeight = 0
+    biasmod = 0
     if(wantedMode == dictRow.mode):
         modeWeight = 1
     if (abs(wantedLoudness - dictRow.loudness) <= 10):
@@ -38,7 +39,11 @@ def weight(dictRow, wantedTempo, wantedLoudness, wantedMode, cursor, user):
     songssinceMultiplier = (songsSincePlayed / 40)
     if songsSincePlayed > 40:
         songssinceMultiplier = songssinceMultiplier + (randint(0, 5) * 0.15)
-    weight = ((loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + 1)) * songssinceMultiplier
+    #If song never has been played, dont take user bias in to account.
+    if (bias == -1):
+        biasmod = -1
+        bias = 0
+    weight = ((loudnessWeight + modeWeight + tempoWeight + bias)/(nbrOfFeatures + biasmod + 1)) * songssinceMultiplier
     return weight
 
 # Funktion som sorterar en dictionary vars keys är songids och values är weights och
@@ -82,6 +87,9 @@ def get_userbias(user, songid, cursor):
         print("Something went wrong when trying to SELECT")
         print(e)
     arr = []
+    #If song never has been played, return -1 as user bias.
+    if (cursor.rowcount < 1):
+        return -1
     for record in cursor:
         arr.append(record[0])
     count = 1

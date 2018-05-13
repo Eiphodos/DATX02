@@ -44,7 +44,7 @@ CB_MODE_CKPT_PATH = "/home/musik/DATX02/tensor-v2/checkpoints/cbandit/mode"
 CB_NUMBER_OF_STATES = 28
 CB_TEMPO_ACTIONS = 10
 CB_MODE_ACTIONS = 2
-CB_LOUD_ACTIONS = 7
+CB_LOUD_ACTIONS = 11
 CB_TIME_BUCKETS = 4
 
 # Cbandit output types
