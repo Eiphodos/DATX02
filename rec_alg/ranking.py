@@ -110,7 +110,7 @@ def get_songssinceplayed(user, songid, cursor):
         print(e)
     if (cursor.rowcount < 1):
         # Inga resultat = vi sätter deltat till 1 över kravet för att vi ska påverka vikten
-        return 21
+        return 41
     counterdata = cursor.fetchone()
     lastplayed, playcounter = counterdata
     result = playcounter - lastplayed
